@@ -5,7 +5,7 @@
 
 const Sequelize = require("sequelize");
 
-const db = new Sequelize("bookguru", "mat", null, {
+const db = new Sequelize("bookguru", "postgres", "a", {
   logging: false,
   dialect: "postgres",
 });

@@ -11,15 +11,15 @@ Book.init(
       allowNull: false,
     },
     author: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      defaultValue: [],
-    },
-    img: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    img: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     category: {
@@ -27,7 +27,7 @@ Book.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     stock: {
