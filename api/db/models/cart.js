@@ -6,14 +6,13 @@ class Cart extends Model {}
 
 Cart.init(
   {
-    number: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1,
+    totalPrice: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    bought: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    date: {
+        type: DataTypes.DATE,
+        defaultValue: new Date()
     },
   },
   { sequelize: db, modelName: "cart", timestamps: false }

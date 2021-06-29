@@ -4,7 +4,7 @@ const routes = require("./routes");
 const db = require("./db/index");
 const PORT = process.env.PORT || 3001;
 const cors = require('cors')
-require('./db/models/associations')
+require('./db/models/index')
 
 app.use(cors());
 

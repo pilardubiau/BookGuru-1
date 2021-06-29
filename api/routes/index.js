@@ -3,14 +3,13 @@ const router = express.Router();
 const users = require('./users')
 const books = require('./books')
 const cart = require('./cart')
+const orders = require('./orders')
 const User = require('../db/models/user')
-
-// const books = require("./books");
-
 
 router.use("/users", users);
 router.use("/books", books);
 router.use("/cart", cart);
+router.use("/orders", orders);
 
 
 
