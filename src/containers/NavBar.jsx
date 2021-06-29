@@ -1,27 +1,38 @@
-import React from 'react'
-// import {Link} from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
+const imagen = require("../assets/Logo.png");
 
 const NavBar = () => {
-    return (
-        <div>
-   HOLA
-        </div>
-    )
-}
+  return (
+    <div>
+      {/* Barra de busqueda */}
+      {/* <Link to={`/`}> */}
+      {/* Ver como ordenarlo a la izquierda */}
+      <img src={imagen.default} alt="BookGuru logo" />
+      {/* </Link> */}
+      <div>
+        <input
+          placeholder="Search books..."
+          inputProps={{ "aria-label": "search" }}
+          //   onChange={handleChange}
+        />
+      </div>
+      <div>{/* agregar el icono de carrito aca */}</div>
+      <div>{/* agregar el icono de usuario aca */}</div>
+    </div>
+  );
+};
 
 export default NavBar;
-
-
-
 
 // <br />
 // <div className="row column">
 //     <div className="primary col-sm-3"><Link id="namePage" className="colorFuente" to="/home">BookGuru</Link></div>
 //     <div className="primary col-sm-6">
 //         <form className="input" >
-//             <input  
+//             <input
 //             value=""
-//             type="text" 
+//             type="text"
 //             placeholder="Buscar"/>
 //         </form>
 //     </div>
