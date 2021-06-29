@@ -11,15 +11,8 @@ import SignIn from "./SignIn";
 const App = () => {
   return (
     <div>
-      
-      <div>NavBar</div>
-      <div>SubNavBar</div>
-      <br/>
-      <img
-        src="/logoBookGuru.svg"
-        alt=""
-      />
-      <h4>Holis! bienvenidx a bookguru / Welcome to BookGuru(:</h4>
+      {/* <img src="/logoBookGuru.svg" alt="" />
+      <h4>Holis! bienvenidx a bookguru / Welcome to BookGuru(:</h4> */}
       <NavBar />
       {/* <Switch>
           <Route exact path="/register" component={Register} />
@@ -36,10 +29,12 @@ const App = () => {
         </Switch>
  */}
       <Carrousel />
-     
+
       <br />
       <br />
-    <button type="button" class="btn btn-secondary">Register</button>
+      <button type="button" class="btn btn-secondary">
+        Register
+      </button>
       <Register />
       <FooterContainer />
     </div>
