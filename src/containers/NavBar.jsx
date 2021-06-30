@@ -11,9 +11,9 @@ const NavBar = () => {
       <br />
       <div className="row">
         <div className="col-sm-2">
-          {/* <Link to={`/`}> */}
-          <img className="logo" src={imagen.default} alt="BookGuru logo" />
-          {/* </Link> */}
+          <Link to={`/`}>
+            <img className="logo" src={imagen.default} alt="BookGuru logo" />
+          </Link>
         </div>
         <div className="col-sm-8">
           <input
@@ -35,14 +35,16 @@ const NavBar = () => {
         <div className="col-sm-1">
           {/* User icon/menu */}
           <div class="dropdown">
-            <div className="user">
-              {/* <button class="dropbtn">Dropdown</button> */}
-              <div className="dropdown-content">
-                <a href="#">Sign Up</a>
-                <br />
-                <a href="#">Login</a>
+            <Link to={`/register`}>
+              <div className="user">
+                {/* <button class="dropbtn">Dropdown</button> */}
+                <div className="dropdown-content">
+                  <a href="#">Sign Up</a>
+                  <br />
+                  <a href="#">Login</a>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
         <hr />

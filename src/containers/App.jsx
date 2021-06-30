@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect, Route, Switch, Link } from "react-router-dom";
 
-
 //Componentes
 import NavBar from "./NavBar";
 import Register from "./Register";
@@ -13,28 +12,26 @@ import SignIn from "./SignIn";
 const App = () => {
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <Switch>
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={SignIn} />
-          <Route
-            exact
-            path="/books"
-            render={() => <books />}
-          />
-          {/* <Route
+        <Route exact path="/">
+          <Carousel1 />
+          <Carousel2 />
+        </Route>
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={SignIn} />
+        <Route exact path="/books" render={() => <books />} />
+        {/* <Route
             path="/books/:id"
             render={({ match }) => <SingleBook id={match.params.id} />}
           /> */}
-        </Switch>
+      </Switch>
       <br />
       <br />
       <br />
       <br />
       <br />
       <br />
-      <Carousel1 />
-      <Carousel2 /> 
       <FooterContainer />
     </div>
   );

@@ -15,8 +15,11 @@
   align-content: center;
   align-items: center;
   text-align: center;
+  color: #780000;
+  background-color: white;
   position: fixed; /* Set the navbar to fixed position */
   width: 100%; /* Full width */
+  z-index: 999;
 }
 
 .sub-row {
@@ -26,8 +29,11 @@
   align-items: center;
   text-align: center;
   margin-top: 55px;
+  color: #780000;
+  background-color: white;
   position: fixed; /* Set the navbar to fixed position */
   width: 100%; /* Full width */
+  z-index: 999;
 }
 
 /* Carrito de compras NO TOCAR */
