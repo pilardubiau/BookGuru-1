@@ -1,6 +1,5 @@
 const db = require("../index");
 const { Model, DataTypes } = require("sequelize");
-const crypto = require("crypto");
 
 class Book extends Model {}
 
@@ -48,5 +47,9 @@ Book.init(
   },
   { sequelize: db, modelName: "book", timestamps: false }
 );
+
+Book.prototype.reduceStock = function(num) {
+  this.decrement('stock', { by: num })
+}
 
 module.exports = Book;

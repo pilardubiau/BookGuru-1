@@ -18,6 +18,8 @@ app.use('/api', routes)
 
 db.sync({ force: true }).then(() => {
 
+  console.log(seedBooks.length)
+
   Book.bulkCreate(seedBooks)
   .then(() => console.log("Database running, seed books created"));
 

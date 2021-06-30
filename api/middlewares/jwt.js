@@ -2,9 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const checkJWT = (req, res, next) => {
 
-  if (!req.headers.authorization) {
-    return res.status(401).send("Missing token");   
-  }
+  if (!req.headers.authorization) return res.status(401).send("Missing token");
 
   const token = req.headers.authorization.split(" ")[1];
 

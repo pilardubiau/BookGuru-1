@@ -1,6 +1,5 @@
 const db = require("../index");
 const { Model, DataTypes } = require("sequelize");
-const crypto = require("crypto");
 
 class Order extends Model {}
 
