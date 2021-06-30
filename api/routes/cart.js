@@ -2,6 +2,7 @@ const express = require("express");
 const { Cart } = require("../db/models");
 const router = express.Router();
 
+//Creamos un carrito
 router.post("/", (req, res) => {
   Cart.create(req.body)
     .then((cart) => res.status(200).json(cart))
