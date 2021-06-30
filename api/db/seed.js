@@ -1,3 +1,12 @@
+//CATEGORIAS: 
+//Classic Literature & Fiction
+//Comics & Graphic Novels
+//Science
+//Childish
+//Business & Money
+//Biography
+//Cooking
+
 const seedBooks = [
   {
     title: "Martín Fierro",
@@ -17,7 +26,7 @@ const seedBooks = [
     author: "J.K. Rowling",
     img: "http://books.google.com/books/content?id=1o7D0m_osFEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     rating: 4.9,
-    category: "Fiction",
+    category: "Classic Literature & Fiction",
     price: 15.5,
     stock: 18,
     publisher: "Rowman & Littlefield",
@@ -340,16 +349,28 @@ const seedBooks = [
     description: `“A juicy investigation into one of Silicon Valley’s most-hyped fallen unicorns.”—Time (Best Books of Summer 2021). The definitive inside story of WeWork, its audacious founder, and what its epic unraveling says about a financial system drunk on the elixir of Silicon Valley innovation—from the Wall Street Journal correspondents (recently featured in the WeWork Hulu documentary) whose scoop-filled reporting hastened the company’s downfall. WeWork would be worth $10 trillion, more than any other company in the world. It wasn’t just an office space provider. It was a tech company—an AI startup, even. Its WeGrow schools and WeLive residences would revolutionize education and housing. One day, mused founder Adam Neumann, a Middle East peace accord would be signed in a WeWork. The company might help colonize Mars. And Neumann would become the world’s first trillionaire. This was the vision of Neumann and his primary cheerleader, SoftBank’s Masayoshi Son. In hindsight, their ambition for the company, whose primary business was subletting desks in slickly designed offices, seems like madness. Why did so many intelligent people—from venture capitalists to Wall Street elite—fall for the hype? And how did WeWork go so wrong? In little more than a decade, Neumann transformed himself from a struggling baby clothes salesman into the charismatic, hard-partying CEO of a company worth $47 billion—on paper. With his long hair and feel-good mantras, the six-foot-five Israeli transplant looked the part of a messianic truth teller. Investors swooned, and billions poured in. Neumann dined with the CEOs of JPMorgan and Goldman Sachs, entertaining a parade of power brokers desperate to get a slice of what he was selling: the country’s most valuable startup, a once-in-a-lifetime opportunity and a generation-defining moment. Soon, however, WeWork was burning through cash faster than Neumann could bring it in. From his private jet, sometimes clouded with marijuana smoke, he scoured the globe for more capital. Then, as WeWork readied a Hail Mary IPO, it all fell apart. Nearly $40 billion of value vaporized in one of corporate America’s most spectacular meltdowns. Peppered with eye-popping, never-before-reported details, The Cult of We is the gripping story of careless and often absurd people—and the financial system they have made.`,
   },
   {
-    title: "",
-    author: "",
-    img: "",
-    rating: 0,
-    category: "",
-    price: 0,
-    stock: 0,
-    publisher: "",
-    maturityRating: "",
-    description: `A juicy investigation into one of Silicon Valley’s most-hyped fallen unicorns.”—Time (Best Books of Summer 2021). The definitive inside story of WeWork, its audacious founder, and what its epic unraveling says about a financial system drunk on the elixir of Silicon Valley innovation—from the Wall Street Journal correspondents (recently featured in the WeWork Hulu documentary) whose scoop-filled reporting hastened the company’s downfall. WeWork would be worth $10 trillion, more than any other company in the world. It wasn’t just an office space provider. It was a tech company—an AI startup, even. Its WeGrow schools and WeLive residences would revolutionize education and housing. One day, mused founder Adam Neumann, a Middle East peace accord would be signed in a WeWork. The company might help colonize Mars. And Neumann would become the world’s first trillionaire. This was the vision of Neumann and his primary cheerleader, SoftBank’s Masayoshi Son. In hindsight, their ambition for the company, whose primary business was subletting desks in slickly designed offices, seems like madness. Why did so many intelligent people—from venture capitalists to Wall Street elite—fall for the hype? And how did WeWork go so wrong? In little more than a decade, Neumann transformed himself from a struggling baby clothes salesman into the charismatic, hard-partying CEO of a company worth $47 billion—on paper. With his long hair and feel-good mantras, the six-foot-five Israeli transplant looked the part of a messianic truth teller. Investors swooned, and billions poured in. Neumann dined with the CEOs of JPMorgan and Goldman Sachs, entertaining a parade of power brokers desperate to get a slice of what he was selling: the country’s most valuable startup, a once-in-a-lifetime opportunity and a generation-defining moment. Soon, however, WeWork was burning through cash faster than Neumann could bring it in. From his private jet, sometimes clouded with marijuana smoke, he scoured the globe for more capital. Then, as WeWork readied a Hail Mary IPO, it all fell apart. Nearly $40 billion of value vaporized in one of corporate America’s most spectacular meltdowns. Peppered with eye-popping, never-before-reported details, The Cult of We is the gripping story of careless and often absurd people—and the financial system they have made.`,
+    title: "Will",
+    author: "Mark Manson",
+    img: "https://images-na.ssl-images-amazon.com/images/I/91t9XuSD6oS.jpg",
+    rating: 2,
+    category: "Biography",
+    price: 20,
+    stock: 4,
+    publisher: "Penguin Press",
+    maturityRating: "MATURE",
+    description: `Will Smith’s transformation from a fearful child in a tense West Philadelphia home to one of the biggest rap stars of his era and then one of the biggest movie stars in Hollywood history, with a string of box office successes that will likely never be broken, is an epic tale of inner transformation and outer triumph, and Will tells it astonishingly well. But it's only half the story. Will Smith thought, with good reason, that he had won at life: not only was his own success unparalleled, his whole family was at the pinnacle of the entertainment world. Only they didn't see it that way: they felt more like star performers in his circus, a seven-days-a-week job they hadn't signed up for. It turned out Will Smith's education wasn't nearly over. This memoir is the product of a profound journey of self-knowledge, a reckoning with all that your will can get you and all that it can leave behind. Written with the help of Mark Manson, author of the multi-million-copy bestseller The Subtle Art of Not Giving a F*ck, Will is the story of how one person mastered his own emotions, written in a way that can help everyone else do the same. Few of us will know the pressure of performing on the world's biggest stages for the highest of stakes, but we can all understand that the fuel that works for one stage of our journey might have to be changed if we want to make it all the way home. The combination of genuine wisdom of universal value and a life story that is preposterously entertaining, even astonishing, puts Will the book, like its author, in a category by itself.`,
+  },
+  {
+    title: "Somebody's Daughter: A Memoir",
+    author: "Ashley C. Ford",
+    img: "https://images-na.ssl-images-amazon.com/images/I/714c3+WWXOS.jpg",
+    rating: 4,
+    category: "Biography",
+    price: 20,
+    stock: 6,
+    publisher: "Flatiron Books: An Oprah Book",
+    maturityRating: "MATURE",
+    description: `Through poverty, adolescence, and a fraught relationship with her mother, Ashley C. Ford wishes she could turn to her father for hope and encouragement. There are just a few problems: he’s in prison, and she doesn’t know what he did to end up there. She doesn’t know how to deal with the incessant worries that keep her up at night, or how to handle the changes in her body that draw unwanted attention from men. In her search for unconditional love, Ashley begins dating a boy her mother hates. When the relationship turns sour, he assaults her. Still reeling from the rape, which she keeps secret from her family, Ashley desperately searches for meaning in the chaos. Then, her grandmother reveals the truth about her father’s incarceration . . . and Ashley’s entire world is turned upside down. Somebody’s Daughter steps into the world of growing up a poor Black girl in Indiana with a family fragmented by incarceration, exploring how isolating and complex such a childhood can be. As Ashley battles her body and her environment, she embarks on a powerful journey to find the threads between who she is and what she was born into, and the complicated familial love that often binds them.`,
   },
 ];
 
