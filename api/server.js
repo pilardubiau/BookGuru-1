@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routes)
 
-db.sync({ force: true }).then(() => {
+db.sync({ force: false }).then(() => {
 
   Book.bulkCreate(seedBooks)
   .then(() => console.log("Database running, seed books created"));

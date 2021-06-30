@@ -11,10 +11,13 @@ Order.init(
       allowNull: false,
       defaultValue: 1,
     },
-    // bought: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false,
-    // },
+    bought: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    date: {
+      type: DataTypes.STRING,
+    }
   },
   { sequelize: db, modelName: "order", timestamps: false }
 );
