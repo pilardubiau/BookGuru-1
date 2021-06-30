@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from "axios";
+import "../styles/Register.css";
 // import {Link} from "react-router-dom"
 
 const Register = () => {
