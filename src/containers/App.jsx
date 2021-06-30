@@ -32,6 +32,12 @@ const App = () => {
 
       <br />
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <button type="button" class="btn btn-secondary">
         Register
       </button>
