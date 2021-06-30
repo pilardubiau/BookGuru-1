@@ -14,7 +14,11 @@ const App = () => {
     <div>
       <NavBar />
       <Switch>
+<<<<<<< HEAD
         <Route exact path="/">
+=======
+      <Route exact path="/">
+>>>>>>> 3a437d9b2c6748543b5338d674bc8cce33bdaeec
           <Carousel1 />
           <Carousel2 />
         </Route>
@@ -25,12 +29,18 @@ const App = () => {
             path="/books/:id"
             render={({ match }) => <SingleBook id={match.params.id} />}
           /> */}
+<<<<<<< HEAD
       </Switch>
       <br />
       <br />
       <br />
       <br />
       <br />
+=======
+      
+      </Switch>
+
+>>>>>>> 3a437d9b2c6748543b5338d674bc8cce33bdaeec
       <br />
       <FooterContainer />
     </div>

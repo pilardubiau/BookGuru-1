@@ -32,7 +32,7 @@ const Register = () => {
         <div className= "register">
   <div  class="container-fluid" />
       <br/>
-      <h4>Sign Up </h4>
+      <h4>REGISTER</h4>
       <br/>
 
      <form class="formulario container-fluid" >

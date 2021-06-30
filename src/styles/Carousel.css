@@ -5,6 +5,12 @@
     justify-content: space-around;
   }
 
+.carousel{
+  margin-top: 100px;
+}
+.carousel2{
+  margin-top: 25px;
+}
   h8 {
     color: #780000;
   }
