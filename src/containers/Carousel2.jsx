@@ -10,7 +10,7 @@ const img4 = require("../assets/CoomingSoon2.jpg");
 
 const Carousel2 = () => {
   return (
-    <Carousel>
+    <Carousel className="carousel2">
       <Carousel.Item>
       <h8>Best Sellers</h8> <br />
       Discover our bestselling books and see what's trending worldwide.

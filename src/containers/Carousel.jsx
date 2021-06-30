@@ -9,7 +9,7 @@ const img4 = require("../assets/CoomingSoon2.jpg");
 
 const Carousel1 = () => {
   return (
-    <Carousel>
+    <Carousel className="carousel">
       <Carousel.Item>
       <h8>Latest Releases</h8> <br />
       Discover the very latest titles from the worlds of fiction, non-fiction and children’s. These great volumes are all out now.
