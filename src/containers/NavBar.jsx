@@ -97,16 +97,18 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="col-sm-1">
-          <Link to={`/register`}>
-            {/* User icon/menu */}
-            <div className="user"></div>
-          </Link>
+          {/* User icon/menu */}
+          <div className="user"></div>
           <div class="dropdown">
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
-              <a href="#">Sign Up</a>
+              <Link to={`/register`} className="sub-link">
+                Sign Up
+              </Link>
               <br />
-              <a href="#">Login</a>
+              <Link to={`/login`} className="sub-link">
+                Login
+              </Link>
             </div>
           </div>
         </div>
@@ -120,10 +122,14 @@ const NavBar = () => {
           <div class="dropdown">
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
-              <a href="#">Categories</a>
+              <a href="#" className="sub-link">
+                Categories
+              </a>
 
               <br />
-              <a href="#">Author</a>
+              <a href="#" className="sub-link">
+                Author
+              </a>
             </div>
           </div>
         </div>
