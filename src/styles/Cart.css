@@ -1,20 +1,26 @@
+.cart {
+  height: 80%;
+  width: 80%;
+}
+
 .table {
-    border: 1px solid #780000;
-    margin-top: 150px;
-    border-collapse: collapse;
-    width: 100%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  
-  td {
-    border: 1px solid #780000;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  th {
-    border: 1px solid #780000;
-    text-align: left;
-    padding: 8px;
-  }
+  /* display: flex; */
+  border: 1px solid #780000;
+  margin-top: 150px;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+td {
+  border: 1px solid #780000;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  border: 1px solid #780000;
+  text-align: left;
+  padding: 8px;
+}

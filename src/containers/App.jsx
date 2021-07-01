@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route, Switch,} from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 //Componentes
 import NavBar from "./NavBar";
@@ -9,6 +9,7 @@ import Carousel1 from "./Carousel";
 import Carousel2 from "./Carousel2";
 import LogIn from "./LogIn";
 import BookContainer from "./BookContainer";
+import Cart from "./Cart";
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
-        <Route exact path="/books" render={() => <BookContainer/>} />
+        <Route exact path="/books" render={() => <BookContainer />} />
+        <Route exact path="/cart" component={Cart} />
       </Switch>
       <br />
       <FooterContainer />

@@ -61,10 +61,6 @@
 
 // export default NavBar;
 
-
-
-
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -75,7 +71,6 @@ const NavBar = () => {
   return (
     <div>
       {/* Search Bar */}
-      <br />
       <div className="row">
         <div className="col-sm-2">
           <Link to={`/`}>
@@ -110,7 +105,6 @@ const NavBar = () => {
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
               <a href="#">Sign Up</a>
-
               <br />
               <a href="#">Login</a>
             </div>
