@@ -6,7 +6,7 @@ import {
 export const setUser = createAction("USER");
 
 const userReducer = createReducer(
-  [],
+  {},
   {
     [setUser]: (state, action) => {
       return (state = action.payload);
