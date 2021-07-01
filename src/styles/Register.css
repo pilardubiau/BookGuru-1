@@ -1,0 +1,23 @@
+.register {
+  background-color: white;
+  color: black;
+  text-align: center;
+  margin-top: 100px;
+}
+
+h3 {
+  color: #780000;
+}
+
+h4 {
+  color: #780000;
+}
+
+.botonRegister {
+  border: 1px solid #780000; /*anchura, estilo y color borde*/
+  padding: 10px; /*espacio alrededor texto*/
+  background-color: #780000; /*color botón*/
+  color: #ffffff; /*color texto*/
+  text-decoration: none; /*decoración texto*/
+  text-transform: uppercase; /*capitalización texto*/
+}

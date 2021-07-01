@@ -1,9 +1,32 @@
-import React from 'react'
+import React from "react";
+import { Redirect, Route, Switch,} from "react-router-dom";
+
+//Componentes
+import NavBar from "./NavBar";
+import Register from "./Register";
+import FooterContainer from "./FooterContainer";
+import Carousel1 from "./Carousel";
+import Carousel2 from "./Carousel2";
+import LogIn from "./LogIn";
+import BookContainer from "./BookContainer";
 
 const App = () => {
   return (
-    <div>Holis! bienvenidx a bookguru (:</div>
-  )
-}
+    <div>
+      <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <Carousel1 />
+          <Carousel2 />
+        </Route>
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={LogIn} />
+        <Route exact path="/books" render={() => <BookContainer/>} />
+      </Switch>
+      <br />
+      <FooterContainer />
+    </div>
+  );
+};
 
 export default App;

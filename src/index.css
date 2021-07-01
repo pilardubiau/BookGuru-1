@@ -1,3 +1,13 @@
-body { background-color: black;
-       color: white
+* {
+  font-family: "Open Sans", sans-serif;
 }
+
+body {
+  background-color: white;
+
+  color: #88181a;
+}
+h4 {
+  color: black;
+}
+
