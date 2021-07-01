@@ -65,9 +65,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import "../styles/NavBar.css";
+import axios from "axios";
+import {useDispatch} from 'react-redux';
+import {setBooks} from '../store/books';
+import { useHistory } from "react-router-dom";
+
 const imagen = require("../assets/Logo.png");
 
 const NavBar = () => {
+  const history = useHistory();
+  const dispatch = useDispatch()
+
+  const [input, setInput] = React.useState('')
+
+const handleChange = (e) => {
+  const value = e.target.value
+  setInput(value)
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+  axios.get(`/api/books/title/${input}`)
+  .then(res => dispatch(setBooks(res.data)))
+  .then(()=>  history.push("/books"))
+}
+
   return (
     <div>
       {/* Search Bar */}
@@ -78,12 +100,16 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="col-sm-8">
+          <form onSubmit={handleSubmit}>
+         {/*  <Link to={'/books'}> */}
           <input
             placeholder="Search books..."
             inputProps={{ "aria-label": "search" }}
             className="search-bar"
-            //   onChange={handleChange}
+            onChange={handleChange}
           />
+          {/* </Link> */}
+          </form>
         </div>
         <div className="col-sm-1">
           {/* Shopping cart */}
