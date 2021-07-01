@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { setUser } from "../store/user";
-import "../styles/Login.css";
+import "../styles/LogIn.css";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 

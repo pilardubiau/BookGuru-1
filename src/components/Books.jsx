@@ -9,18 +9,27 @@ const Books= () => {
     const books = useSelector((state) => state.books)
     const user = useSelector((state) => state.user)
 //userid viene del store y el bookid viene como parametro del map de abajo
-/*     const addOrder = (bookId) => {
-        const token = localStorage.getItem('token')
-        if(!token) {
-            history.push("/books")
+        const addOrder = (bookId) => {
+        const token = JSON.parse(localStorage.getItem('token'))
+        if(!user.id) {
+            history.push("/register")
         }
         else {
-            axios.post('/api/orders', {header:'token'}, {userId:user.id, bookId})
+            axios({
+                method: 'post',
+                url: '/api/orders',
+                data: {
+                  userId: user.id,
+                  bookId: bookId
+                },
+                headers: { authorization: `Bearer ${token}` },
+            }).then(()=> alert("Producto agregado al carrito"))
         }
-    } */
-    console.log(user)
+    }
+
     return(
         <div className="books">
+
             {books && books.map((book) => {
                 return(
                     <div key={book.id}>
@@ -29,7 +38,7 @@ const Books= () => {
                         </Link>
                         <div className="tamaño">{book.title.slice(0, 21)}</div>
                         <div>Price: {book.price} $$$</div>               
-                        <div><button /* onClick={addOrder(book.id)} */>Add to cart</button></div>
+                        <div><button onClick={()=>addOrder(book.id)}>Add to cart</button></div>
                         <br />
                     </div>
                 )}

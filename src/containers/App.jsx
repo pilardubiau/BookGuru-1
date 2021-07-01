@@ -21,7 +21,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Carousel1 />
-         {/*  <Carousel2 /> */}
+          <Carousel2 />
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />

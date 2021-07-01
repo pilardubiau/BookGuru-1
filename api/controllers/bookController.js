@@ -10,7 +10,7 @@ module.exports = {
       });
   },
   book_getRandomBooks: function (req, res) {
-    Book.findAll({ order: literal('random()'), limit: 10 }).then((books) => {
+    Book.findAll({ order: literal('random()'), limit: 54 }).then((books) => {
         res.send(books)})
   },
   book_getById: function (req, res) {
