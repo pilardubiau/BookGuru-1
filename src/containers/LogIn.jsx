@@ -5,12 +5,14 @@ import { Link, Redirect } from "react-router-dom";
 import { setUser } from "../store/user";
 import "../styles/Login.css";
 import Alert from "react-bootstrap/Alert";
+import { useHistory } from "react-router-dom";
 
 export default function LogIn() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [inputSignIn, setInputSignIn] = React.useState({});
-  const [validCredentials, setValidCredentials] = React.useState(false);
+  const [validCredentials, setValidCredentials] = React.useState(true);
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -26,7 +28,7 @@ export default function LogIn() {
         dispatch(setUser(res.data.user));
         localStorage.setItem("token", JSON.stringify(res.data.token));
         setValidCredentials(true);
-        return <Redirect to="/"></Redirect>;
+        history.push("/");
       })
       .catch((err) => setValidCredentials(false));
   };
@@ -68,12 +70,6 @@ export default function LogIn() {
           />
         </label>{" "}
         <br />
-        <br />
-        <button className="botonLogin" disabled={IsButtonDisable(inputSignIn)}>
-          Submit
-        </button>
-        <br />
-        <br />
         <div>
           {validCredentials
             ? null
@@ -83,6 +79,12 @@ export default function LogIn() {
                 </Alert>
               ))}
         </div>
+        <br />
+        <button className="botonLogin" disabled={IsButtonDisable(inputSignIn)}>
+          Submit
+        </button>
+        <br />
+        <br /> 
         <br />
         <br />
       </form>

@@ -1,13 +1,15 @@
 import React from "react";
 import axios from "axios";
 import "../styles/Register.css";
-import {Link, Redirect} from "react-router-dom"
+import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import Alert from "react-bootstrap/Alert";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [inputRegistro, setInputRegistro] = React.useState({});
   const [passwordValidator, setPasswordValidator] = React.useState(true);
@@ -20,35 +22,39 @@ const Register = () => {
     setInputRegistro({ ...inputRegistro, [key]: value });
   };
 
-  const handlerBlur = (e) => {    
+  const handlerBlur = (e) => {
     if (e.target.name === "email") {
-
       let result = /(?=.*@)(?=.*\.).{8,}/.test(e.target.value);
       setInputRegistro({ ...inputRegistro, email: e.target.value });
-      if(result){setEmailValidator(true) }
-      else{setEmailValidator(false)}
+      if (result) {
+        setEmailValidator(true);
+      } else {
+        setEmailValidator(false);
+      }
     }
     if (e.target.name === "password") {
       let result = /(^[A-Z])(?=.*\d).{6,}/.test(e.target.value);
       setInputRegistro({ ...inputRegistro, password: e.target.value });
-      if(result){setPasswordValidator(true) }
-      else{setPasswordValidator(false)}
-    } 
+      if (result) {
+        setPasswordValidator(true);
+      } else {
+        setPasswordValidator(false);
+      }
+    }
   };
 
   const IsButtonDisable = (input) => {
     return !!Object.values(input).filter((item) => item.length < 2).length;
-}
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputRegistro);
-    axios.post("/api/users/register", inputRegistro)
-    .then((res) => {
+    axios.post("/api/users/register", inputRegistro).then((res) => {
       dispatch(setUser(res.data.user));
-      localStorage.setItem("token", JSON.stringify(res.data.token)); 
-      return <Redirect to="/"></Redirect>; 
-    })
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+      history.push("/");
+    });
   };
 
   return (
@@ -122,7 +128,15 @@ const Register = () => {
             onBlur={handlerBlur}
           />
         </label>{" "}
-        <br />
+        <div>
+          {emailValidator
+            ? null
+            : ["danger"].map((variant, idx) => (
+                <Alert key={idx} variant={variant}>
+                  "Wrong e-mail"
+                </Alert>
+              ))}
+        </div>
         <label for="">
           {" "}
           Password <br />{" "}
@@ -135,21 +149,32 @@ const Register = () => {
             onBlur={handlerBlur}
           />
         </label>{" "}
+        <div>
+          {passwordValidator
+            ? null
+            : ["danger"].map((variant, idx) => (
+                <Alert key={idx} variant={variant}>
+                  "Password must contain 8 characters, 1 number and 1 capital
+                  letter"
+                </Alert>
+              ))}
+        </div>
+        <br />{" "}
+        <h6>
+          {" "}
+          By creating an account you agree to our Terms & Privacy{" "}
+          <input type="checkbox" />
+        </h6>
         <br />
-        <br />
-        <input type="checkbox" />{" "}
-        <h5> By creating an account you agree to our Terms & Privacy</h5> <br />{" "}
-        <br />
-        <button className="botonRegister" disabled={IsButtonDisable(inputRegistro)}> Submit</button>
+        <button
+          className="botonRegister"
+          disabled={IsButtonDisable(inputRegistro)}
+        >
+          Submit
+        </button>
         <br />
         <br />
       </form>
-      <div>
-      {passwordValidator ? null : <h5>"Password must contain 8 characters, 1 number and 1 capital letter"</h5>}
-      </div>
-      <div>
-      {emailValidator ? null : <h5>"Wrong e-mail"</h5>}
-      </div>
     </div>
   );
 };
