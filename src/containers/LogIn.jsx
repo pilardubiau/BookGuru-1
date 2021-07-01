@@ -1,12 +1,16 @@
 import React from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { setUser } from "../store/user";
+import "../styles/Login.css";
+import Alert from "react-bootstrap/Alert";
 
 export default function LogIn() {
-  // USERS
-  // router.post("/register", (req, res) => CREA UN USUARIO SI ESTÁ BIEN, DEVOLVEMOS OBJETO USUARIO Y TOKEN(LO ALMACENAN EN UN STATE. EJ: validatedUser: {user: {}, token: ""})
-  // router.post("/login", (req, res, next) => LOGUEA AL USUARIO (SI ES QUE EXISTE EN EL REGISTRO) DEVOLVEMOS LO MISMO QUE ARRIBA!
+  const dispatch = useDispatch();
 
   const [inputSignIn, setInputSignIn] = React.useState({});
+  const [validCredentials, setValidCredentials] = React.useState(false);
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -16,10 +20,19 @@ export default function LogIn() {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    console.log(inputSignIn);
     axios
-      .post("/api/login", inputSignIn)
-      // .then(() => alert("login" + inputSignIn.email));
+      .post("/api/users/login", inputSignIn)
+      .then((res) => {
+        dispatch(setUser(res.data.user));
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+        setValidCredentials(true);
+        return <Redirect to="/"></Redirect>;
+      })
+      .catch((err) => setValidCredentials(false));
+  };
+
+  const IsButtonDisable = (input) => {
+    return !!Object.values(input).filter((item) => item.length < 2).length;
   };
 
   return (
@@ -27,7 +40,6 @@ export default function LogIn() {
       <div class="container-fluid" />
       <br />
       <h3>Log In</h3>
-
       <form class="formulario container-fluid" onSubmit={handleSignIn}>
         <br></br>
         <label for="">
@@ -36,18 +48,7 @@ export default function LogIn() {
           <input
             className="formulario container-fluid"
             type="text"
-            placeholder=""
-            required
-            onChange={handleChange}
-          />
-        </label>{" "}
-        <br />
-        <label for="">
-          {" "}
-          E-mail <br />{" "}
-          <input
-            className="formulario container-fluid"
-            type="text"
+            name="username"
             placeholder=""
             required
             onChange={handleChange}
@@ -59,7 +60,8 @@ export default function LogIn() {
           Password <br />{" "}
           <input
             className="formulario container-fluid"
-            type="text"
+            type="password"
+            name="password"
             placeholder=""
             required
             onChange={handleChange}
@@ -67,7 +69,20 @@ export default function LogIn() {
         </label>{" "}
         <br />
         <br />
-        <button className="botonLogin">Submit</button>
+        <button className="botonLogin" disabled={IsButtonDisable(inputSignIn)}>
+          Submit
+        </button>
+        <br />
+        <br />
+        <div>
+          {validCredentials
+            ? null
+            : ["danger"].map((variant, idx) => (
+                <Alert key={idx} variant={variant}>
+                  "You have entered an invalid username or password"
+                </Alert>
+              ))}
+        </div>
         <br />
         <br />
       </form>

@@ -1,28 +1,54 @@
 import React from "react";
 import axios from "axios";
 import "../styles/Register.css";
-// import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../store/user";
+import Alert from "react-bootstrap/Alert";
 
 const Register = () => {
-
-  // USERS
-  // router.post("/register", (req, res) => CREA UN USUARIO SI ESTÁ BIEN, DEVOLVEMOS OBJETO USUARIO Y TOKEN(LO ALMACENAN EN UN STATE. EJ: validatedUser: {user: {}, token: ""})
-  // router.post("/login", (req, res, next) => LOGUEA AL USUARIO (SI ES QUE EXISTE EN EL REGISTRO) DEVOLVEMOS LO MISMO QUE ARRIBA!
+  const dispatch = useDispatch();
 
   const [inputRegistro, setInputRegistro] = React.useState({});
+  const [passwordValidator, setPasswordValidator] = React.useState(true);
+  const [emailValidator, setEmailValidator] = React.useState(true);
+
   const handleChange = (e) => {
     e.preventDefault();
     const key = e.target.name;
     const value = e.target.value;
     setInputRegistro({ ...inputRegistro, [key]: value });
-    console.log(inputRegistro);
   };
 
-  const handleSignUp = (e) => {
+  const handlerBlur = (e) => {    
+    if (e.target.name === "email") {
+
+      let result = /(?=.*@)(?=.*\.).{8,}/.test(e.target.value);
+      setInputRegistro({ ...inputRegistro, email: e.target.value });
+      if(result){setEmailValidator(true) }
+      else{setEmailValidator(false)}
+    }
+    if (e.target.name === "password") {
+      let result = /(^[A-Z])(?=.*\d).{6,}/.test(e.target.value);
+      setInputRegistro({ ...inputRegistro, password: e.target.value });
+      if(result){setPasswordValidator(true) }
+      else{setPasswordValidator(false)}
+    } 
+  };
+
+  const IsButtonDisable = (input) => {
+    return !!Object.values(input).filter((item) => item.length < 2).length;
+}
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/register", inputRegistro)
-    //   .then(() => alert("usuario creado " + inputRegistro.username));
+    console.log(inputRegistro);
+    axios.post("/api/users/register", inputRegistro)
+    .then((res) => {
+      dispatch(setUser(res.data.user));
+      localStorage.setItem("token", JSON.stringify(res.data.token)); 
+      return <Redirect to="/"></Redirect>; 
+    })
   };
 
   return (
@@ -31,13 +57,14 @@ const Register = () => {
       <br />
       <h3>Welcome BookGuru !</h3> <br />
       <p>Please fill in this form to create an account</p>
-      <form class="formulario container-fluid" onSubmit={handleSignUp}>
+      <form class="formulario container-fluid" onSubmit={handleSubmit}>
         <label for="">
           {" "}
           Name <br />{" "}
           <input
             className="formulario container-fluid"
             type="text"
+            name="name"
             placeholder=""
             required
             onChange={handleChange}
@@ -52,18 +79,20 @@ const Register = () => {
             type="text"
             placeholder=""
             required
+            name="lastname"
             onChange={handleChange}
           />
         </label>{" "}
         <br />
         <label for="">
           {" "}
-          Adress <br />{" "}
+          Address <br />{" "}
           <input
             className="formulario container-fluid"
             type="text"
             placeholder=""
             required
+            name="address"
             onChange={handleChange}
           />
         </label>{" "}
@@ -76,6 +105,7 @@ const Register = () => {
             type="text"
             placeholder=""
             required
+            name="username"
             onChange={handleChange}
           />
         </label>{" "}
@@ -88,7 +118,8 @@ const Register = () => {
             type="text"
             placeholder=""
             required
-            onChange={handleChange}
+            name="email"
+            onBlur={handlerBlur}
           />
         </label>{" "}
         <br />
@@ -97,21 +128,28 @@ const Register = () => {
           Password <br />{" "}
           <input
             className="formulario container-fluid"
-            type="text"
+            type="password"
             placeholder=""
             required
-            onChange={handleChange}
+            name="password"
+            onBlur={handlerBlur}
           />
         </label>{" "}
         <br />
         <br />
         <input type="checkbox" />{" "}
-        <h8> By creating an account you agree to our Terms & Privacy</h8> <br />{" "}
+        <h5> By creating an account you agree to our Terms & Privacy</h5> <br />{" "}
         <br />
-        <button className="botonRegister">Submit</button>
+        <button className="botonRegister" disabled={IsButtonDisable(inputRegistro)}> Submit</button>
         <br />
         <br />
       </form>
+      <div>
+      {passwordValidator ? null : <h5>"Password must contain 8 characters, 1 number and 1 capital letter"</h5>}
+      </div>
+      <div>
+      {emailValidator ? null : <h5>"Wrong e-mail"</h5>}
+      </div>
     </div>
   );
 };
