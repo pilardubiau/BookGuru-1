@@ -17,7 +17,15 @@
   h9 {
          color: black;
        }
+.slideImagediv{
+  width: 100%; 
+  height: 30vh;
+}
 
+img{
+  width: auto;
+  height: 100%;
+}
 
 
   
