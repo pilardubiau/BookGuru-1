@@ -66,75 +66,101 @@ import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import "../styles/NavBar.css";
 import axios from "axios";
-import {useDispatch} from 'react-redux';
-import {setBooks} from '../store/books';
+import { useDispatch, useSelector } from "react-redux";
+import { setBooks } from "../store/books";
+import { setUser } from "../store/user";
 import { useHistory } from "react-router-dom";
+import isUserValidated from "../hooks/isUserValidated";
 
 const imagen = require("../assets/Logo.png");
 
 const NavBar = () => {
   const history = useHistory();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { user } = useSelector((store) => store);
 
-  const [input, setInput] = React.useState('')
+  const [input, setInput] = React.useState("");
 
-const handleChange = (e) => {
-  const value = e.target.value
-  setInput(value)
-}
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setInput(value);
+  };
 
-const handleSubmit = (e) => {
-  e.preventDefault()
-  axios.get(`/api/books/title/${input}`)
-  .then(res => dispatch(setBooks(res.data)))
-  .then(()=>  history.push("/books"))
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .get(`/api/books/title/${input}`)
+      .then((res) => dispatch(setBooks(res.data)))
+      .then(() => history.push("/books"));
+  };
 
+  const clickHandler = () => {
+    localStorage.clear();
+    dispatch(setUser({}));
+  };
   return (
     <div>
       {/* Search Bar */}
       <div className="row">
-        <div className="col-sm-2">
-          <Link to={`/`}>
-            <img className="logo" src={imagen.default} alt="BookGuru logo" />
-          </Link>
-        </div>
-        <div className="col-sm-8">
-          <form onSubmit={handleSubmit}>
-         {/*  <Link to={'/books'}> */}
-          <input
-            placeholder="Search books..."
-            inputProps={{ "aria-label": "search" }}
-            className="search-bar"
-            onChange={handleChange}
-          />
-          {/* </Link> */}
-          </form>
-        </div>
-        <div className="col-sm-1">
-          {/* Shopping cart */}
-          <Link to={`/cart`}>
-            <div class="icon-cart">
-              <div className="cart-line-1"></div>
-              <div className="cart-line-2"></div>
-              <div className="cart-line-3"></div>
-              <div className="cart-wheel"></div>
+        <div className="navbarMainDiv">
+          <div className="col-sm-2">
+            <Link to={`/`}>
+              <img className="logo" src={imagen.default} alt="BookGuru logo" />
+            </Link>
+          </div>
+          <div className="col-sm-8">
+            <form  style={{width:"auto"}} onSubmit={handleSubmit}>
+              {/*  <Link to={'/books'}> */}
+              <input
+                style={{width:"40vw"}}
+                placeholder="Search books..."
+                inputProps={{ "aria-label": "search" }}
+                className="search-bar"
+                onChange={handleChange}
+              />
+              {/* </Link> */}
+            </form>
+          </div>
+          <div className="userCartRegisterDiv">
+            {isUserValidated(user) ? <h4>{`${user.username}`}</h4> : null}
+            <div className="col-sm-4">
+              {/* Shopping cart */}
+              <Link to={`/cart`}>
+                <div class="icon-cart">
+                  <div className="cart-line-1"></div>
+                  <div className="cart-line-2"></div>
+                  <div className="cart-line-3"></div>
+                  <div className="cart-wheel"></div>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-        <div className="col-sm-1">
-          {/* User icon/menu */}
-          <div className="user"></div>
-          <div class="dropdown">
-            {/* <button class="dropbtn">Dropdown</button> */}
-            <div className="dropdown-content">
-              <Link to={`/register`} className="sub-link">
-                Sign Up
-              </Link>
-              <br />
-              <Link to={`/login`} className="sub-link">
-                Login
-              </Link>
+            <div className="col-sm-1">
+              {/* User icon/menu */}
+              <div className="user" ></div>
+              <div class="dropdown">
+                {/* <button class="dropbtn">Dropdown</button> */}
+                <div className="dropdown-content">
+                  {!isUserValidated(user) ? (
+                    <div>
+                      <Link to={`/register`} className="sub-link">
+                        Sign Up
+                      </Link>
+                      <br />
+                      <Link to={`/login`} className="sub-link">
+                        Login
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link
+                      to={`/`}
+                      className="sub-link"
+                      onClick={() => clickHandler()}
+                    >
+                      Logout
+                    </Link>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
