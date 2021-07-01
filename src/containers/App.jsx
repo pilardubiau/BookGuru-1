@@ -10,9 +10,10 @@ import Carousel2 from "./Carousel2";
 import LogIn from "./LogIn";
 import BookContainer from "./BookContainer";
 import Cart from "./Cart";
-import SingleBookContainer from './SingleBookContainer'
+import SingleBookContainer from "./SingleBookContainer";
 import SingleBook from "../components/SingleBook";
-
+import Previous from "./Previous";
+import Category from "./Category";
 
 const App = () => {
   return (
@@ -29,9 +30,15 @@ const App = () => {
         <Route exact path="/books" render={() => <BookContainer />} />
         <Route exact path="/cart" component={Cart} />
 
-        <Route exact path="/books/:id" render={({match}) => <SingleBookContainer bookId={match.params.id}/>}/>
-
-
+        <Route
+          exact
+          path="/books/:id"
+          render={({ match }) => (
+            <SingleBookContainer bookId={match.params.id} />
+          )}
+        />
+        <Route exact path="/previous" component={Previous} />
+        <Route exact path="/category" component={Category} />
       </Switch>
       <br />
       <FooterContainer />
