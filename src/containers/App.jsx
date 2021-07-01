@@ -8,6 +8,7 @@ import FooterContainer from "./FooterContainer";
 import Carousel1 from "./Carousel";
 import Carousel2 from "./Carousel2";
 import LogIn from "./LogIn";
+import BookContainer from "./BookContainer";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
-        <Route exact path="/books" render={() => <books />} />
+        <Route exact path="/books" render={() => <BookContainer/>} />
       </Switch>
       <br />
       <FooterContainer />
