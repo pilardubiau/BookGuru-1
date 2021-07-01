@@ -9,6 +9,8 @@ import Carousel1 from "./Carousel";
 import Carousel2 from "./Carousel2";
 import LogIn from "./LogIn";
 import BookContainer from "./BookContainer";
+import SingleBookContainer from './SingleBookContainer'
+import SingleBook from "../components/SingleBook";
 
 const App = () => {
   return (
@@ -17,10 +19,11 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Carousel1 />
-          <Carousel2 />
+         {/*  <Carousel2 /> */}
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
+        <Route exact path="/books/:id" render={({match}) => <SingleBookContainer bookId={match.params.id}/>}/>
         <Route exact path="/books" render={() => <BookContainer/>} />
       </Switch>
       <br />
