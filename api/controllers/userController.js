@@ -1,4 +1,4 @@
-const { User, Order } = require("../db/models");
+const { User, Order, Book } = require("../db/models");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
@@ -33,12 +33,16 @@ module.exports = {
       return res.status(200).json({ user, token });
     });
   },
-  user_getCart: function(req, res) {
-    Order.findAll({ where: { userId: req.params.userId, bought: false } })
-    .then(cartOrders => res.status(200).send(cartOrders));
+  user_getCart: function (req, res) {
+    Order.findAll({
+      where: { userId: req.params.userId, bought: false },
+      include: Book,
+    }).then((cartOrders) => res.status(200).send(cartOrders));
   },
-  user_checkoutOrder: function(req, res) {
-    Order.findAll({ where: { userId: req.params.userId, bought: true } })
-    .then(checkedOrders => res.status(200).send(checkedOrders));
-  }
+  user_checkoutOrder: function (req, res) {
+    Order.findAll({
+      where: { userId: req.params.userId, bought: true },
+      include: Book,
+    }).then((checkedOrders) => res.status(200).send(checkedOrders));
+  },
 };

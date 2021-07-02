@@ -1,31 +1,25 @@
 .slideImagediv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-.carousel{
-  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
-.carousel2{
+
+.car {
+  margin-top: 150px;
+}
+.carousel2 {
   margin-top: 25px;
 }
-  h8 {
-    color: #780000;
-  }
-  h9 {
-         color: black;
-       }
-.slideImagediv{
-  width: 100%; 
+h6 {
+  color: #780000;
+}
+
+.slideImagediv {
   height: 30vh;
 }
 
-img{
+.slideImagediv img {
   width: auto;
   height: 100%;
 }
-
-
-  
