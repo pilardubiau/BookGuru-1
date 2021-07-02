@@ -1,12 +1,12 @@
 import React from "react";
 import "../styles/Cart.css";
 import axios from "axios";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import CartTotalPrice from "../hooks/CartTotalPrice";
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
-  const history = useHistory();
   const user = useSelector((state) => state.user);
   const token = JSON.parse(localStorage.getItem("token"));
   console.log("esto es el user: ", user);
@@ -17,7 +17,6 @@ const Cart = () => {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((res) => setCart(res.data));
-    // .then(({ data }) => setCart((cart) => [...cart, data]));
   }, []);
 
   // const deleteBook = (BookId) => {
@@ -79,7 +78,7 @@ const Cart = () => {
               </div>
             );
           })}
-        <td>Total</td>
+        <td>Total: {CartTotalPrice(cart)}</td>
         <td></td>
       </table>
 

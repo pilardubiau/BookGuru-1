@@ -1,5 +1,9 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/user";
+import userPersisterHook from "../hooks/userPersisterHook";
 
 //Componentes
 import NavBar from "./NavBar";
@@ -11,11 +15,15 @@ import LogIn from "./LogIn";
 import BookContainer from "./BookContainer";
 import Cart from "./Cart";
 import SingleBookContainer from "./SingleBookContainer";
-import SingleBook from "../components/SingleBook";
 import Previous from "./Previous";
 import Category from "./Category";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setUser(userPersisterHook()))
+  }, [dispatch]);
+
   return (
     <div>
       <NavBar />

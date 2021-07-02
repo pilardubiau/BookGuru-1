@@ -1,12 +1,10 @@
 import React from "react";
 import "../styles/Cart.css";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Previous = () => {
   const [cart, setCart] = React.useState([]);
-  const history = useHistory();
   const user = useSelector((state) => state.user);
   const token = JSON.parse(localStorage.getItem("token"));
   console.log("Estoy en el previous y este es el token: ", token);

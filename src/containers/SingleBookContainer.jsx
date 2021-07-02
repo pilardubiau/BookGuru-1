@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import SingleBook from '../components/SingleBook'
-import {useDispatch, useSelector} from 'react-redux';
-import {setBookId} from '../store/bookId';
 import axios from 'axios'
 
 

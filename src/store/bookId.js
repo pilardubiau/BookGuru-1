@@ -1,6 +1,6 @@
-import {createAction, createReducer, createAsyncThunk} from '@reduxjs/toolkit';
+import {createAction, createReducer} from '@reduxjs/toolkit';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const setBookId = createAction('SET_BOOKID')
 

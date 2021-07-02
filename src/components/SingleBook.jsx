@@ -6,7 +6,7 @@ import '../styles/SingleBook.css'
 
 const SingleBook = ({singleBook}) => {
   const history = useHistory()
-  const books = useSelector((state) => state.books)
+  // const books = useSelector((state) => state.books)
   const user = useSelector((state) => state.user)
 //userid viene del store y el bookid viene como parametro del map de abajo
       const addOrder = (bookId) => {

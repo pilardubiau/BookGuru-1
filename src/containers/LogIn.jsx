@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import "../styles/LogIn.css";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
+import IsButtonDisable from "../hooks/IsButtonDisable";
 
 export default function LogIn() {
   const dispatch = useDispatch();
@@ -27,26 +27,27 @@ export default function LogIn() {
       .then((res) => {
         dispatch(setUser(res.data.user));
         localStorage.setItem("token", JSON.stringify(res.data.token));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         setValidCredentials(true);
         history.push("/");
       })
       .catch((err) => setValidCredentials(false));
   };
 
-  const IsButtonDisable = (input) => {
-    return !!Object.values(input).filter((item) => item.length < 2).length;
-  };
+  // const IsButtonDisable = (input) => {
+  //   return !!Object.values(input).filter((item) => item.length < 2).length;
+  // };
 
   return (
     <div className="login">
-      <div class="container-fluid" />
+      <div className="container-fluid" />
       <br />
       <h3>Log In</h3>
-      <form class="formulario container-fluid" onSubmit={handleSignIn}>
+      <form className="formulario container-fluid" onSubmit={handleSignIn}>
         <br></br>
-        <label for="">
-          {" "}
-          Username <br />{" "}
+        <label>
+          
+          Username <br />
           <input
             className="formulario container-fluid"
             type="text"
@@ -55,11 +56,10 @@ export default function LogIn() {
             required
             onChange={handleChange}
           />
-        </label>{" "}
+        </label>
         <br />
-        <label for="">
-          {" "}
-          Password <br />{" "}
+        <label>
+          Password <br />
           <input
             className="formulario container-fluid"
             type="password"
@@ -68,7 +68,7 @@ export default function LogIn() {
             required
             onChange={handleChange}
           />
-        </label>{" "}
+        </label>
         <br />
         <div>
           {validCredentials

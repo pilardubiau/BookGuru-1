@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 import "../styles/Register.css";
-import { Link, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
+import IsButtonDisable from "../hooks/IsButtonDisable";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -43,30 +43,27 @@ const Register = () => {
     }
   };
 
-  const IsButtonDisable = (input) => {
-    return !!Object.values(input).filter((item) => item.length < 2).length;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputRegistro);
     axios.post("/api/users/register", inputRegistro).then((res) => {
       dispatch(setUser(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.token));
-      history.push("/");
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      if (res.data.user) history.push("/");
     });
+    // .catch((err) => console.log(err))
   };
 
   return (
     <div className="register">
-      <div class="container-fluid" />
+      <div className="container-fluid" />
       <br />
       <h3>Welcome BookGuru !</h3> <br />
-      <p>Please fill in this form to create an account</p>
-      <form class="formulario container-fluid" onSubmit={handleSubmit}>
-        <label for="">
-          {" "}
-          Name <br />{" "}
+      <p style={{textAlign: "center"}}>Please fill in this form to create an account</p>
+      <form className="formulario container-fluid" onSubmit={handleSubmit}>
+        <label>
+          Name <br />
           <input
             className="formulario container-fluid"
             type="text"
@@ -75,11 +72,10 @@ const Register = () => {
             required
             onChange={handleChange}
           />
-        </label>{" "}
+        </label>
         <br />
-        <label for="">
-          {" "}
-          Last Name <br />{" "}
+        <label>
+          Last Name <br />
           <input
             className="formulario container-fluid"
             type="text"
@@ -88,11 +84,10 @@ const Register = () => {
             name="lastname"
             onChange={handleChange}
           />
-        </label>{" "}
+        </label>
         <br />
-        <label for="">
-          {" "}
-          Address <br />{" "}
+        <label>
+          Address <br />
           <input
             className="formulario container-fluid"
             type="text"
@@ -101,11 +96,10 @@ const Register = () => {
             name="address"
             onChange={handleChange}
           />
-        </label>{" "}
+        </label>
         <br></br>
-        <label for="">
-          {" "}
-          Username <br />{" "}
+        <label>
+          Username <br />
           <input
             className="formulario container-fluid"
             type="text"
@@ -114,11 +108,10 @@ const Register = () => {
             name="username"
             onChange={handleChange}
           />
-        </label>{" "}
+        </label>
         <br />
-        <label for="">
-          {" "}
-          E-mail <br />{" "}
+        <label>
+          E-mail <br />
           <input
             className="formulario container-fluid"
             type="text"
@@ -127,7 +120,7 @@ const Register = () => {
             name="email"
             onBlur={handlerBlur}
           />
-        </label>{" "}
+        </label>
         <div>
           {emailValidator
             ? null
@@ -137,9 +130,8 @@ const Register = () => {
                 </Alert>
               ))}
         </div>
-        <label for="">
-          {" "}
-          Password <br />{" "}
+        <label>
+          Password <br />
           <input
             className="formulario container-fluid"
             type="password"
@@ -148,7 +140,7 @@ const Register = () => {
             name="password"
             onBlur={handlerBlur}
           />
-        </label>{" "}
+        </label>
         <div>
           {passwordValidator
             ? null
@@ -159,10 +151,9 @@ const Register = () => {
                 </Alert>
               ))}
         </div>
-        <br />{" "}
+        <br />
         <h6>
-          {" "}
-          By creating an account you agree to our Terms & Privacy{" "}
+          By creating an account you agree to our Terms & Privacy
           <input type="checkbox" />
         </h6>
         <br />

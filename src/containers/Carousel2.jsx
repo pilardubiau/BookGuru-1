@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "../styles/Carousel.css";
 import axios from "axios";
-
-const img1 = require("../assets/lastrealeses1.jpeg");
-const img2 = require("../assets/lastrealeses2.jpeg");
-const img3 = require("../assets/CoomingSoon2.jpg");
-const img4 = require("../assets/CoomingSoon2.jpg");
 
 const Carousel2 = () => {
   const [rndBooks, setRndBooks] = React.useState([]);

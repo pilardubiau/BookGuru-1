@@ -1,15 +1,12 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 import "../styles/Category.css";
-//import { setConstantValue } from "typescript";
 
 const Category = () => {
-  const history = useHistory();
-  const books = useSelector((state) => state.books);
-  const user = useSelector((state) => state.user);
+  // const history = useHistory();
+  // const books = useSelector((state) => state.books);
+  // const user = useSelector((state) => state.user);
   const [cat, SetCat] = React.useState([]);
   const [value, SetValue] = React.useState("");
 
@@ -35,7 +32,7 @@ const Category = () => {
   //   console.log(user);
   return (
     <div className="cat">
-      <div class="dropdown-cat">
+      <div className="dropdown-cat">
         {/* <button class="dropbtn">Dropdown</button> */}
         <div className="dropdown-content-cat">
           <ol>

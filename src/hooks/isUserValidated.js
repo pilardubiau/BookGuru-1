@@ -1,5 +1,3 @@
-const isUserValidated = (user) => {
-    return !!Object.entries(user).length
-}
+const isUserValidated = (user) => !!Object.entries(user).length;
 
-export default isUserValidated
+export default isUserValidated;
