@@ -60,7 +60,9 @@ const Register = () => {
       <div className="container-fluid" />
       <br />
       <h3>Welcome BookGuru !</h3> <br />
-      <p style={{textAlign: "center"}}>Please fill in this form to create an account</p>
+      <p style={{ textAlign: "center" }}>
+        Please fill in this form to create an account
+      </p>
       <form className="formulario container-fluid" onSubmit={handleSubmit}>
         <label>
           Name <br />
@@ -154,7 +156,7 @@ const Register = () => {
         <br />
         <h6>
           By creating an account you agree to our Terms & Privacy
-          <input type="checkbox" />
+          <input required type="checkbox" />
         </h6>
         <br />
         <button

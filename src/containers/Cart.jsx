@@ -7,7 +7,8 @@ import CartTotalPrice from "../hooks/CartTotalPrice";
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const token = JSON.parse(localStorage.getItem("token"));
   console.log("esto es el user: ", user);
 
@@ -46,22 +47,27 @@ const Cart = () => {
     <div className="cart">
       {/* onClick={() => history.push("/previous")} */}
       <Link to="/previous">
-        <button className="checkout sub-link">Previous Orders</button>
+        <button
+          className="checkout sub-link"
+          style={{ textDecoration: "none" }}
+        >
+          Previous Orders
+        </button>
       </Link>
       {/* Cart table */}
       <table className="table">
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Delete</th>
-        </tr>
-        {cart &&
-          cart.map((data) => {
-            return (
-              <div>
-                <tr>
+        <tbody>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+          {cart &&
+            cart.map((data, index) => {
+              return (
+                <tr key={index}>
                   <td>{data.book.title}</td>
                   <td>{data.book.author}</td>
                   <td>
@@ -70,16 +76,19 @@ const Cart = () => {
                     {data.quantity}
                   </td>
                   <td>{data.book.price}</td>
-                  <td>
-                    {/* onClick={deleteBook(data.id)} */}
-                    <button>Delete</button>
-                  </td>
+                  <td>{data.book.price * data.quantity}</td>
+                  {/* <td> */}
+                  {/* onClick={deleteBook(data.id)} */}
+                  {/* <button>Delete</button> */}
                 </tr>
-              </div>
-            );
-          })}
-        <td>Total: {CartTotalPrice(cart)}</td>
-        <td></td>
+              );
+            })}
+        </tbody>
+        <tfoot>
+          <tr>
+          <td>Total: {CartTotalPrice(cart)}</td>
+          </tr>
+        </tfoot>
       </table>
 
       <button className="checkout" onClick={() => Bought()}>

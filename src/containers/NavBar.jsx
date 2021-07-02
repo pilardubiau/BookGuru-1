@@ -16,6 +16,7 @@ const NavBar = () => {
   const { user } = useSelector((store) => store);
 
   const [input, setInput] = React.useState("");
+  const [hovered, setHovered] = React.useState(false);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -34,8 +35,16 @@ const NavBar = () => {
     localStorage.clear();
     dispatch(setUser({}));
   };
+
+  const handleMouseOver = () => {
+    setHovered(!hovered);
+  };
+  const handleMouseLeave = () => {
+    setHovered(!hovered);
+  };
+
   return (
-    <div>
+    <div className="navBarAndSubRowDiv">
       {/* Search Bar */}
       <div className="row">
         <div className="navbarMainDiv">
@@ -44,7 +53,7 @@ const NavBar = () => {
               <img className="logo" src={imagen.default} alt="BookGuru logo" />
             </Link>
           </div>
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <form style={{ width: "auto" }} onSubmit={handleSubmit}>
               {/*  <Link to={'/books'}> */}
               <input
@@ -58,7 +67,12 @@ const NavBar = () => {
             </form>
           </div>
           <div className="userCartRegisterDiv">
-            {isUserValidated(user) ? <h4>{`${user.username}`}</h4> : null}
+            {isUserValidated(user) ? (
+              <h4
+                className="sub-link"
+                style={{ textDecoration: "none" }}
+              >{`${user.username}`}</h4>
+            ) : null}
             <div className="col-sm-4">
               {/* Shopping cart */}
               <Link to="/cart">
@@ -72,10 +86,11 @@ const NavBar = () => {
             </div>
             <div className="col-sm-1">
               {/* User icon/menu */}
-              <div className="user"></div>
-              <div className="dropdown">
+              <div className="userAndLogInDiv">
+                <div className="user"></div>
+                {/* <div className="dropdown"> */}
                 {/* <button class="dropbtn">Dropdown</button> */}
-                <div className="dropdown-content">
+                <div>
                   {!isUserValidated(user) ? (
                     <div>
                       <Link to="/register" className="sub-link">
@@ -96,6 +111,7 @@ const NavBar = () => {
                     </Link>
                   )}
                 </div>
+                {/* </div> */}
               </div>
             </div>
           </div>
@@ -107,14 +123,17 @@ const NavBar = () => {
           <Link to="/books" className="sub-link">
             Books
           </Link>
-          <div className="dropdown">
-            {/* <button class="dropbtn">Dropdown</button> */}
+          {/* <div className="dropdown">
             <div className="dropdown-content">
-              <Link to="/categories">Categories</Link>
+              <Link to="/categories" className="sub-link">
+                Categories
+              </Link>
               <br />
-              <Link to="/author">Author</Link>
+              <Link to="/author" className="sub-link">
+                Author
+              </Link>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="col-sm-2">
           <Link to="/contact" className="sub-link">

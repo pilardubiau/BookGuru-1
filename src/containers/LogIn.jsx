@@ -34,10 +34,6 @@ export default function LogIn() {
       .catch((err) => setValidCredentials(false));
   };
 
-  // const IsButtonDisable = (input) => {
-  //   return !!Object.values(input).filter((item) => item.length < 2).length;
-  // };
-
   return (
     <div className="login">
       <div className="container-fluid" />
