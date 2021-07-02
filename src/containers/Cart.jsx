@@ -36,7 +36,7 @@ const Cart = () => {
         orders: cart,
         userId: user.id,
       },
-      headers: { authorization: `Bearer ${token}` },
+      headers: { authorizatiuseron: `Bearer ${token}` },
     }).then(() => {
       alert("Thank you for shopping with us");
       setCart([]);
