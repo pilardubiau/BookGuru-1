@@ -45,7 +45,6 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputRegistro);
     axios.post("/api/users/register", inputRegistro).then((res) => {
       dispatch(setUser(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.token));
