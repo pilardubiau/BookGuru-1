@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Previous = () => {
-  const [cart, SetCart] = React.useState([]);
+  const [cart, setCart] = React.useState([]);
   const history = useHistory();
   const user = useSelector((state) => state.user);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -16,9 +16,7 @@ const Previous = () => {
       .get(`/api/users/${user.id}/checked`, {
         headers: { authorization: `Bearer ${token}` },
       })
-      .then(({ data }) => {
-        return SetCart(data);
-      });
+      .then((res) => setCart(res.data));
   });
 
   return (
@@ -34,11 +32,11 @@ const Previous = () => {
         {cart.map((data) => {
           return (
             <tr>
-              <td>data.title</td>
-              <td>data.author</td>
-              <td>data.quantity</td>
+              <td>{data.book.title}</td>
+              <td>{data.book.author}</td>
+              <td>{data.quantity}</td>
               {/* chequear como hacer la formula para multiplicar precio * cantidad */}
-              <td>data.price</td>
+              <td>{data.book.price}</td>
             </tr>
           );
         })}
