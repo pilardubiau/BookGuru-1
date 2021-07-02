@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import "../styles/Category.css";
-import { setConstantValue } from "typescript";
+//import { setConstantValue } from "typescript";
 
 const Category = () => {
   const history = useHistory();
