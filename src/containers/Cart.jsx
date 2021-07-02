@@ -46,9 +46,9 @@ const Cart = () => {
   return (
     <div className="cart">
       {/* onClick={() => history.push("/previous")} */}
-      <Link to="/previous">
+      <Link className="sub-link" to="/previous">
         <button
-          className="checkout sub-link"
+          className="checkout"
           style={{ textDecoration: "none" }}
         >
           Previous Orders
