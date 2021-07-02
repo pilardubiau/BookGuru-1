@@ -75,14 +75,16 @@ const NavBar = () => {
             ) : null}
             <div className="col-sm-4">
               {/* Shopping cart */}
-              <Link to="/cart">
-                <div className="icon-cart">
-                  <div className="cart-line-1"></div>
-                  <div className="cart-line-2"></div>
-                  <div className="cart-line-3"></div>
-                  <div className="cart-wheel"></div>
-                </div>
-              </Link>
+              {isUserValidated(user) ? (
+                <Link to="/cart">
+                  <div className="icon-cart">
+                    <div className="cart-line-1"></div>
+                    <div className="cart-line-2"></div>
+                    <div className="cart-line-3"></div>
+                    <div className="cart-wheel"></div>
+                  </div>
+                </Link>
+              ) : null}
             </div>
             <div className="col-sm-1">
               {/* User icon/menu */}

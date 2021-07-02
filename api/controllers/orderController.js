@@ -14,7 +14,6 @@ module.exports = {
       .catch((err) => res.status(400).send("Couldn't create order"));
   },
   order_checkout: function (req, res) {
-    console.log(req.body);
     req.body.orders.forEach((order, index) => {
       Book.findByPk(order.bookId).then((singleBook) =>
         singleBook.reduceStock(order.quantity)

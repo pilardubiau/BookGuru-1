@@ -7,10 +7,8 @@ import CartTotalPrice from "../hooks/CartTotalPrice";
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
-  // const user = useSelector((state) => state.user);
   const user = JSON.parse(localStorage.getItem("user"));
   const token = JSON.parse(localStorage.getItem("token"));
-  console.log("esto es el user: ", user);
 
   React.useEffect(() => {
     axios
