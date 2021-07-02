@@ -17,7 +17,7 @@ const Previous = () => {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((res) => setCart(res.data));
-  });
+  }, []);
 
   return (
     <div className="cart">

@@ -37,14 +37,17 @@ const Cart = () => {
         userId: user.id,
       },
       headers: { authorization: `Bearer ${token}` },
-    }).then(() => alert("Thank you for shopping with us"));
+    }).then(() => {
+      alert("Thank you for shopping with us");
+      setCart([]);
+    });
   };
 
   return (
     <div className="cart">
       {/* onClick={() => history.push("/previous")} */}
       <Link to="/previous">
-        <button className="checkout">Previous Orders</button>
+        <button className="checkout sub-link">Previous Orders</button>
       </Link>
       {/* Cart table */}
       <table className="table">

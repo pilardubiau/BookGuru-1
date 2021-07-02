@@ -37,3 +37,29 @@ th {
   border-color: #780000;
   color: #780000;
 }
+
+.sub-link {
+  color: #780000;
+  text-decoration: none;
+  text-decoration-line: none;
+}
+
+.sub-link:link {
+  color: #780000;
+  text-decoration: none;
+}
+
+.sub-link:visited {
+  color: #780000;
+  text-decoration: none;
+}
+
+.sub-link:hover {
+  color: #780000;
+  text-decoration: underline;
+}
+
+.sub-link:active {
+  color: #780000;
+  text-decoration: underline;
+}
