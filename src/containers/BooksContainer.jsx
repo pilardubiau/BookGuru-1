@@ -11,7 +11,6 @@ const BooksContainer = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { books, user } = useSelector(state => state);
-    const token = JSON.parse(localStorage.getItem('token'));
 
     useEffect(() => {
         if (!books.length) {
@@ -21,7 +20,7 @@ const BooksContainer = () => {
     }, []);
 
     const addOrder = (bookId) =>
-    user.id ? addOrderAxios(user, bookId, token) : history.push("/register");
+    user.id ? addOrderAxios(bookId, user.id) : history.push("/register");
     
     return(
         <Books books={books} addOrder={addOrder} />

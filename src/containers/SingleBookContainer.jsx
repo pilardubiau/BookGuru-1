@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import SingleBook from '../components/SingleBook';
@@ -6,10 +6,9 @@ import { getSingleBook, addOrderAxios } from "../methods/axiosRequests";
 
 const SingleBookContainer = ({ bookId }) => {
 
-    const [singleBook, setSingleBook] = React.useState({});
+    const [singleBook, setSingleBook] = useState({});
     
-    const { user } = useSelector(state => state);
-    const token = JSON.parse(localStorage.getItem('token')); 
+    const userId = useSelector(state => state.user.id);
     const history = useHistory();
 
     useEffect(() => {
@@ -18,7 +17,7 @@ const SingleBookContainer = ({ bookId }) => {
     },[]);
 
     const addOrder = (bookId) =>
-    user.id ? addOrderAxios(user, bookId, token) : history.push("/register");
+    userId ? addOrderAxios(bookId, userId) : history.push("/register");
 
     return(
         <SingleBook singleBook={singleBook} addOrder={addOrder} />

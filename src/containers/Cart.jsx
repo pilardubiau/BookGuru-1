@@ -3,27 +3,28 @@ import { Link } from "react-router-dom";
 import { getUserCart, checkoutOrder } from '../methods/axiosRequests';
 import CartTotalPrice from "../hooks/CartTotalPrice";
 import "../styles/Cart.css";
+import axios from 'axios'
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = JSON.parse(localStorage.getItem("token"));
 
   React.useEffect(() => {
-    getUserCart(user.id, token)
+    getUserCart()
     .then((res) => setCart(res.data));
   }, []);
 
-  // const deleteBook = (BookId) => {
-  //   axios.delete("/api/orders", { BookId });
-  // };
+  const deleteBook = (orderId) => {
+    console.log('orderID:', orderId)
+    // axios.delete("/api/orders", { orderId })
+    // .then(() => {});
+  };
 
   // const quantityChange = (quantity, orderId) => {
   //   axios.update("/api/orders/quantity", { quantity, orderId });
   // };
 
-  const Bought = () => {
-    checkoutOrder(cart, user.id, token)
+  const checkout = () => {
+    checkoutOrder(cart)
     .then(() => {
       alert("Thank you for shopping with us");
       setCart([]);
@@ -65,9 +66,10 @@ const Cart = () => {
                   </td>
                   <td>{data.book.price}</td>
                   <td>{data.book.price * data.quantity}</td>
-                  {/* <td> */}
+                  <td>
                   {/* onClick={deleteBook(data.id)} */}
-                  {/* <button>Delete</button> */}
+                  <button onClick={deleteBook(data.id)}>Delete</button>
+                  </td>
                 </tr>
               );
             })}
@@ -79,7 +81,7 @@ const Cart = () => {
         </tfoot>
       </table>
 
-      <button className="checkout" onClick={() => Bought()}>
+      <button className="checkout" onClick={() => checkout()}>
         Checkout
       </button>
     </div>
