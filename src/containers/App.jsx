@@ -18,20 +18,15 @@ import Cart from "./Cart";
 import SingleBookContainer from "./SingleBookContainer";
 import Previous from "./Previous";
 import Category from "./Category";
-<<<<<<< HEAD
 import UsersContainer from "./UsersContainer";
 
-=======
 import SingleUserContainer from "./SingleUserContainer";
->>>>>>> 77f724e1d5dbba2894220a7e3ae0462286f50654
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setUser(userPersisterHook()));
   }, [dispatch]);
-
-  const { user } = useSelector((store) => store);
 
   return (
     <div>
