@@ -103,5 +103,3 @@ export function deleteUserAxios() {
     headers: { authorization: `Bearer ${token}` },
   });
 }
-=======
->>>>>>> 77f724e1d5dbba2894220a7e3ae0462286f50654
