@@ -2,7 +2,7 @@
 //Classic Literature & Fiction
 //Comics & Graphic Novels
 //Science
-//Childish
+//Kids
 //Business & Money
 //Biography
 //Cooking
@@ -131,7 +131,7 @@ const seedBooks = [
       author: "Núria Cussó Grau",
       img: "https://images-na.ssl-images-amazon.com/images/I/51L8b1qtrTL._SX403_BO1,204,203,200_.jpg",
       rating: 4.5,
-      category: "Childish",
+      category: "Kids",
       price: 20,
       stock: 10,
       publisher: "Editorial el Pirata",
@@ -144,7 +144,7 @@ const seedBooks = [
       author: "Maddie Frost",
       img: "https://images-na.ssl-images-amazon.com/images/I/71p25ldU+FL.jpg",
       rating: 3,
-      category: "Childish",
+      category: "Kids",
       price: 20,
       stock: 5,
       publisher: "Little, Brown Books for Young Readers",
@@ -157,7 +157,7 @@ const seedBooks = [
       author: "Monica Arnaldo",
       img: "https://images-na.ssl-images-amazon.com/images/I/81mMUmH0YgS.jpg",
       rating: 5,
-      category: "Childish",
+      category: "Kids",
       price: 13.99,
       stock: 15,
       publisher: "Katherine Tegen Books",
@@ -170,7 +170,7 @@ const seedBooks = [
       author: "Alice Schertle",
       img: "https://images-na.ssl-images-amazon.com/images/I/A1ee9JJRUCS.jpg",
       rating: 4.8,
-      category: "Childish",
+      category: "Kids",
       price: 10.77,
       stock: 35,
       publisher: "HMH Books for Young Readers",
@@ -196,7 +196,7 @@ const seedBooks = [
       author: "Mar Benegas",
       img: "https://images-na.ssl-images-amazon.com/images/I/81YOoodAneL.jpg",
       rating: 4.6,
-      category: "Childish",
+      category: "Kids",
       price: 18,
       stock: 18,
       publisher: "Susaeta",
@@ -209,7 +209,7 @@ const seedBooks = [
       author: "Scholastic",
       img: "https://images-na.ssl-images-amazon.com/images/I/81uHJU1iy9L.jpg",
       rating: 4.8,
-      category: "Childish",
+      category: "Kids",
       price: 20,
       stock: 25,
       publisher: "Scholastic Inc.",
@@ -730,7 +730,7 @@ const seedBooks = [
       author: "Roald Dahl",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/1413/9780141365459.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 12,
       stock: 20,
       publisher: "Penguin Random House Children",
@@ -742,7 +742,7 @@ const seedBooks = [
       author: "Roald Dahl",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/1413/9780141365374.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 12,
       stock: 20,
       publisher: "Penguin Random House Children",
@@ -754,7 +754,7 @@ const seedBooks = [
       author: "Roald Dahl",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/1413/9780141369365.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 12,
       stock: 20,
       publisher: "Penguin Random House Children",
@@ -766,7 +766,7 @@ const seedBooks = [
       author: "Valerie Thomas",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/1927/9780192749055.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 12,
       stock: 20,
       publisher: "Oxford University Press",
@@ -778,7 +778,7 @@ const seedBooks = [
       author: "Oliver Jeffers",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/0083/9780008382209.jpg",
       rating: 4.2,
-      category: "Childish",
+      category: "Kids",
       price: 10,
       stock: 18,
       publisher: "HarperCollins Publishers",
@@ -790,7 +790,7 @@ const seedBooks = [
       author: "Oliver Jeffers",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/0071/9780007150342.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 9,
       stock: 15,
       publisher: "HarperCollins Publishers",
@@ -800,9 +800,9 @@ const seedBooks = [
     {
       title: "Faceless Killers: Kurt Wallander",
       author: "Henning Mankell",
-      img: "https//cdn.waterstones.com/bookjackets/large/9780/0995/9780099571827.jpg",
+      img: "https://cdn.waterstones.com/bookjackets/large/9780/0995/9780099571827.jpg",
       rating: 4.3,
-      category: "Crime, Thriller,Mystery",
+      category: "Crime, Thriller, Mystery",
       price: 12,
       stock: 20,
       publisher: "Vintage Publishing",
@@ -837,9 +837,9 @@ const seedBooks = [
     {
       title: "Alice' s Adventures in Wonderland and Through the Looking Glass",
       author: "Lewis Carroll",
-      img: " https://cdn.waterstones.com/bookjackets/large/9780/1411/9780141199689.jpg ",
+      img: "https://cdn.waterstones.com/bookjackets/large/9780/1411/9780141199689.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 12,
       stock: 20,
       publisher: "Penguin Books Ltd",
@@ -852,7 +852,7 @@ const seedBooks = [
       author: "Michael Ende",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/1400/9780140074314.jpg",
       rating: 4.7,
-      category: "Childish",
+      category: "Kids",
       price: 10,
       stock: 20,
       publisher: "Penguin Books Ltd",
@@ -864,7 +864,7 @@ const seedBooks = [
       author: "Michael Ende",
       img: "https://cdn.waterstones.com/bookjackets/large/9780/1403/9780140317534.jpg",
       rating: 4.3,
-      category: "Childish",
+      category: "Kids",
       price: 12,
       stock: 20,
       publisher: "Penguin Books Ltd",
@@ -961,5 +961,15 @@ const seedBooks = [
       description: `The future of the Seven Kingdoms hangs in the balance. In King' s Landing the Queen Regent, Cersei Lannister, awaits trial, abandoned by all those she trusted; while in the eastern city of Yunkai her brother Tyrion has been sold as a slave. From the Wall, having left his wife and the Red Priestess Melisandre under the protection of Jon Snow, Stannis Baratheon marches south to confront the Boltons at Winterfell.But beyond the Wall the wildling armies are massing for an assault...On all sides bitter conflicts are reigniting, played out by a grand cast of outlaws and priests, soldiers and skinchangers, nobles and slaves.The tides of destiny will inevitably lead to the greatest dance of all.`,
     },
   ];
+
+  const seedAdmin = {
+    name: "Martin",
+    lastname: "Elmascapo",
+    address: "calle falsa 123",
+    username: "martinelmascapo",
+    email: "martin@martin.com",
+    password: "Hola123123",
+    isAdmin: true
+  }
   
-  module.exports = seedBooks;
+  module.exports = {seedBooks, seedAdmin};

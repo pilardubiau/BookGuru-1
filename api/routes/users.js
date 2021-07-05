@@ -15,6 +15,8 @@ router.get("/:userId/cart", checkJWT, userController.user_getCart)
 //Se checkean las ordenes en false a true
 router.get("/:userId/checked", checkJWT, userController.user_checkoutOrder) 
 
+router.get("/", checkJWT, userController.user_getAllUsers) 
+
 module.exports = router;
 
 
