@@ -11,11 +11,13 @@ const SingleUserContainer = () => {
   const history = useHistory();
 
   useEffect(() => {
-    getSingleUser(userId).then(({ data }) => setSingleUser(data));
+    getSingleUser(userId).then((data) => {
+      console.log("esto es data: ", data);
+      setSingleUser(data);
+    });
   }, []);
 
-  // const addOrder = (bookId) =>
-  // userId ? addOrderAxios(bookId, userId) : history.push("/register");
+  console.log("SingleUserContainer: ", singleUser);
 
   return <SingleUser singleUser={singleUser} />;
 };
