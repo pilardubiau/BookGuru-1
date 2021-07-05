@@ -1,18 +1,13 @@
 import React from "react";
-import axios from "axios";
+import { getUserPrevious } from '../methods/axiosRequests';
 import "../styles/Cart.css";
 
 const Previous = () => {
   const [cart, setCart] = React.useState([]);
-  const user = JSON.parse(localStorage.getItem("user"))
-  const token = JSON.parse(localStorage.getItem("token"));
 
   React.useEffect(() => {
-    axios
-      .get(`/api/users/${user.id}/checked`, {
-        headers: { authorization: `Bearer ${token}` },
-      })
-      .then((res) => setCart(res.data));
+    getUserPrevious()
+    .then((res) => setCart(res.data));
   }, []);
 
   return (
@@ -25,9 +20,9 @@ const Previous = () => {
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-        {cart.map((data) => {
+        {cart.map((data, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td>{data.book.title}</td>
               <td>{data.book.author}</td>
               <td>{data.quantity}</td>

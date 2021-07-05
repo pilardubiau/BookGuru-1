@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../styles/NavBar.css";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setBooks } from "../store/books";
 import { setUser } from "../store/user";
-import { useHistory } from "react-router-dom";
 import isUserValidated from "../hooks/isUserValidated";
 import { getBookByTitle } from "../methods/axiosRequests";
 import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
+import "../styles/NavBar.css";
 
 const imagen = require("../assets/Logo.png");
 
@@ -22,19 +21,16 @@ const NavBar = () => {
 
   const toggle = () => setOpen(!dropdownOpen);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setInput(value);
-  };
+  const handleChange = (e) => setInput(e.target.value);
 
-  const handleSubmit = (e) => {
+  const searchBooks = (e) => {
     e.preventDefault();
     getBookByTitle(input)
     .then((res) => dispatch(setBooks(res.data)))
     .then(() => history.push("/books"));
   };
 
-  const clickHandler = () => {
+  const logout = () => {
     localStorage.clear();
     dispatch(setUser({}));
   };
@@ -57,7 +53,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="col-sm-6">
-            <form style={{ width: "auto" }} onSubmit={handleSubmit}>
+            <form style={{ width: "auto" }} onSubmit={searchBooks}>
               {/*  <Link to={'/books'}> */}
               <input
                 style={{ width: "40vw" }}
@@ -110,7 +106,7 @@ const NavBar = () => {
                     <Link
                       to="/"
                       className="sub-link"
-                      onClick={() => clickHandler()}
+                      onClick={() => logout()}
                     >
                       Logout
                     </Link>
