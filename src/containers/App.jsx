@@ -17,6 +17,8 @@ import Cart from "./Cart";
 import SingleBookContainer from "./SingleBookContainer";
 import Previous from "./Previous";
 import Category from "./Category";
+import UsersContainer from "./UsersContainer";
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,6 +47,7 @@ const App = () => {
             <SingleBookContainer bookId={match.params.id} />
           )}
         />
+        <Route exact path="/users" component={UsersContainer} />
         <Route exact path="/previous" component={Previous} />
         <Route exact path="/category" component={Category} />
       </Switch>
