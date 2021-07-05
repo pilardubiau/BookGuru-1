@@ -1,9 +1,8 @@
 import React from "react";
-import "../styles/Cart.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { getUserCart, checkoutOrder } from '../methods/axiosRequests';
 import CartTotalPrice from "../hooks/CartTotalPrice";
+import "../styles/Cart.css";
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
@@ -11,11 +10,8 @@ const Cart = () => {
   const token = JSON.parse(localStorage.getItem("token"));
 
   React.useEffect(() => {
-    axios
-      .get(`/api/users/${user.id}/cart`, {
-        headers: { authorization: `Bearer ${token}` },
-      })
-      .then((res) => setCart(res.data));
+    getUserCart(user.id, token)
+    .then((res) => setCart(res.data));
   }, []);
 
   // const deleteBook = (BookId) => {
@@ -27,19 +23,13 @@ const Cart = () => {
   // };
 
   const Bought = () => {
-    axios({
-      method: "put",
-      url: "/api/orders/checkout",
-      data: {
-        orders: cart,
-        userId: user.id,
-      },
-      headers: { authorizatiuseron: `Bearer ${token}` },
-    }).then(() => {
+    checkoutOrder(cart, user.id, token)
+    .then(() => {
       alert("Thank you for shopping with us");
       setCart([]);
     });
   };
+
 
   return (
     <div className="cart">

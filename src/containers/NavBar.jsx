@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/NavBar.css";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setBooks } from "../store/books";
 import { setUser } from "../store/user";
 import { useHistory } from "react-router-dom";
 import isUserValidated from "../hooks/isUserValidated";
+import { getBookByTitle } from "../methods/axiosRequests";
+import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 
 const imagen = require("../assets/Logo.png");
 
@@ -17,6 +18,9 @@ const NavBar = () => {
 
   const [input, setInput] = React.useState("");
   const [hovered, setHovered] = React.useState(false);
+  const [dropdownOpen, setOpen] = React.useState(false);
+
+  const toggle = () => setOpen(!dropdownOpen);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -25,10 +29,9 @@ const NavBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .get(`/api/books/title/${input}`)
-      .then((res) => dispatch(setBooks(res.data)))
-      .then(() => history.push("/books"));
+    getBookByTitle(input)
+    .then((res) => dispatch(setBooks(res.data)))
+    .then(() => history.push("/books"));
   };
 
   const clickHandler = () => {
@@ -121,6 +124,17 @@ const NavBar = () => {
         <hr />
       </div>
       <div className="sub-row">
+        <div className="col-sm-2">
+            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+              <DropdownToggle caret color="" className="drop-color">
+                Filter
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem className="drop-color">Author</DropdownItem>
+                <DropdownItem className="drop-color">Categories</DropdownItem>
+              </DropdownMenu>
+            </ButtonDropdown>
+        </div>
         <div className="col-sm-2">
           <Link to="/books" className="sub-link">
             Books

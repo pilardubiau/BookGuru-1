@@ -12,6 +12,7 @@ const Carousel2 = () => {
       .then((res) => res.data)
       .then((randBooks) => setRndBooks(randBooks));
   }, []);
+  
   return (
     <div className="carousel2">
       <h6>Best Sellers</h6>
