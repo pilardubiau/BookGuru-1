@@ -65,4 +65,9 @@ module.exports = {
       .then((updatedUser) => res.status(202).send(updatedUser[1]))
       .catch((err) => res.status(400).send("User couldn't be modified"));
   },
+  user_getUserByPk: function(req, res) {
+    User.findByPk(req.params.id)
+    .then((user) => res.status(200).send(user))
+    .catch((err) => res.status(400).send("User not found!"))
+  }
 };
