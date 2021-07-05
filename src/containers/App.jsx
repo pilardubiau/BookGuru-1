@@ -12,7 +12,7 @@ import FooterContainer from "./FooterContainer";
 import Carousel1 from "./Carousel";
 import Carousel2 from "./Carousel2";
 import LogIn from "./LogIn";
-import BookContainer from "./BookContainer";
+import BooksContainer from "./BooksContainer";
 import Cart from "./Cart";
 import SingleBookContainer from "./SingleBookContainer";
 import Previous from "./Previous";
@@ -35,7 +35,7 @@ const App = () => {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
 
-        <Route exact path="/books" render={() => <BookContainer />} />
+        <Route exact path="/books" render={() => <BooksContainer />} />
         <Route exact path="/cart" component={Cart} />
 
         <Route

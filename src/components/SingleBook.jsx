@@ -1,31 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import {useHistory} from 'react-router-dom';
-import axios from 'axios'
-import '../styles/SingleBook.css'
+import '../styles/SingleBook.css';
 
-const SingleBook = ({singleBook}) => {
-  const history = useHistory()
-  // const books = useSelector((state) => state.books)
-  const user = useSelector((state) => state.user)
-//userid viene del store y el bookid viene como parametro del map de abajo
-      const addOrder = (bookId) => {
-      const token = JSON.parse(localStorage.getItem('token'))
-      if(!user.id) {
-          history.push("/register")
-      }
-      else {
-          axios({
-              method: 'post',
-              url: '/api/orders',
-              data: {
-                userId: user.id,
-                bookId: bookId
-              },
-              headers: { authorization: `Bearer ${token}` },
-          }).then(()=> alert("Producto agregado al carrito"))
-      }
-  }
+const SingleBook = ({ singleBook, addOrder }) => {
 
   return (
     <div className="singlebook">

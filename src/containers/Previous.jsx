@@ -1,7 +1,6 @@
 import React from "react";
-import "../styles/Cart.css";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import "../styles/Cart.css";
 
 const Previous = () => {
   const [cart, setCart] = React.useState([]);

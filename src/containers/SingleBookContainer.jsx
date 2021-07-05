@@ -1,20 +1,27 @@
 import React, { useEffect } from 'react';
-import SingleBook from '../components/SingleBook'
-import axios from 'axios'
+import { useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import SingleBook from '../components/SingleBook';
+import { getSingleBook, addOrderAxios } from "../methods/axiosRequests";
 
+const SingleBookContainer = ({ bookId }) => {
 
-const SingleBookContainer = ({bookId}) => {
-    const [singleBook, setSingleBook] = React.useState({})
-
-    useEffect(()=>{
-        axios.get(`/api/books/id/${bookId}`)
-        .then(({data}) => setSingleBook(data));
-    },[])
+    const [singleBook, setSingleBook] = React.useState({});
     
+    const { user } = useSelector(state => state);
+    const token = JSON.parse(localStorage.getItem('token')); 
+    const history = useHistory();
+
+    useEffect(() => {
+        getSingleBook(bookId)
+        .then(({ data }) => setSingleBook(data));
+    },[]);
+
+    const addOrder = (bookId) =>
+    user.id ? addOrderAxios(user, bookId, token) : history.push("/register");
+
     return(
-        <div>
-            <SingleBook singleBook={singleBook}/>
-        </div>
+        <SingleBook singleBook={singleBook} addOrder={addOrder} />
     )
 };
 
