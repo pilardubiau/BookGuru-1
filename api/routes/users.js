@@ -12,7 +12,7 @@ router.post("/login", userController.user_login)
 //Se devuelven todas la ordenes que con bought: false
 router.get("/:userId/cart", checkJWT, userController.user_getCart)
 
-//Se devuelven todas la ordenes que con bought: false
+//Devuelve un usuario por pk
 router.get("/user/:id", checkJWT, userController.user_getUserByPk)
 
 //Se checkean las ordenes en false a true
