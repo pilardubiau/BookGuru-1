@@ -68,3 +68,7 @@ export function checkoutOrder(cart) {
         headers: { authorization: `Bearer ${token}` },
     })
 }
+
+export function categories(category) {
+    return axios.get(`/api/books/category/${category}`)
+}

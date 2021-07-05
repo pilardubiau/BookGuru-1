@@ -800,7 +800,7 @@ const seedBooks = [
     {
       title: "Faceless Killers: Kurt Wallander",
       author: "Henning Mankell",
-      img: "https//cdn.waterstones.com/bookjackets/large/9780/0995/9780099571827.jpg",
+      img: "https://cdn.waterstones.com/bookjackets/large/9780/0995/9780099571827.jpg",
       rating: 4.3,
       category: "Crime, Thriller,Mystery",
       price: 12,

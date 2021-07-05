@@ -46,7 +46,8 @@ const App = () => {
           )}
         />
         <Route exact path="/previous" component={Previous} />
-        <Route exact path="/category" component={Category} />
+        <Route path="/category/:category" render={({match})=> <Category typeCategory={match.params.category}/> }/>
+    
       </Switch>
       <br />
       <FooterContainer />

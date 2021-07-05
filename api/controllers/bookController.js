@@ -27,7 +27,7 @@ module.exports = {
     }).then((books) => res.send(books));
   },
   book_getByCategory: function (req, res) {
-    Book.findAll({ where: { category: req.params.category } }).then((books) =>
+    Book.findAll({ where: { category: { [Op.iLike]: `%${req.params.category}%` } } }).then((books) =>
       res.send(books)
     );
   },

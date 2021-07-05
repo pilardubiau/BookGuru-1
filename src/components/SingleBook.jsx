@@ -2,7 +2,6 @@ import React from "react";
 import '../styles/SingleBook.css';
 
 const SingleBook = ({ singleBook, addOrder }) => {
-
   return (
     <div className="singlebook">
         <h3>{singleBook.title}</h3>

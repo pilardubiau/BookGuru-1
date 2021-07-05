@@ -1,53 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect } from "react";
+import {useDispatch} from "react-redux";
+import CategoriesComp from '../components/CategoriesComp'
+import {setTypeCategory} from "../store/stateCategory"
 import "../styles/Category.css";
 
-const Category = () => {
-  // const history = useHistory();
-  // const books = useSelector((state) => state.books);
-  // const user = useSelector((state) => state.user);
-  const [cat, SetCat] = React.useState([]);
-  const [value, SetValue] = React.useState("");
+const Categories = ({typeCategory}) => {
+  const dispatch = useDispatch()
 
-  React.useEffect(() => {
-    axios
-      .get(`/api/books/category/${value}`)
-      .then((data) => {
-        SetCat(data);
-      })
-      .then(() => console.log(cat));
-  }, [value]);
+  useEffect(()=>{
+    dispatch(setTypeCategory(typeCategory))
+    console.log(typeCategory)
+  },[typeCategory])
 
-  //userid viene del store y el bookid viene como parametro del map de abajo
-  /*     const addOrder = (bookId) => {
-        const token = localStorage.getItem('token')
-        if(!token) {
-            history.push("/books")
-        }
-        else {
-            axios.post('/api/orders', {header:'token'}, {userId:user.id, bookId})
-        }
-    } */
-  //   console.log(user);
   return (
-    <div className="cat">
-      <div className="dropdown-cat">
-        {/* <button class="dropbtn">Dropdown</button> */}
-        <div className="dropdown-content-cat">
-          <ol>
-            <Link onClick={() => SetValue("Fiction")}>Fiction</Link>
-          </ol>
-          <ol>
-            <Link onClick={() => SetValue("Fantasy")}>Fantasy</Link>
-          </ol>
-          <ol>
-            <Link onClick={() => SetValue("Childish")}>Childish</Link>
-          </ol>
-        </div>
-      </div>
-    </div>
+    <div>
+      <CategoriesComp/>
+   </div>
   );
 };
 
-export default Category;
+export default Categories;
