@@ -31,7 +31,10 @@ Book.init(
     },
     stock: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      validate: {
+        min: 0
+      },
+      allowNull: true,
     },
     publisher: {
       type: DataTypes.STRING,

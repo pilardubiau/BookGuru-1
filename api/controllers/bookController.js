@@ -10,11 +10,13 @@ module.exports = {
       });
   },
   book_getRandomBooks: function (req, res) {
-    Book.findAll({ order: literal('random()'), limit: 54 }).then((books) => {
-        res.send(books)})
+    Book.findAll({ order: literal("random()"), limit: 54 }).then((books) => {
+      res.send(books);
+    });
   },
   book_getById: function (req, res) {
-    Book.findByPk(req.params.id).then((book) => res.status(200).send(book));
+    Book.findByPk(req.params.id).then((book) => res.status(200).send(book))
+    .catch((err) => res.status(400).send("Book not found!"))
   },
   book_getByTitle: function (req, res) {
     Book.findAll({
@@ -31,10 +33,17 @@ module.exports = {
       res.send(books)
     );
   },
+  book_delete: function (req, res) {
+    Book.destroy({ where: { id: req.params.id } }).then(() =>
+      res.status(202).send("Book deleted")
+    )
+    .catch((err) => res.send("Book not found!"))
+  },
+  book_update: function (req, res) {
+    Book.update(req.body, {
+      where: { id: req.params.id },
+      returning: true,
+    }).then((updatedBook) => res.status(202).send(updatedBook[1]))
+    .catch((err) => res.status(400).send(err))
+  },
 };
-
-
-
-// Book.findAll({ where: { id: { [Op.between]: [1, 10] } } }).then((books) =>
-//   res.send(books)
-// );

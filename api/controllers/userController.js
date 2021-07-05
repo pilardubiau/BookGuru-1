@@ -50,5 +50,16 @@ module.exports = {
   user_getAllUsers: function(req, res) {
     User.findAll()
     .then((users) => res.status(200).send(users))
+  },
+  user_delete: function(req, res) {
+    User.destroy({ where: { id: req.body.userId } }).then(() =>
+      res.status(202).send("User deleted"))
+  },
+  user_changeAdminProperty: function(req, res) {
+    User.update(req.body, {
+      where: { id: req.params.id },
+      returning: true,
+    }).then((updatedUser) => res.status(202).send(updatedUser[1]))
+    .catch((err) => res.status(400).send("User couldn't be modified"))
   }
 };
