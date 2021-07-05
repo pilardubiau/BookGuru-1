@@ -1,4 +1,5 @@
 const { User, Order, Book } = require("../db/models");
+const { col } = require("sequelize")
 const jwt = require("jsonwebtoken");
 
 module.exports = {
@@ -37,6 +38,7 @@ module.exports = {
     Order.findAll({
       where: { userId: req.params.userId, bought: false },
       include: Book,
+      order: col("id")
     }).then((cartOrders) => res.status(200).send(cartOrders));
   },
   user_checkoutOrder: function (req, res) {
@@ -45,4 +47,8 @@ module.exports = {
       include: Book,
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
+  user_getAllUsers: function(req, res) {
+    User.findAll()
+    .then((users) => res.status(200).send(users))
+  }
 };

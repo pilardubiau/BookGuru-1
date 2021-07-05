@@ -6,8 +6,8 @@ const db = require("./db/index");
 const PORT = process.env.PORT || 3001;
 const cors = require('cors')
 require('./db/models/index')
-const { Book } = require('./db/models');
-const seedBooks = require('./db/seed');
+const { Book, User } = require('./db/models');
+const { seedBooks, seedAdmin } = require('./db/seed');
 
 app.use(cors());
 
@@ -20,6 +20,8 @@ db.sync({ force: true }).then(() => {
 
   // console.log(seedBooks.length)
 
+  User.create(seedAdmin)
+  .then(() => console.log("Admin user created"))
   Book.bulkCreate(seedBooks)
   .then(() => console.log("Database running, seed books created"));
 
