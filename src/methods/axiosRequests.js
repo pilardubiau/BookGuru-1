@@ -4,8 +4,22 @@ export function getSingleBook(bookId) {
   return axios.get(`/api/books/id/${bookId}`);
 }
 
+// export function getUserCart() {
+//     const token = JSON.parse(localStorage.getItem("token"));
+//     const user = JSON.parse(localStorage.getItem("user"));
+
+//     if (user) {
+//       return axios.get(`/api/users/${user.id}/cart`, {
+//         headers: { authorization: `Bearer ${token}` },
+//       });
+//     } else return new Promise(() => []);
+//   }
+
 export function getSingleUser(UserId) {
-  return axios.get(`/api/users/user/${UserId}`);
+  const token = JSON.parse(localStorage.getItem("token"));
+  return axios.get(`/api/users/user/${UserId}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
 }
 
 export function getBookByTitle(input) {
@@ -88,7 +102,7 @@ export function getAllUsers() {
       method: "get",
       url: "/api/users",
       headers: { authorization: `Bearer ${token}` },
-      data: {userId: user.id}
+      data: { userId: user.id },
     });
   } else return new Promise(() => []);
 }

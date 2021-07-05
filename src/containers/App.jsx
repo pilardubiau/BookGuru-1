@@ -53,8 +53,6 @@ const App = () => {
         <Route exact path="/previous" component={Previous} />
         <Route exact path="/category" component={Category} />
         <Route exact path="/singleUser" component={SingleUserContainer} />
-        {/* PILI DESCOMENTAME!!! */}
-        {/* <Route exact path="/users" component={UsersContainer} /> */}
       </Switch>
       <br />
       <FooterContainer />

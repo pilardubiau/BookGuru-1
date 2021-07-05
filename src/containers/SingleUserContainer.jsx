@@ -11,7 +11,7 @@ const SingleUserContainer = () => {
   const history = useHistory();
 
   useEffect(() => {
-    getSingleUser(userId).then((data) => {
+    getSingleUser(userId).then(({ data }) => {
       console.log("esto es data: ", data);
       setSingleUser(data);
     });
