@@ -36,6 +36,7 @@ th {
   background-color: white;
   border-color: #780000;
   color: #780000;
+  border-radius: 4px;
 }
 
 .sub-link {
@@ -64,4 +65,12 @@ th {
   text-decoration: underline;
 }
 
-
+.button-cart {
+  text-align: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 4px;
+  background-color: white;
+  color: #780000;
+  border-color: #780000;
+}
