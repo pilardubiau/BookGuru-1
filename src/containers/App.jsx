@@ -9,6 +9,7 @@ import userPersisterHook from "../hooks/userPersisterHook";
 import NavBar from "./NavBar";
 import Register from "./Register";
 import FooterContainer from "./FooterContainer";
+import { useSelector } from "react-redux";
 import Carousel1 from "./Carousel";
 import Carousel2 from "./Carousel2";
 import LogIn from "./LogIn";
@@ -17,12 +18,15 @@ import Cart from "./Cart";
 import SingleBookContainer from "./SingleBookContainer";
 import Previous from "./Previous";
 import Category from "./Category";
+import SingleUserContainer from "./SingleUserContainer";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setUser(userPersisterHook()))
+    dispatch(setUser(userPersisterHook()));
   }, [dispatch]);
+
+  const { user } = useSelector((store) => store);
 
   return (
     <div>
@@ -47,6 +51,9 @@ const App = () => {
         />
         <Route exact path="/previous" component={Previous} />
         <Route exact path="/category" component={Category} />
+        <Route exact path="/singleUser" component={SingleUserContainer} />
+        {/* PILI DESCOMENTAME!!! */}
+        {/* <Route exact path="/users" component={UsersContainer} /> */}
       </Switch>
       <br />
       <FooterContainer />
