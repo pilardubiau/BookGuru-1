@@ -15,10 +15,13 @@ router.get("/:userId/cart", checkJWT, userController.user_getCart)
 //Se checkean las ordenes en false a true
 router.get("/:userId/checked", checkJWT, userController.user_checkoutOrder) 
 
+//Devuelve todos los users
 router.get("/", checkJWT, userController.user_getAllUsers) 
 
+//Borramos un usuario
 router.delete("/", checkJWT, userController.user_delete)
 
+//Actualizamos la propiedad admin de un usuario
 router.put("/profile/:id", checkJWT, userController.user_changeAdminProperty)
 
 module.exports = router;
