@@ -47,4 +47,16 @@ module.exports = {
       res.status(202).send("Order deleted")
     );
   },
+  order_getAllOrders: function(req, res) {
+    Order.findAll({
+      where: { bought: true },
+      include: Book,
+    }).then((checkedOrders) => res.status(200).send(checkedOrders));
+  },
+  order_getAllPendingOrders: function(req, res) {
+    Order.findAll({
+      where: { bought: false },
+      include: Book,
+    }).then((pendingOrders) => res.status(200).send(pendingOrders));
+  }
 };

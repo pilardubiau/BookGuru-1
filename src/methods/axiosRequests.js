@@ -2,6 +2,13 @@ import axios from "axios";
 
 export function getSingleBook(bookId) {
   return axios.get(`/api/books/id/${bookId}`);
+<<<<<<< HEAD
+=======
+}
+
+export function getSingleUser(UserId) {
+  return axios.get(`/api/users/${UserId}`);
+>>>>>>> 77f724e1d5dbba2894220a7e3ae0462286f50654
 }
 
 export function getBookByTitle(input) {
@@ -74,6 +81,7 @@ export function checkoutOrder(cart) {
     headers: { authorization: `Bearer ${token}` },
   });
 }
+<<<<<<< HEAD
 
 export function getAllUsers() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -99,3 +107,5 @@ export function deleteUserAxios() {
     headers: { authorization: `Bearer ${token}` },
   });
 }
+=======
+>>>>>>> 77f724e1d5dbba2894220a7e3ae0462286f50654

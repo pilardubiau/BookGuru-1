@@ -5,7 +5,12 @@ import { setBooks } from "../store/books";
 import { setUser } from "../store/user";
 import isUserValidated from "../hooks/isUserValidated";
 import { getBookByTitle } from "../methods/axiosRequests";
-import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
+import {
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  ButtonDropdown,
+} from "reactstrap";
 import "../styles/NavBar.css";
 
 const imagen = require("../assets/Logo.png");
@@ -26,8 +31,8 @@ const NavBar = () => {
   const searchBooks = (e) => {
     e.preventDefault();
     getBookByTitle(input)
-    .then((res) => dispatch(setBooks(res.data)))
-    .then(() => history.push("/books"));
+      .then((res) => dispatch(setBooks(res.data)))
+      .then(() => history.push("/books"));
   };
 
   const logout = () => {
@@ -88,7 +93,15 @@ const NavBar = () => {
             <div className="col-sm-1">
               {/* User icon/menu */}
               <div className="userAndLogInDiv">
-                <div className="user"></div>
+                {isUserValidated(user) ? (
+                  <Link to="/singleUser">
+                    <div className="user"></div>
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <div className="user"></div>
+                  </Link>
+                )}
                 {/* <div className="dropdown"> */}
                 {/* <button class="dropbtn">Dropdown</button> */}
                 <div>
@@ -103,11 +116,7 @@ const NavBar = () => {
                       </Link>
                     </div>
                   ) : (
-                    <Link
-                      to="/"
-                      className="sub-link"
-                      onClick={() => logout()}
-                    >
+                    <Link to="/" className="sub-link" onClick={() => logout()}>
                       Logout
                     </Link>
                   )}
@@ -121,15 +130,15 @@ const NavBar = () => {
       </div>
       <div className="sub-row">
         <div className="col-sm-2">
-            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-              <DropdownToggle caret color="" className="drop-color">
-                Filter
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem className="drop-color">Author</DropdownItem>
-                <DropdownItem className="drop-color">Categories</DropdownItem>
-              </DropdownMenu>
-            </ButtonDropdown>
+          <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+            <DropdownToggle caret color="" className="drop-color">
+              Filter
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem className="drop-color">Author</DropdownItem>
+              <DropdownItem className="drop-color">Categories</DropdownItem>
+            </DropdownMenu>
+          </ButtonDropdown>
         </div>
         <div className="col-sm-2">
           <Link to="/books" className="sub-link">
