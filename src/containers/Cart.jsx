@@ -1,27 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getUserCart, checkoutOrder } from '../methods/axiosRequests';
+import { getUserCart, checkoutOrder, deleteOrderAxios, updateQuantity } from '../methods/axiosRequests';
 import CartTotalPrice from "../hooks/CartTotalPrice";
 import "../styles/Cart.css";
-import axios from 'axios'
+import axios from 'axios';
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
 
   React.useEffect(() => {
-    getUserCart()
-    .then((res) => setCart(res.data));
+    getUserCart().then((res) => setCart(res.data.sort((a, b) => a.id - b.id)));
   }, []);
 
-  const deleteBook = (orderId) => {
-    console.log('orderID:', orderId)
-    // axios.delete("/api/orders", { orderId })
-    // .then(() => {});
+  const deleteOrder = (orderId) => {
+    deleteOrderAxios(orderId)
+    .then(() => getUserCart())
+    .then((res) => setCart(res.data));
   };
 
-  // const quantityChange = (quantity, orderId) => {
-  //   axios.update("/api/orders/quantity", { quantity, orderId });
-  // };
+  const quantityHandler = (quantity, orderId) => {
+    const token = JSON.parse(localStorage.getItem('token'));
+
+    updateQuantity(quantity, orderId)
+    .then(() => getUserCart())
+    .then((res) => setCart(res.data));
+  };
 
   const checkout = () => {
     checkoutOrder(cart)
@@ -61,13 +64,15 @@ const Cart = () => {
                   <td>
                     {/* onChange={quantityChange(data.quantity, data.orderId)} */}
                     {/* <input>data.quantity</input> */}
-                    {data.quantity}
+                    <button name="decrease" onClick={()=> quantityHandler(data.quantity - 1, data.id)}>-</button>
+                      {data.quantity}
+                    <button name="increase" onClick={()=> quantityHandler(data.quantity + 1, data.id)}>+</button>
                   </td>
                   <td>{data.book.price}</td>
                   <td>{data.book.price * data.quantity}</td>
                   <td>
                   {/* onClick={deleteBook(data.id)} */}
-                  <button onClick={deleteBook(data.id)}>Delete</button>
+                  <button onClick={()=> deleteOrder(data.id)}>Delete</button>
                   </td>
                 </tr>
               );

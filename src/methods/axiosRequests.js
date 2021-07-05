@@ -17,7 +17,23 @@ export function addOrderAxios(bookId, userId) {
         url: '/api/orders',
         data: { userId, bookId },
         headers: { authorization: `Bearer ${token}` },
-    }).then(()=> alert("Producto agregado al carrito"));
+    }).then(()=> alert("Item has been successfully added to cart!"));
+}
+
+export function deleteOrderAxios(orderId) {
+    return axios.delete("/api/orders", { data: { orderId } });
+}
+
+export function updateQuantity(quantity, orderId) {
+
+    const token = JSON.parse(localStorage.getItem('token'));
+
+    return axios({
+        method: 'put',
+        url: '/api/orders/quantity',
+        data: { quantity, orderId },
+        headers: { authorization: `Bearer ${token}` },
+    })
 }
 
 export function getRandomBooks() {

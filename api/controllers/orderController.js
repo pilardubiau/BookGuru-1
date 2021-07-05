@@ -33,6 +33,7 @@ module.exports = {
   },
   
   order_updateQuantity: function (req, res) {
+    console.log('controler', req.body)
     Order.update(
       {
         quantity: req.body.quantity,
