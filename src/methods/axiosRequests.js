@@ -5,7 +5,7 @@ export function getSingleBook(bookId) {
 }
 
 export function getSingleUser(UserId) {
-  return axios.get(`/api/users/${UserId}`);
+  return axios.get(`/api/users/user/${UserId}`);
 }
 
 export function getBookByTitle(input) {

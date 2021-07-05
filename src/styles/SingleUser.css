@@ -1,4 +1,4 @@
-/* .singleuser {
+.singleuser {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -11,20 +11,6 @@ h3 {
   text-align: center;
 }
 
-.dataimg {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-img {
-  height: 60vh;
-}
-
-p {
-  text-align: justify;
-}
-
 .boton {
   margin: 0 auto;
-} */
+}
