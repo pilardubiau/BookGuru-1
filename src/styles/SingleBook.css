@@ -32,8 +32,11 @@ p {
 }
 
 .editBookDiv {
+  height: 40vh;
+  /* width: 60vw; */
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 .formAndImgDiv {
   width: 100vw;
@@ -44,24 +47,70 @@ p {
 .descriptionAndSaveButtonDiv {
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: 200%;
-}
-.inputImgDiv{
   width: 100vw;
+  align-items: center;
+  padding: 1vh 0em;
+}
+.inputImgDiv {
+  width: 55vw;
+  height: 40vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding: 2vh 0vh
 }
 
-.divEditBookGral{
-    padding: 60px 0px;
+.divEditBookGral {
+  padding: 15vh 0vh 0vh;
 }
 
-.descriptionDiv{
-    text-align: start;
-    width: 50vw;
-    height: 20vh;
-    
+.descriptionDiv {
+  word-wrap: inline-block;
+  object-fit: cover;
+  width: 55vw;
+  height: 30vh;
+  max-width: 55vw;
+  max-height: 25vh;
+}
+
+.editMainDiv {
+  /* height: 100vh; */
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.labelAndInputDiv {
+  padding: 0px 10px 0px 0px;
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.singleMovieImageDiv {
+  width: 14em;
+  height: 20em;
+  max-width: 20em;
+  max-height: 20em;
+  padding: 1vw 0vh;
+}
+
+.editSingleButtonDiv {
+  padding: 1vh;
+}
+
+.onlyButton {
+  border: none;
+  outline: none;
+  border-radius: 1em;
+  transition: color 0.4s, background 0.4s;
+}
+
+.onlyButton:hover {
+  color: white;
+  background: rgb(163, 163, 163);
 }

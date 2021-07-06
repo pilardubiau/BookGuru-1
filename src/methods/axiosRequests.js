@@ -86,15 +86,13 @@ export function checkoutOrder(cart) {
 export function getAllUsers() {
   const token = JSON.parse(localStorage.getItem("token"));
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user.id, token)
+  console.log(user.id, token);
   if (user && user.isAdmin) {
     return axios({
       method: "get",
       url: `/api/users/all/${user.id}`,
       headers: { authorization: `Bearer ${token}` },
-
     });
-
   } else return new Promise(() => []);
 }
 
@@ -117,9 +115,20 @@ export function setToAdminAxios(userId) {
     url: `/api/users/toggleAdmin`,
     data: { userId },
     headers: { authorization: `Bearer ${token}` },
-  });  
+  });
 }
 
 export function categories(category) {
-  return axios.get(`/api/books/category/${category}`)
+  return axios.get(`/api/books/category/${category}`);
+}
+
+export function updateSingleBook(bookId, movieUpdatedProps) {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  return axios({
+    method: "put",
+    url: `/api/books/id/${bookId}`,
+    data: movieUpdatedProps,
+    headers: { authorization: `Bearer ${token}` },
+  });
 }
