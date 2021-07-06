@@ -18,12 +18,12 @@ import SingleBookContainer from "./SingleBookContainer";
 import Previous from "./Previous";
 import Category from "./Category";
 import UsersContainer from "./UsersContainer";
+import History from "./History";
 
 import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
 
 const App = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setUser(userPersisterHook()));
@@ -41,25 +41,37 @@ const App = () => {
         <Route exact path="/login" component={LogIn} />
 
         <Route exact path="/books" render={() => <BooksContainer />} />
-        <Route exact path="/books/:id" render={({ match }) => (
-            <SingleBookContainer bookId={match.params.id} /> )}
+        <Route
+          exact
+          path="/books/:id"
+          render={({ match }) => (
+            <SingleBookContainer bookId={match.params.id} />
+          )}
         />
-        
+
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/previous" component={Previous} />
 
-        <Route path="/category/:category" render={({match})=> <Category typeCategory={match.params.category}/> }/>
-    
+        <Route
+          path="/category/:category"
+          render={({ match }) => (
+            <Category typeCategory={match.params.category} />
+          )}
+        />
 
         <Route exact path="/category" component={Category} />
+        <Route exact path="/history" component={History} />
 
         <Route exact path="/edit" component={BooksEditContainer} />
 
         <Route exact path="/users" component={UsersContainer} />
-        <Route exact path="/users/:id" render={({ match }) => (
-            <SingleUserContainer userId={match.params.id} /> )}
+        <Route
+          exact
+          path="/users/:id"
+          render={({ match }) => (
+            <SingleUserContainer userId={match.params.id} />
+          )}
         />
-
       </Switch>
       <br />
       <FooterContainer />

@@ -1,17 +1,15 @@
 import React from "react";
-import { getUserPrevious, getAllUsers } from "../methods/axiosRequests";
+import { getAllOrders } from "../methods/axiosRequests";
+import { useSelector } from "react-redux";
 import "../styles/Cart.css";
 
 const Previous = () => {
   const [cart, setCart] = React.useState([]);
-  const [users, setUsers] = React.useState([]);
 
   React.useEffect(() => {
-    getAllUsers().then((res) => setUsers(res.data));
-  }, []);
-
-  React.useEffect(() => {
-    getUserPrevious().then((res) => setCart(res.data));
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log("esto es user: ", user);
+    if (user.isAdmin === true) getAllOrders().then((res) => setCart(res.data));
   }, []);
 
   return (
@@ -19,15 +17,17 @@ const Previous = () => {
       {/* Cart table */}
       <table className="table">
         <tr>
+          <th>User Id</th>
           <th>Title</th>
           <th>Author</th>
           <th>Quantity</th>
           <th>Price</th>
         </tr>
+        {console.log("esto es cart: ", cart)}
         {cart.map((data, index) => {
-          console.log("esto es users: ", users);
           return (
             <tr key={index}>
+              <td>{data.userId}</td>
               <td>{data.book.title}</td>
               <td>{data.book.author}</td>
               <td>{data.quantity}</td>

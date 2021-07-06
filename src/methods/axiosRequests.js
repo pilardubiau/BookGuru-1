@@ -122,6 +122,13 @@ export function categories(category) {
   return axios.get(`/api/books/category/${category}`);
 }
 
+export function getAllOrders() {
+  const token = JSON.parse(localStorage.getItem("token"));
+  return axios.get(`/api/orders/admin/checked`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+}
+
 export function updateSingleBook(bookId, movieUpdatedProps) {
   const token = JSON.parse(localStorage.getItem("token"));
 
