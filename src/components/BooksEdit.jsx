@@ -1,7 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const BooksEdit = ({ moviePropsArray, changeHandler, submitHandler }) => {
+const BooksEdit = ({
+  moviePropsArray,
+  changeHandler,
+  submitHandler,
+  deleteBook,
+}) => {
   const { singleBook } = useSelector((store) => store);
 
   return (
@@ -74,6 +79,16 @@ const BooksEdit = ({ moviePropsArray, changeHandler, submitHandler }) => {
                   <div className="editSingleButtonDiv">
                     {/* <Link to={`/books/${singleBook.id}`}> */}
                     <button className="onlyButton">Save</button>
+                    {/* </Link> */}
+                  </div>
+                  <div className="editSingleButtonDiv">
+                    {/* <Link to={`/books> */}
+                    <button
+                      className="onlyButton"
+                      onClick={() => deleteBook(singleBook.id)}
+                    >
+                      Delete
+                    </button>
                     {/* </Link> */}
                   </div>
                 </div>

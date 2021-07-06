@@ -141,5 +141,14 @@ export function updateSingleBook(bookId, movieUpdatedProps) {
 }
 
 export function getBookRatingAxios(bookId) {
-  return axios.get(`/api/books/ratings/${bookId}`)
+  return axios.get(`/api/books/ratings/${bookId}`);
+}
+
+export function deleteBookAxios(bookId) {
+  const token = JSON.parse(localStorage.getItem("token"));
+  return axios({
+    method: "delete",
+    url: `/api/books/id/${bookId}`,
+    headers: { authorization: `Bearer ${token}` },
+  });
 }
