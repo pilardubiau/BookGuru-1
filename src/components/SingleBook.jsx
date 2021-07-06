@@ -4,7 +4,7 @@ import { useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom"
 import { setSingleBook } from '../store/singleBook';
 
-const SingleBook = ({ singleBook, addOrder }) => {
+const SingleBook = ({ singleBook, addOrder, rating }) => {
 
   const { isAdmin } = useSelector((store) => store.user);
 
@@ -20,7 +20,7 @@ const SingleBook = ({ singleBook, addOrder }) => {
           <h5>Author: {singleBook.author}</h5>
           <h5>Genre: {singleBook.category}</h5>
           <h5>Publisher: {singleBook.publisher}</h5>
-          <h5>Rating: {singleBook.rating}</h5>
+          <h5>Rating: {rating ? rating : 'No ratings yet'}</h5>
           <h5>Price: U$D {singleBook.price}</h5>
         </div>
         <img src={singleBook.img} alt="" />

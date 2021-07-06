@@ -139,3 +139,7 @@ export function updateSingleBook(bookId, movieUpdatedProps) {
     headers: { authorization: `Bearer ${token}` },
   });
 }
+
+export function getBookRatingAxios(bookId) {
+  return axios.get(`/api/books/ratings/${bookId}`)
+}
