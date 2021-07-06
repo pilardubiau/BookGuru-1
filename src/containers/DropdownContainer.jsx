@@ -25,7 +25,7 @@ const Dropdown = () => {
         }) 
     }
 
-    let categorias = [
+    const categorias = [
         "All","Biography","Business","Childish","Classic Literature",
         "Comics","Cooking","Crime","Disease","Fantasy","Fiction","Graphic Novels",
         "Mystery","Reference","Science","Self-Help","Thriller"

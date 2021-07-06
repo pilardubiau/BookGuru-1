@@ -6,12 +6,6 @@ import { setUser } from "../store/user";
 import isUserValidated from "../hooks/isUserValidated";
 import { getBookByTitle } from "../methods/axiosRequests";
 import Dropdown from './DropdownContainer'
-import {
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  ButtonDropdown,
-} from "reactstrap";
 
 import "../styles/NavBar.css";
 
