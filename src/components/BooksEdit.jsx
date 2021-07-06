@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 const BooksEdit = ({ moviePropsArray, changeHandler, submitHandler }) => {
   const { singleBook } = useSelector((store) => store);
@@ -88,36 +87,3 @@ const BooksEdit = ({ moviePropsArray, changeHandler, submitHandler }) => {
 };
 
 export default BooksEdit;
-
-{
-  /* <label for="Author">Author:</label>
-                    <input
-                      type="text"
-                      value={singleBook.author}
-                      name="author"
-                    ></input>
-                    <label for="Genre">Genre:</label>
-                    <input
-                      type="text"
-                      value={singleBook.category}
-                      name="genre"
-                    ></input>
-                    <label for="Publisher">Publisher:</label>
-                    <input
-                      type="text"
-                      value={singleBook.publisher}
-                      name="publisher"
-                    ></input>
-                    <label for="Rating">Rating:</label>
-                    <input
-                      type="text"
-                      value={singleBook.rating}
-                      name="rating"
-                    ></input>
-                    <label for="Price">Price:</label>
-                    <input
-                      type="text"
-                      value={singleBook.price}
-                      name="price"
-                    ></input> */
-}
