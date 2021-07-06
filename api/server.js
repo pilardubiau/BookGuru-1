@@ -20,8 +20,8 @@ db.sync({ force: true }).then(() => {
 
   // console.log(seedBooks.length)
 
-  User.create(seedAdmin)
-  .then(() => console.log("Admin user created"))
+  User.bulkCreate(seedAdmin, {individualHooks: true})
+  .then(() => console.log("Admin & users created"))
   Book.bulkCreate(seedBooks)
   .then(() => console.log("Database running, seed books created"));
 

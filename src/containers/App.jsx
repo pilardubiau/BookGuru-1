@@ -20,7 +20,7 @@ import Category from "./Category";
 import UsersContainer from "./UsersContainer";
 
 import SingleUserContainer from "./SingleUserContainer";
-import BooksEdit from "./BooksEdit";
+import BooksEditContainer from "./BooksEditContainer";
 
 const App = () => {
 
@@ -48,7 +48,7 @@ const App = () => {
         <Route exact path="/previous" component={Previous} />
         <Route path="/category/:category" render={({match})=> <Category typeCategory={match.params.category}/> }/>
         <Route exact path="/category" component={Category} />
-        <Route exact path="/edit" component={BooksEdit} />
+        <Route exact path="/edit" component={BooksEditContainer} />
         <Route exact path="/users" component={UsersContainer} />
         <Route exact path="/users/:id" render={({ match }) => (
             <SingleUserContainer userId={match.params.id} /> )}
