@@ -1,7 +1,13 @@
 .cart {
-  height: 80%;
-  width: 80%;
-  margin-top: 150px;
+  /* height: 80%;
+  width: 80%; */
+  /* display: flex; */
+  height: 78vh;
+  width: 80vw;
+  padding: 14vh 0vh 0vh 0vh;
+  /* margin: auto; */
+  /* justify-content: center;
+  align-items: center; */
 }
 
 .table {
@@ -73,4 +79,27 @@ th {
   background-color: white;
   color: #780000;
   border-color: #780000;
+}
+
+.ratingButton {
+  width: 4vw;
+  margin: 1em;
+  border: none;
+  outline: none;
+  border-radius: 1em;
+  transition: color 0.4s, background 0.4s;
+}
+
+.ratingButton:hover {
+  color: white;
+  background: #780000;
+}
+
+.cartCheckoutButton {
+  text-decoration: none;
+}
+
+.cartCheckoutButton:hover {
+  text-decoration: underline;
+  text-decoration-color: #780000;
 }

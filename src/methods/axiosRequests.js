@@ -143,3 +143,14 @@ export function updateSingleBook(bookId, movieUpdatedProps) {
 export function getBookRatingAxios(bookId) {
   return axios.get(`/api/books/ratings/${bookId}`)
 }
+
+export function addRatingAxios(value, userId, bookId) {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  return axios({
+    method: "post",
+    url: "/api/ratings",
+    data: { value, userId, bookId },
+    headers: { authorization: `Bearer ${token}` },
+  })
+}

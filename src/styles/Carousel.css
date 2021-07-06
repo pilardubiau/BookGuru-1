@@ -6,6 +6,7 @@
 }
 
 .car {
+  /* width: 100vw; */
   margin-top: 120px;
 }
 .carousel2 {
@@ -16,6 +17,7 @@ h6 {
 }
 
 .slideImagediv {
+  /* width: 80vw; */
   height: 30vh;
 }
 

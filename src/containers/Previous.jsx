@@ -1,24 +1,37 @@
-import React from "react";
-import { getUserPrevious } from '../methods/axiosRequests';
+import React, { useState, useEffect } from "react";
+import { getUserPrevious, addRatingAxios } from "../methods/axiosRequests";
+import Rating from "../components/Rating";
 import "../styles/Cart.css";
 
 const Previous = () => {
-  const [cart, setCart] = React.useState([]);
+  const [cart, setCart] = useState([]);
+  const [rating, setRating] = useState(1);
 
-  React.useEffect(() => {
-    getUserPrevious()
-    .then((res) => setCart(res.data));
+  const changeHandler = (e) => {
+    const { value } = e.target;
+    setRating(+value);
+  };
+
+  const submitHandler = (e, userId, bookId) => {
+    e.preventDefault();
+    addRatingAxios(rating, userId, bookId)
+      .then((rating) => alert("Thank you for rating this book!"))
+      .catch((err) => alert("You already rated this book!"));
+  };
+
+  useEffect(() => {
+    getUserPrevious().then((res) => setCart(res.data));
   }, []);
 
   return (
     <div className="cart">
-      {/* Cart table */}
       <table className="table">
         <tr>
           <th>Title</th>
           <th>Author</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Rating</th>
         </tr>
         {cart.map((data, index) => {
           return (
@@ -26,8 +39,14 @@ const Previous = () => {
               <td>{data.book.title}</td>
               <td>{data.book.author}</td>
               <td>{data.quantity}</td>
-              {/* chequear como hacer la formula para multiplicar precio * cantidad */}
               <td>{data.book.price}</td>
+              <td>
+                <Rating
+                  submitHandler={submitHandler}
+                  changeHandler={changeHandler}
+                  data={data}
+                />
+              </td>
             </tr>
           );
         })}
