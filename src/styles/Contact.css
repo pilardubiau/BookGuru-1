@@ -1,7 +1,13 @@
 .contact {
+  display: flex;
+  flex-direction: column;
+  height: 58.2vh;
   margin-top: 150px;
   margin-left: 10%;
   margin-right: 10%;
+  align-items: center;
+  justify-content: space-between;
+  color: #780000 !important;
 }
 
 h1 {

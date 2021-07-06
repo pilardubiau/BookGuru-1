@@ -14,12 +14,12 @@ const About = () => {
         cart module you can see the previous orders made by the logged user.
         Also we have some extra options for the admin users such as edit books,
         promote admin rights to other users and see all the orders made by any
-        user on the site.{" "}
+        user on the site.
       </h3>
       <br />
       <h3>
         We are: Matias Carou, Nicolas Mancini, Luis Osorio, Paula Binimelis,
-        Pilar Dubiau & Alejandro Osorio
+        Pilar Dubiau & Alejandro Rusinoff
       </h3>
       <br />
       <br />

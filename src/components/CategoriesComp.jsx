@@ -22,7 +22,7 @@ const CategoriesCompo = () => {
                         </Link>
                         <div className="tamaño">{book.title.slice(0, 21)}</div>
                         <div>Price: {book.price} U$D</div>               
-                        <div><button onClick={()=>addOrder(book.id)}>Add to cart</button></div>
+                        <div><button onClick={()=>addOrder(book.id)} className="categoriesButton">Add to cart</button></div>
                         <br />
                     </div>
                 )}
