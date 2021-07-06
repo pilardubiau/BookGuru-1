@@ -50,7 +50,7 @@ module.exports = {
   order_getAllOrders: function (req, res) {
     Order.findAll({
       where: { bought: true },
-      include: Book,
+      include: [Book, User],
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
   order_getAllPendingOrders: function (req, res) {

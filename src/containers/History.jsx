@@ -16,7 +16,7 @@ const Previous = () => {
       {/* Cart table */}
       <table className="table">
         <tr>
-          <th>User Id</th>
+          <th>Username</th>
           <th>Title</th>
           <th>Author</th>
           <th>Quantity</th>
@@ -26,7 +26,7 @@ const Previous = () => {
         {cart.map((data, index) => {
           return (
             <tr key={index}>
-              <td>{data.userId}</td>
+              <td>{data.user.username}</td>
               <td>{data.book.title}</td>
               <td>{data.book.author}</td>
               <td>{data.quantity}</td>
