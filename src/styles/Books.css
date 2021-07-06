@@ -1,26 +1,35 @@
-.books{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    width: 100%;
-    margin: 150px auto 0 auto; 
-} 
-
-.books div{
-    margin: 1%;
-    max-width: 100%;
+.books {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 150px auto 0 auto;
 }
 
-.books div img{
-    width: 200px;
-    height: 300px;
-    border-radius: 10px;
+.books div {
+  margin: 1%;
+  max-width: 100%;
 }
 
-.tamaño{
-    font-size: 18px;
+.books div img {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
 }
 
-button{
-    width: 200px;
+.tamaño {
+  font-size: 18px;
+}
+
+.addToOrderbutton {
+  width: 200px;
+  border: none;
+  outline: none;
+  border-radius: 1em;
+  transition: color 0.4s, background 0.4s;
+}
+
+.addToOrderbutton:hover {
+  color: white;
+  background: #780000;
 }

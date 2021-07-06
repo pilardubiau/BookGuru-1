@@ -25,7 +25,7 @@ router.get("/all/:userId", checkJWT, userController.user_getAllUsers)
 router.delete("/", checkJWT, userController.user_delete)
 
 //Actualizamos la propiedad admin de un usuario
-router.put("/profile/:id", checkJWT, userController.user_changeAdminProperty)
+//router.put("/profile/:id", checkJWT, userController.user_changeAdminProperty)
 
 //sólo cambia el campo isAdmin
 router.put("/toggleAdmin", checkJWT, userController.user_toggleAdminStatus)

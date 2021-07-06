@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  getUserCart,
-  checkoutOrder,
-  deleteOrderAxios,
-  updateQuantity,
-} from "../methods/axiosRequests";
+import { getUserCart } from "../axiosRequests/usersAxios";
+import { deleteOrderAxios, updateQuantity, checkoutOrder } from '../axiosRequests/ordersRequests';
 import CartTotalPrice from "../hooks/CartTotalPrice";
 import "../styles/Cart.css";
 
@@ -13,7 +9,7 @@ const Cart = () => {
   const [cart, setCart] = React.useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   React.useEffect(() => {
-    getUserCart().then((res) => setCart(res.data.sort((a, b) => a.id - b.id)));
+    getUserCart().then((res) => setCart(res.data));
   }, []);
 
   const deleteOrder = (orderId) => {
@@ -70,34 +66,36 @@ const Cart = () => {
                   <td>
                     {/* onChange={quantityChange(data.quantity, data.orderId)} */}
                     {/* <input>data.quantity</input> */}
-                    <button
-                      className="button-cart"
-                      name="decrease"
-                      disabled={data.quantity <= 1 ? true : false}
-                      onClick={() =>
-                        quantityHandler(
-                          data.quantity - 1,
-                          data.id,
-                          data.book.stock
-                        )
-                      }
-                    >
-                      -
-                    </button>
-                    {data.quantity <= 1 ? 1 : data.quantity}
-                    <button
-                      className="button-cart"
-                      name="increase"
-                      onClick={() =>
-                        quantityHandler(
-                          data.quantity + 1,
-                          data.id,
-                          data.book.stock
-                        )
-                      }
-                    >
-                      +
-                    </button>
+                    <div className="addAndRemoveButtonsDiv">
+                      <button
+                        className="button-cart"
+                        name="decrease"
+                        disabled={data.quantity <= 1 ? true : false}
+                        onClick={() =>
+                          quantityHandler(
+                            data.quantity - 1,
+                            data.id,
+                            data.book.stock
+                          )
+                        }
+                      >
+                        -
+                      </button>
+                      <div style={{padding: "0em 0.5em"}}>{data.quantity <= 1 ? 1 : data.quantity}</div>
+                      <button
+                        className="button-cart"
+                        name="increase"
+                        onClick={() =>
+                          quantityHandler(
+                            data.quantity + 1,
+                            data.id,
+                            data.book.stock
+                          )
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
                   </td>
                   <td>{data.book.price}</td>
                   <td>

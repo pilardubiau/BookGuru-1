@@ -2,21 +2,18 @@ import React from 'react';
 import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { categories } from '../methods/axiosRequests';
+import { getBooksByCategory } from '../axiosRequests/booksRequests';
 import { setCategory } from '../store/category';
-import "../styles/Categories.css"
-
-
-   
+import "../styles/Categories.css";
 
 const Dropdown = () => {
-    const dispatch = useDispatch()
-    const [dropdownOpen, setOpen] = React.useState(false);
-    
-    const toggle = () => setOpen(!dropdownOpen);
+  const dispatch = useDispatch();
+  const [dropdownOpen, setOpen] = React.useState(false);
+
+  const toggle = () => setOpen(!dropdownOpen);
 
     const selectCategory = (category)=>{
-        categories(category)
+        getBooksByCategory(category)
         .then(({data}) => {
             dispatch(setCategory(data))
         }) 
@@ -28,6 +25,7 @@ const Dropdown = () => {
         "Mystery","Reference","Science","Self-Help","Thriller"
     ]
 
+<<<<<<< HEAD
     return(
         <div>
             <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -44,5 +42,30 @@ const Dropdown = () => {
         </div>
     )
 }
+=======
+>>>>>>> 8f9b20d12bc39ce6b901822debfac554caf42732
+
+  return (
+    <div>
+      <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+        <DropdownToggle caret color="" className="drop-color">
+          Categories
+        </DropdownToggle>
+        <DropdownMenu className="categories">
+          {categorias.map((categoria) => (
+            <DropdownItem
+              onClick={() => selectCategory(categoria)}
+              className="drop-color"
+            >
+              <Link class="categories" to={`/category/${categoria}`}>
+                {categoria}
+              </Link>
+            </DropdownItem>
+          ))}
+        </DropdownMenu>
+      </ButtonDropdown>
+    </div>
+  );
+};
 
 export default Dropdown;

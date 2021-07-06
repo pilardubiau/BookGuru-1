@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getUserPrevious, addRatingAxios } from "../methods/axiosRequests";
+import { getUserPrevious } from "../axiosRequests/usersAxios";
+import { addRatingAxios } from "../axiosRequests/ratingsRequests";
 import Rating from "../components/Rating";
 import "../styles/Cart.css";
 

@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBooks } from '../store/books';
 import Books from '../components/Books';
-import { addOrderAxios, getRandomBooks } from "../methods/axiosRequests";
+import { getRandomBooks } from "../axiosRequests/booksRequests";
+import { addOrderAxios } from '../axiosRequests/ordersRequests';
 import "../styles/Books.css";
 
 const BooksContainer = () => {

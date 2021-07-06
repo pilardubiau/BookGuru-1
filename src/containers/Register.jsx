@@ -172,3 +172,5 @@ const Register = () => {
 };
 
 export default Register;
+
+//"Password must be at least 8 characters long, and must contain one number and one capital letter"

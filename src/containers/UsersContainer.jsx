@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Users.css";
-import { getAllUsers, deleteUserAxios, setToAdminAxios } from "../methods/axiosRequests";
+import { getAllUsers, deleteUserAxios, setToAdminAxios } from '../axiosRequests/usersAxios'
 import Users from "../components/Users";
+import "../styles/Users.css";
 
 const UsersContainer = () => {
 

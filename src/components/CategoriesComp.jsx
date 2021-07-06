@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux'
-import { addOrderAxios} from "../methods/axiosRequests";
+import { addOrderAxios } from "../axiosRequests/ordersRequests";
 import "../styles/Books.css"
 
 const CategoriesCompo = () => {
@@ -22,7 +22,7 @@ const CategoriesCompo = () => {
                         </Link>
                         <div className="tamaño">{book.title.slice(0, 21)}</div>
                         <div>Price: {book.price} U$D</div>               
-                        <div><button onClick={()=>addOrder(book.id)}>Add to cart</button></div>
+                        <div><button onClick={()=>addOrder(book.id)} className="categoriesButton">Add to cart</button></div>
                         <br />
                     </div>
                 )}
