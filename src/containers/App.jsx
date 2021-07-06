@@ -18,7 +18,9 @@ import SingleBookContainer from "./SingleBookContainer";
 import Previous from "./Previous";
 import Category from "./Category";
 import UsersContainer from "./UsersContainer";
+
 import SingleUserContainer from "./SingleUserContainer";
+import BooksEdit from "./BooksEdit";
 
 const App = () => {
 
@@ -47,15 +49,12 @@ const App = () => {
         <Route exact path="/previous" component={Previous} />
         <Route exact path="/category" component={Category} />
 
-        <Route exact path="/singleUser" component={SingleUserContainer} />
-
+        <Route exact path="/edit" component={BooksEdit} />
 
         <Route exact path="/users" component={UsersContainer} />
-        {/* <Route exact path="/singleUser" render={() => <SingleUserContainer userId={userId} />} />     */}
         <Route exact path="/users/:id" render={({ match }) => (
             <SingleUserContainer userId={match.params.id} /> )}
         />
-
 
       </Switch>
       <br />

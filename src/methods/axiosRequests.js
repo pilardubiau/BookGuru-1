@@ -86,13 +86,15 @@ export function checkoutOrder(cart) {
 export function getAllUsers() {
   const token = JSON.parse(localStorage.getItem("token"));
   const user = JSON.parse(localStorage.getItem("user"));
-
+  console.log(user.id, token)
   if (user && user.isAdmin) {
     return axios({
       method: "get",
       url: `/api/users/all/${user.id}`,
       headers: { authorization: `Bearer ${token}` },
+
     });
+
   } else return new Promise(() => []);
 }
 
@@ -117,3 +119,4 @@ export function setToAdminAxios(userId) {
     headers: { authorization: `Bearer ${token}` },
   });  
 }
+

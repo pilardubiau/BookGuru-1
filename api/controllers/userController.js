@@ -48,11 +48,11 @@ module.exports = {
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
   user_getAllUsers: function (req, res) {
+
     User.findAll({
       where: { id: { [Op.not]: req.params.userId } },
       order: col("id"),
-      }).then(
-      (users) => res.status(200).send(users)
+      }).then( (users) => res.status(200).send(users)
     );
   },
   user_delete: function (req, res) {

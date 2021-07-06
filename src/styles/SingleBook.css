@@ -1,31 +1,67 @@
-.singlebook{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: auto;
-    margin: 150px auto;
+.singlebook {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  margin: 150px auto;
+}
+h3 {
+  width: 100%;
+  text-align: center;
+}
+.dataimg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-h3{
-    width: 100%;
-    text-align: center;
+img {
+  height: 60vh;
 }
 
-.dataimg{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+p {
+  text-align: justify;
 }
 
-img{
-    height: 60vh;
+.boton {
+  margin: 0 auto;
+}
+.addToCartEditButton {
+  display: flex;
+  flex-direction: row;
 }
 
-p{
-    text-align: justify;
+.editBookDiv {
+  display: flex;
+  flex-direction: column;
+}
+.formAndImgDiv {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.descriptionAndSaveButtonDiv {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 200%;
+}
+.inputImgDiv{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.boton{
-    margin: 0 auto;
+.divEditBookGral{
+    padding: 60px 0px;
+}
 
+.descriptionDiv{
+    text-align: start;
+    width: 50vw;
+    height: 20vh;
+    
 }
