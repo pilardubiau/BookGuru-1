@@ -51,7 +51,6 @@ const App = () => {
           )}
         />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/previous" component={Previous} />
         <Route
           path="/category/:category"
           render={({ match }) => (

@@ -34,7 +34,7 @@ const Dropdown = () => {
                 <DropdownToggle caret color="" className="drop-color">
                 Categories
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className="categories">
                     {categorias.map(categoria => 
                     <DropdownItem onClick={() => selectCategory(categoria)} className="drop-color">
                         <Link className="categories" to={`/category/${categoria}`}>{categoria}</Link>
