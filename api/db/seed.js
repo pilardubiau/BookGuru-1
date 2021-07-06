@@ -989,6 +989,14 @@ const seedBooks = [
       password: "Hola123123",
     },
     {
+      name: "Britney",
+      lastname: "Spears",
+      address: "EEUU 123",
+      username: "freeBritney",
+      email: "britney@mail.com",
+      password: "Hola123123",
+    },
+    {
       name: "Señor",
       lastname: "Analfabeto",
       address: "Muy lejos 123",
