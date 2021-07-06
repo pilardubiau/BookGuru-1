@@ -17,7 +17,7 @@ const SingleBookContainer = ({ bookId }) => {
         .then(({ data }) => setSingleBook(data));
 
         getBookRatingAxios(bookId)
-        .then(({ data }) => data && setRating(data))
+        .then(({ data }) => setRating(data))
 
     },[]);
 
