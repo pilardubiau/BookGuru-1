@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom'
-import {categories} from '../methods/axiosRequests';
-import {setCategory} from '../store/category';
-import {useHistory} from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom'
+import { categories } from '../methods/axiosRequests';
+import { setCategory } from '../store/category';
 import "../styles/Categories.css"
 
 
@@ -12,10 +11,8 @@ import "../styles/Categories.css"
 
 const Dropdown = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
     const [dropdownOpen, setOpen] = React.useState(false);
     
-    const typeCategory = useSelector((state) => state.typeCategory)
     const toggle = () => setOpen(!dropdownOpen);
 
     const selectCategory = (category)=>{
