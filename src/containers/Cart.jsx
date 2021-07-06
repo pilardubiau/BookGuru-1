@@ -22,6 +22,7 @@ const Cart = () => {
       .then((res) => setCart(res.data));
   };
 
+
   const quantityHandler = (quantity, orderId, stock) => {
       if (stock >= quantity) {
         updateQuantity(quantity, orderId)
@@ -31,7 +32,7 @@ const Cart = () => {
       else {
           alert("no hay suficiente stock")
       }
-  };
+  }
 
   const checkout = () => {
     checkoutOrder(cart).then(() => {

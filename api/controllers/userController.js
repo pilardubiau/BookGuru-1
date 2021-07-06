@@ -48,7 +48,10 @@ module.exports = {
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
   user_getAllUsers: function (req, res) {
-    User.findAll({ where: { id: { [Op.not]: req.body.userId } } }).then(
+    User.findAll({
+      where: { id: { [Op.not]: req.params.userId } },
+      order: col("id"),
+      }).then(
       (users) => res.status(200).send(users)
     );
   },
@@ -66,8 +69,15 @@ module.exports = {
       .catch((err) => res.status(400).send("User couldn't be modified"));
   },
   user_getUserByPk: function(req, res) {
-    User.findByPk(req.params.id)
+    User.findByPk(req.params.userId)
     .then((user) => res.status(200).send(user))
     .catch((err) => res.status(400).send("User not found!"))
+  },
+
+  user_toggleAdminStatus: function(req, res) {
+    User.findByPk(req.body.userId)
+    .then(user => user.toggleAdminStatus())
+    .then(()=> res.send('TOdo bine'))
   }
+
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/SingleUser.css";
+import { Link } from "react-router-dom";
 
 const SingleUser = ({ singleUser }) => {
   console.log(singleUser);
@@ -18,7 +19,11 @@ const SingleUser = ({ singleUser }) => {
       </div>
       <hr />
       <div className="boton">
-        <button>Admin?</button>
+        {singleUser.isAdmin ? (
+          <Link to="/users">
+            <button>See all users</button>{" "}
+          </Link>
+        ) : null}
       </div>
     </div>
   );
