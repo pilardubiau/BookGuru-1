@@ -7,6 +7,8 @@ import bookIdReducer from "./bookId";
 import userReducer from "./user";
 import categoryReducer from "./category"
 import typeCategoryReducer from "./stateCategory"
+import singleBookReducer from "./singleBook";
+
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
@@ -16,6 +18,8 @@ const store = configureStore({
     bookId: bookIdReducer,
     category: categoryReducer,
     typeCategory: typeCategoryReducer,
+    singleBook: singleBookReducer,
+
   },
 });
 

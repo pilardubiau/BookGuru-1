@@ -35,6 +35,10 @@ User.init(
     salt: {
       type: DataTypes.STRING,
     },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   },
   { sequelize: db, modelName: "user", timestamps: false }
 );
@@ -50,6 +54,12 @@ User.prototype.hashPassword = function (password) {
 
 User.prototype.validPassword = function (passwordEnLogin) {
   return this.password === this.hashPassword(passwordEnLogin)
+}
+
+User.prototype.toggleAdminStatus = function() {
+  const status = this.getDataValue('isAdmin');
+  this.update({isAdmin: !status})
+  .then(()=> console.log('Status switched'))
 }
 
 module.exports = User;

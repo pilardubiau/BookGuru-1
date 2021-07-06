@@ -1,0 +1,16 @@
+.singleuser {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  margin: 150px auto;
+}
+
+h3 {
+  width: 100%;
+  text-align: center;
+}
+
+.boton {
+  margin: 0 auto;
+}

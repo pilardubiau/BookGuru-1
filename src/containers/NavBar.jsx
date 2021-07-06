@@ -6,6 +6,12 @@ import { setUser } from "../store/user";
 import isUserValidated from "../hooks/isUserValidated";
 import { getBookByTitle } from "../methods/axiosRequests";
 import Dropdown from './DropdownContainer'
+import {
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  ButtonDropdown,
+} from "reactstrap";
 
 import "../styles/NavBar.css";
 
@@ -26,8 +32,8 @@ const NavBar = () => {
   const searchBooks = (e) => {
     e.preventDefault();
     getBookByTitle(input)
-    .then((res) => dispatch(setBooks(res.data)))
-    .then(() => history.push("/books"));
+      .then((res) => dispatch(setBooks(res.data)))
+      .then(() => history.push("/books"));
   };
 
   const logout = () => {
@@ -90,7 +96,15 @@ const NavBar = () => {
             <div className="col-sm-1">
               {/* User icon/menu */}
               <div className="userAndLogInDiv">
-                <div className="user"></div>
+                {isUserValidated(user) ? (
+                  <Link to={`/users/${user.id}`}>
+                    <div className="user"></div>
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <div className="user"></div>
+                  </Link>
+                )}
                 {/* <div className="dropdown"> */}
                 {/* <button class="dropbtn">Dropdown</button> */}
                 <div>
@@ -105,11 +119,7 @@ const NavBar = () => {
                       </Link>
                     </div>
                   ) : (
-                    <Link
-                      to="/"
-                      className="sub-link"
-                      onClick={() => logout()}
-                    >
+                    <Link to="/" className="sub-link" onClick={() => logout()}>
                       Logout
                     </Link>
                   )}

@@ -22,6 +22,12 @@ router.put("/quantity", checkJWT, orderController.order_updateQuantity)
 //req.body debe traer una orderId
 router.delete("/", orderController.order_delete)
 
+//Nos trae todas las ordenes con bought TRUE
+router.get("/admin/checked", checkJWT, orderController.order_getAllOrders)
+
+//Nos trae todas las ordenes con bought FALSE
+router.get("/admin/pending", checkJWT, orderController.order_getAllPendingOrders)
+
 module.exports = router;
 
 

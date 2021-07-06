@@ -1,4 +1,5 @@
 const { User, Order, Book } = require("../db/models");
+const { col, Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
@@ -37,6 +38,7 @@ module.exports = {
     Order.findAll({
       where: { userId: req.params.userId, bought: false },
       include: Book,
+      order: col("id"),
     }).then((cartOrders) => res.status(200).send(cartOrders));
   },
   user_checkoutOrder: function (req, res) {
@@ -45,4 +47,37 @@ module.exports = {
       include: Book,
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
+  user_getAllUsers: function (req, res) {
+
+    User.findAll({
+      where: { id: { [Op.not]: req.params.userId } },
+      order: col("id"),
+      }).then( (users) => res.status(200).send(users)
+    );
+  },
+  user_delete: function (req, res) {
+    User.destroy({ where: { id: req.body.userId } }).then(() =>
+      res.status(202).send("User deleted")
+    );
+  },
+  user_changeAdminProperty: function (req, res) {
+    User.update(req.body, {
+      where: { id: req.params.id },
+      returning: true,
+    })
+      .then((updatedUser) => res.status(202).send(updatedUser[1]))
+      .catch((err) => res.status(400).send("User couldn't be modified"));
+  },
+  user_getUserByPk: function(req, res) {
+    User.findByPk(req.params.userId)
+    .then((user) => res.status(200).send(user))
+    .catch((err) => res.status(400).send("User not found!"))
+  },
+
+  user_toggleAdminStatus: function(req, res) {
+    User.findByPk(req.body.userId)
+    .then(user => user.toggleAdminStatus())
+    .then(()=> res.send('TOdo bine'))
+  }
+
 };
