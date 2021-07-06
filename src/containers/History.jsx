@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllOrders } from "../methods/axiosRequests";
+import { getAllOrders } from "../axiosRequests/ordersRequests";
 import "../styles/Cart.css";
 
 const Previous = () => {

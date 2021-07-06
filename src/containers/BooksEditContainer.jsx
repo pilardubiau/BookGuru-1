@@ -3,7 +3,7 @@ import "../styles/SingleBook.css";
 import { useState } from "react";
 import BooksEdit from "../components/BooksEdit";
 import { useHistory } from "react-router-dom";
-import { updateSingleBook } from "../methods/axiosRequests";
+import { updateSingleBook } from "../axiosRequests/booksRequests";
 
 const BooksEditContainer = () => {
   const [movieUpdatedProps, setMovieUpdatedProps] = useState({});

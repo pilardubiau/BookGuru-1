@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux'
-import { addOrderAxios} from "../methods/axiosRequests";
+import { addOrderAxios } from "../axiosRequests/ordersRequests";
 import "../styles/Books.css"
 
 const CategoriesCompo = () => {

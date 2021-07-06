@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getRandomBooks } from '../methods/axiosRequests';
+import { getRandomBooks } from '../axiosRequests/booksRequests';
 import Carousel from "react-bootstrap/Carousel";
 import "../styles/Carousel.css";
 

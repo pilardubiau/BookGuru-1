@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  getUserCart,
-  checkoutOrder,
-  deleteOrderAxios,
-  updateQuantity,
-} from "../methods/axiosRequests";
+import { getUserCart } from "../axiosRequests/usersAxios";
+import { deleteOrderAxios, updateQuantity, checkoutOrder } from '../axiosRequests/ordersRequests';
 import CartTotalPrice from "../hooks/CartTotalPrice";
 import "../styles/Cart.css";
 
@@ -13,7 +9,7 @@ const Cart = () => {
   const [cart, setCart] = React.useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   React.useEffect(() => {
-    getUserCart().then((res) => setCart(res.data.sort((a, b) => a.id - b.id)));
+    getUserCart().then((res) => setCart(res.data));
   }, []);
 
   const deleteOrder = (orderId) => {

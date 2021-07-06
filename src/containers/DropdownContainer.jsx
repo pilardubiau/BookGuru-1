@@ -2,12 +2,9 @@ import React from 'react';
 import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { categories } from '../methods/axiosRequests';
+import { getBooksByCategory } from '../axiosRequests/booksRequests';
 import { setCategory } from '../store/category';
 import "../styles/Categories.css"
-
-
-   
 
 const Dropdown = () => {
     const dispatch = useDispatch()
@@ -16,13 +13,13 @@ const Dropdown = () => {
     const toggle = () => setOpen(!dropdownOpen);
 
     const selectCategory = (category)=>{
-        categories(category)
+        getBooksByCategory(category)
         .then(({data}) => {
             dispatch(setCategory(data))
         }) 
     }
 
-    let categorias = [
+    const categorias = [
         "All","Biography","Business","Childish","Classic Literature",
         "Comics","Cooking","Crime","Disease","Fantasy","Fiction","Graphic Novels",
         "Mystery","Reference","Science","Self-Help","Thriller"

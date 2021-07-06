@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import SingleBook from '../components/SingleBook';
-import { getSingleBook, addOrderAxios, getBookRatingAxios } from "../methods/axiosRequests";
+import { getSingleBook, getBookRatingAxios } from '../axiosRequests/booksRequests';
+import { addOrderAxios } from '../axiosRequests/ordersRequests';
 
 const SingleBookContainer = ({ bookId }) => {
 
