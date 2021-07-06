@@ -19,6 +19,8 @@ import Previous from "./Previous";
 import Category from "./Category";
 import UsersContainer from "./UsersContainer";
 import History from "./History";
+import Contact from "./Contact";
+import About from "./About";
 
 import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
@@ -61,6 +63,8 @@ const App = () => {
 
         <Route exact path="/category" component={Category} />
         <Route exact path="/history" component={History} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/about" component={About} />
 
         <Route exact path="/edit" component={BooksEditContainer} />
 

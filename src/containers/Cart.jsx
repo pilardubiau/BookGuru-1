@@ -42,7 +42,11 @@ const Cart = () => {
   return (
     <div className="cart">
       {/* onClick={() => history.push("/previous")} */}
-      <Link className="sub-link" to="/previous">
+      <Link
+        className="sub-link"
+        to="/previous"
+        style={{ textDecoration: "none" }}
+      >
         <button className="checkout" style={{ textDecoration: "none" }}>
           Previous Orders
         </button>
@@ -66,34 +70,36 @@ const Cart = () => {
                   <td>
                     {/* onChange={quantityChange(data.quantity, data.orderId)} */}
                     {/* <input>data.quantity</input> */}
-                    <button
-                      className="button-cart"
-                      name="decrease"
-                      disabled={data.quantity <= 1 ? true : false}
-                      onClick={() =>
-                        quantityHandler(
-                          data.quantity - 1,
-                          data.id,
-                          data.book.stock
-                        )
-                      }
-                    >
-                      -
-                    </button>
-                    {data.quantity <= 1 ? 1 : data.quantity}
-                    <button
-                      className="button-cart"
-                      name="increase"
-                      onClick={() =>
-                        quantityHandler(
-                          data.quantity + 1,
-                          data.id,
-                          data.book.stock
-                        )
-                      }
-                    >
-                      +
-                    </button>
+                    <div className="addAndRemoveButtonsDiv">
+                      <button
+                        className="button-cart"
+                        name="decrease"
+                        disabled={data.quantity <= 1 ? true : false}
+                        onClick={() =>
+                          quantityHandler(
+                            data.quantity - 1,
+                            data.id,
+                            data.book.stock
+                          )
+                        }
+                      >
+                        -
+                      </button>
+                      <div style={{padding: "0em 0.5em"}}>{data.quantity <= 1 ? 1 : data.quantity}</div>
+                      <button
+                        className="button-cart"
+                        name="increase"
+                        onClick={() =>
+                          quantityHandler(
+                            data.quantity + 1,
+                            data.id,
+                            data.book.stock
+                          )
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
                   </td>
                   <td>{data.book.price}</td>
                   <td>
@@ -129,7 +135,11 @@ const Cart = () => {
       </button>
       <br />
       {user.isAdmin === true ? (
-        <Link to="/history">
+        <Link
+          to="/history"
+          className="cartCheckoutButton"
+          style={{ textDecoration: "none" }}
+        >
           <button className="checkout">See all orders</button>{" "}
         </Link>
       ) : null}

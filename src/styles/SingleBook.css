@@ -58,7 +58,7 @@ p {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 2vh 0vh
+  padding: 2vh 0vh;
 }
 
 .divEditBookGral {
@@ -113,4 +113,17 @@ p {
 .onlyButton:hover {
   color: white;
   background: rgb(163, 163, 163);
+}
+
+.singleBookButtons {
+  width: 200px;
+  border: none;
+  outline: none;
+  border-radius: 1em;
+  transition: color 0.4s, background 0.4s;
+}
+
+.singleBookButtons:hover {
+  color: white;
+  background: #780000;
 }

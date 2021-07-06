@@ -15,7 +15,12 @@ const Books = ({ books, addOrder }) => {
               <div className="tamaño">{book.title.slice(0, 21)}</div>
               <div>Price: {book.price} U$D</div>
               <div>
-                <button onClick={() => addOrder(book.id)}>Add to cart</button>
+                <button
+                  onClick={() => addOrder(book.id)}
+                  className="addToOrderbutton"
+                >
+                  Add to cart
+                </button>
               </div>
               <br />
             </div>

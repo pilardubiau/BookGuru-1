@@ -1,15 +1,14 @@
 import React from "react";
 import "../styles/SingleBook.css";
-import { useSelector, useDispatch} from "react-redux";
-import {Link} from "react-router-dom"
-import { setSingleBook } from '../store/singleBook';
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { setSingleBook } from "../store/singleBook";
 
 const SingleBook = ({ singleBook, addOrder, rating }) => {
-
   const { isAdmin } = useSelector((store) => store.user);
 
-  const dispatch= useDispatch()
-  dispatch(setSingleBook(singleBook))
+  const dispatch = useDispatch();
+  dispatch(setSingleBook(singleBook));
 
   return (
     <div className="singlebook">
@@ -20,7 +19,7 @@ const SingleBook = ({ singleBook, addOrder, rating }) => {
           <h5>Author: {singleBook.author}</h5>
           <h5>Genre: {singleBook.category}</h5>
           <h5>Publisher: {singleBook.publisher}</h5>
-          <h5>Rating: {rating ? rating : 'No ratings yet'}</h5>
+          <h5>Rating: {rating ? rating : "No ratings yet"}</h5>
           <h5>Price: U$D {singleBook.price}</h5>
         </div>
         <img src={singleBook.img} alt="" />
@@ -31,11 +30,18 @@ const SingleBook = ({ singleBook, addOrder, rating }) => {
       </div>
       <div className="addToCartEditButton">
         <div className="boton">
-          <button onClick={() => addOrder(singleBook.id)}>Add to cart</button>
+          <button
+            onClick={() => addOrder(singleBook.id)}
+            className="singleBookButtons"
+          >
+            Add to cart
+          </button>
         </div>
         {isAdmin ? (
           <div className="boton">
-         <Link to="/edit"> <button>Edit</button></Link>  
+            <Link to="/edit">
+              <button className="singleBookButtons">Edit</button>
+            </Link>
           </div>
         ) : null}
       </div>
@@ -44,6 +50,3 @@ const SingleBook = ({ singleBook, addOrder, rating }) => {
 };
 
 export default SingleBook;
-
-
-

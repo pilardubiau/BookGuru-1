@@ -1,0 +1,28 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  height: 58.2vh;
+  margin-top: 150px;
+  margin-left: 10%;
+  margin-right: 10%;
+  align-items: center;
+  justify-content: space-between;
+  color: #780000 !important;
+}
+
+h1 {
+  text-align: center;
+  text-decoration: underline 1px #780000;
+  color: #780000;
+}
+
+h4 {
+  text-align: left;
+  color: #780000;
+}
+
+hr {
+  height: 2px;
+  background-color: #780000;
+  border-color: #780000;
+}
