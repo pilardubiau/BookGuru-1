@@ -967,7 +967,7 @@ const seedBooks = [
       name: "Martin",
       lastname: "Elmascapo",
       address: "calle falsa 123",
-      username: "martinelmascapo",
+      username: "martinlibrosky",
       email: "martin@martin.com",
       password: "Hola123123",
       isAdmin: true
