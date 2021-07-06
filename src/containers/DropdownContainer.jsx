@@ -40,7 +40,7 @@ const Dropdown = () => {
                 <DropdownMenu>
                     {categorias.map(categoria => 
                     <DropdownItem onClick={() => selectCategory(categoria)} className="drop-color">
-                        <Link class="categories" to={`/category/${categoria}`}>{categoria}</Link>
+                        <Link className="categories" to={`/category/${categoria}`}>{categoria}</Link>
                     </DropdownItem>)}
                 </DropdownMenu>
             </ButtonDropdown>
