@@ -48,6 +48,7 @@ module.exports = {
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
   user_getAllUsers: function (req, res) {
+    console.log(req.body)
     User.findAll({ where: { id: { [Op.not]: req.body.userId } } }).then(
       (users) => res.status(200).send(users)
     );

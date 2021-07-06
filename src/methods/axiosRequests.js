@@ -4,10 +4,6 @@ export function getSingleBook(bookId) {
   return axios.get(`/api/books/id/${bookId}`);
 }
 
-export function getSingleUser(UserId) {
-  return axios.get(`/api/users/${UserId}`);
-}
-
 export function getBookByTitle(input) {
   return axios.get(`/api/books/title/${input}`);
 }
@@ -82,14 +78,13 @@ export function checkoutOrder(cart) {
 export function getAllUsers() {
   const token = JSON.parse(localStorage.getItem("token"));
   const user = JSON.parse(localStorage.getItem("user"));
-
+  console.log(user.id, token)
   if (user && user.isAdmin) {
     return axios({
       method: "get",
       url: "/api/users",
       headers: { authorization: `Bearer ${token}` },
-      data: {userId: user.id}
-    });
+      data: {userId: user.id}})
   } else return new Promise(() => []);
 }
 
@@ -103,3 +98,10 @@ export function deleteUserAxios() {
     headers: { authorization: `Bearer ${token}` },
   });
 }
+
+export function getSingleUser(UserId) {
+    return axios.get(`/api/users/${UserId}`);
+  }
+
+
+
