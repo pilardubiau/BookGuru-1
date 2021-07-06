@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import "../styles/Users.css";
-import { getAllUsers, deleteUserAxios } from "../methods/axiosRequests";
+import { getAllUsers, deleteUserAxios, setToAdminAxios } from "../methods/axiosRequests";
 import Users from "../components/Users";
 
 const UsersContainer = () => {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-  // const { user } = useSelector(state => state);
 
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    getAllUsers().then(({ data }) => {
-      setUsers(data);
-    });
+    getAllUsers().then(({ data }) => { setUsers(data) });
   }, []);
 
   const deleteUser = (userId) => {
-    deleteUserAxios(userId);
+    deleteUserAxios(userId)
+    .then(()=> getAllUsers())
+    .then(res => setUsers(res.data))
   };
 
-  return <Users users={users} deleteUser={deleteUser} />;
+  const setToAdmin = (userId) => {
+    setToAdminAxios(userId).then(()=> alert('Admin status toggled'))
+    .then(()=> getAllUsers())
+    .then(res => setUsers(res.data))
+  }
+
+  return <Users users={users} deleteUser={deleteUser} setToAdmin={setToAdmin}/>;
 };
 
 export default UsersContainer;

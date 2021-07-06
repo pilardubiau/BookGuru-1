@@ -8,7 +8,6 @@ import {
 } from "../methods/axiosRequests";
 import CartTotalPrice from "../hooks/CartTotalPrice";
 import "../styles/Cart.css";
-import axios from "axios";
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
@@ -24,7 +23,6 @@ const Cart = () => {
   };
 
   const quantityHandler = (quantity, orderId) => {
-    const token = JSON.parse(localStorage.getItem("token"));
 
     updateQuantity(quantity, orderId)
       .then(() => getUserCart())

@@ -94,7 +94,7 @@ const NavBar = () => {
               {/* User icon/menu */}
               <div className="userAndLogInDiv">
                 {isUserValidated(user) ? (
-                  <Link to="/singleUser">
+                  <Link to={`/users/${user.id}`}>
                     <div className="user"></div>
                   </Link>
                 ) : (

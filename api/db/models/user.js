@@ -56,4 +56,10 @@ User.prototype.validPassword = function (passwordEnLogin) {
   return this.password === this.hashPassword(passwordEnLogin)
 }
 
+User.prototype.toggleAdminStatus = function() {
+  const status = this.getDataValue('isAdmin');
+  this.update({isAdmin: !status})
+  .then(()=> console.log('Status switched'))
+}
+
 module.exports = User;

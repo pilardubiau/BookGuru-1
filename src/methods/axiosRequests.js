@@ -4,8 +4,12 @@ export function getSingleBook(bookId) {
   return axios.get(`/api/books/id/${bookId}`);
 }
 
-export function getSingleUser(UserId) {
-  return axios.get(`/api/users/${UserId}`);
+export function getSingleUser(userId) {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  return axios.get(`/api/users/user/${userId}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
 }
 
 export function getBookByTitle(input) {
@@ -86,20 +90,30 @@ export function getAllUsers() {
   if (user && user.isAdmin) {
     return axios({
       method: "get",
-      url: "/api/users",
+      url: `/api/users/all/${user.id}`,
       headers: { authorization: `Bearer ${token}` },
-      data: {userId: user.id}
     });
   } else return new Promise(() => []);
 }
 
-export function deleteUserAxios() {
+export function deleteUserAxios(userId) {
   const token = JSON.parse(localStorage.getItem("token"));
-  const user = JSON.parse(localStorage.getItem("user"));
 
   return axios({
     method: "delete",
     url: "/api/users",
+    data: { userId: userId },
     headers: { authorization: `Bearer ${token}` },
   });
+}
+
+export function setToAdminAxios(userId) {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  return axios({
+    method: "put",
+    url: `/api/users/toggleAdmin`,
+    data: { userId },
+    headers: { authorization: `Bearer ${token}` },
+  });  
 }
