@@ -6,10 +6,7 @@ import { setUser } from "../store/user";
 import isUserValidated from "../hooks/isUserValidated";
 import { getBookByTitle } from "../methods/axiosRequests";
 import Dropdown from './DropdownContainer'
-
 import "../styles/NavBar.css";
-
-
 const imagen = require("../assets/Logo.png");
 
 const NavBar = () => {
@@ -18,8 +15,6 @@ const NavBar = () => {
   const { user } = useSelector((store) => store);
 
   const [input, setInput] = React.useState("");
-  const [hovered, setHovered] = React.useState(false);
-
 
   const handleChange = (e) => setInput(e.target.value);
 
@@ -34,15 +29,6 @@ const NavBar = () => {
     localStorage.clear();
     dispatch(setUser({}));
   };
-
-  const handleMouseOver = () => {
-    setHovered(!hovered);
-  };
-  const handleMouseLeave = () => {
-    setHovered(!hovered);
-  };
-
-
 
   return (
     <div className="navBarAndSubRowDiv">
@@ -151,4 +137,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

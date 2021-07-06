@@ -11,7 +11,7 @@ import "../styles/Cart.css";
 
 const Cart = () => {
   const [cart, setCart] = React.useState([]);
-
+  const user = JSON.parse(localStorage.getItem("user"));
   React.useEffect(() => {
     getUserCart().then((res) => setCart(res.data.sort((a, b) => a.id - b.id)));
   }, []);
@@ -22,17 +22,15 @@ const Cart = () => {
       .then((res) => setCart(res.data));
   };
 
-
   const quantityHandler = (quantity, orderId, stock) => {
-      if (stock >= quantity) {
-        updateQuantity(quantity, orderId)
-          .then(() => getUserCart())
-          .then((res) => setCart(res.data));
-      }
-      else {
-          alert("no hay suficiente stock")
-      }
-  }
+    if (stock >= quantity) {
+      updateQuantity(quantity, orderId)
+        .then(() => getUserCart())
+        .then((res) => setCart(res.data));
+    } else {
+      alert("no hay suficiente stock");
+    }
+  };
 
   const checkout = () => {
     checkoutOrder(cart).then(() => {
@@ -41,11 +39,14 @@ const Cart = () => {
     });
   };
 
-
   return (
     <div className="cart">
       {/* onClick={() => history.push("/previous")} */}
-      <Link className="sub-link" to="/previous">
+      <Link
+        className="sub-link"
+        to="/previous"
+        style={{ textDecoration: "none" }}
+      >
         <button className="checkout" style={{ textDecoration: "none" }}>
           Previous Orders
         </button>
@@ -73,8 +74,12 @@ const Cart = () => {
                       className="button-cart"
                       name="decrease"
                       disabled={data.quantity <= 1 ? true : false}
-                      onClick={() => 
-                        quantityHandler(data.quantity - 1, data.id, data.book.stock)
+                      onClick={() =>
+                        quantityHandler(
+                          data.quantity - 1,
+                          data.id,
+                          data.book.stock
+                        )
                       }
                     >
                       -
@@ -84,14 +89,22 @@ const Cart = () => {
                       className="button-cart"
                       name="increase"
                       onClick={() =>
-                        quantityHandler(data.quantity + 1, data.id, data.book.stock)
+                        quantityHandler(
+                          data.quantity + 1,
+                          data.id,
+                          data.book.stock
+                        )
                       }
                     >
                       +
                     </button>
                   </td>
                   <td>{data.book.price}</td>
-                  <td>{data.quantity > 1 ? data.book.price * data.quantity : data.book.price}</td>
+                  <td>
+                    {data.quantity > 1
+                      ? data.book.price * data.quantity
+                      : data.book.price}
+                  </td>
                   <td>
                     <button
                       className="button-cart"
@@ -111,9 +124,23 @@ const Cart = () => {
         </tfoot>
       </table>
 
-      <button className="checkout" disabled={!cart.length > 0 ? true : false} onClick={() => checkout()}>
+      <button
+        className="checkout"
+        disabled={!cart.length > 0 ? true : false}
+        onClick={() => checkout()}
+      >
         Checkout
       </button>
+      <br />
+      {user.isAdmin === true ? (
+        <Link
+          to="/history"
+          className="cartCheckoutButton"
+          style={{ textDecoration: "none" }}
+        >
+          <button className="checkout">See all orders</button>{" "}
+        </Link>
+      ) : null}
     </div>
   );
 };

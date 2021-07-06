@@ -31,7 +31,7 @@ module.exports = {
       .then((updatedOrders) => res.status(200).send(updatedOrders))
       .catch((err) => res.status(400).send("Couldn't make the checkout"));
   },
-  
+
   order_updateQuantity: function (req, res) {
     Order.update(
       {
@@ -47,16 +47,16 @@ module.exports = {
       res.status(202).send("Order deleted")
     );
   },
-  order_getAllOrders: function(req, res) {
+  order_getAllOrders: function (req, res) {
     Order.findAll({
       where: { bought: true },
       include: Book,
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
-  order_getAllPendingOrders: function(req, res) {
+  order_getAllPendingOrders: function (req, res) {
     Order.findAll({
       where: { bought: false },
       include: Book,
     }).then((pendingOrders) => res.status(200).send(pendingOrders));
-  }
+  },
 };

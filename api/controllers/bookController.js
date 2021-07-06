@@ -39,6 +39,7 @@ module.exports = {
     )
     .catch((err) => res.send("Book not found!"))
   },
+
   book_update: function (req, res) {
     Book.update(req.body, {
       where: { id: req.params.id },
@@ -46,4 +47,16 @@ module.exports = {
     }).then((updatedBook) => res.status(202).send(updatedBook[1]))
     .catch((err) => res.status(400).send(err))
   },
+
+  book_ratings: function(req, res) {
+    Book.findByPk(req.params.id)
+      .then(book => book.getRatings()
+      .then(ratings => {
+        let myRatings = [];
+        ratings.forEach(rating => myRatings.push(rating.dataValues.value));
+        const result = myRatings.reduce((acum, val) => acum + val, 0)/myRatings.length;
+        res.json(result)
+      })
+    )}
+
 };

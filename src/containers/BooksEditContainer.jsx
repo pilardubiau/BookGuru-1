@@ -5,7 +5,7 @@ import BooksEdit from "../components/BooksEdit";
 import { useHistory } from "react-router-dom";
 import { updateSingleBook } from "../methods/axiosRequests";
 
-const BooksEditContainer = ({}) => {
+const BooksEditContainer = () => {
   const [movieUpdatedProps, setMovieUpdatedProps] = useState({});
   const history = useHistory();
 

@@ -1,49 +1,41 @@
 const express = require("express");
 const router = express.Router();
 const checkJWT = require("../middlewares/jwt");
-const orderController = require('../controllers/orderController')
+const orderController = require("../controllers/orderController");
 
-router.get("/", checkJWT, orderController.user_validation)
+router.get("/", checkJWT, orderController.user_validation);
+
+//Ruta para traer todas las ordenes
+router.get("/all", checkJWT, orderController.user_validation);
 
 //ruta llamada al agregar una order al carrito
 //.../api/orders/
 //req.body tiene que traer ID del usuario, ID del libro, y cantidad de libros.
-router.post("/", checkJWT, orderController.order_creation)
+router.post("/", checkJWT, orderController.order_creation);
 
 //ruta llamada al comprar
 //req.body debe traer el userId
-router.put("/checkout", checkJWT, orderController.order_checkout)
+router.put("/checkout", checkJWT, orderController.order_checkout);
 
 //ruta llamada al actualizar cantidad
 //req.body debe traer cantidad y orderId,
-router.put("/quantity", checkJWT, orderController.order_updateQuantity)
+router.put("/quantity", checkJWT, orderController.order_updateQuantity);
 
 //ruta que elimina una orden del carrito
 //req.body debe traer una orderId
-router.delete("/", orderController.order_delete)
+router.delete("/", orderController.order_delete);
 
 //Nos trae todas las ordenes con bought TRUE
-router.get("/admin/checked", checkJWT, orderController.order_getAllOrders)
+router.get("/admin/checked", checkJWT, orderController.order_getAllOrders);
 
 //Nos trae todas las ordenes con bought FALSE
-router.get("/admin/pending", checkJWT, orderController.order_getAllPendingOrders)
+router.get(
+  "/admin/pending",
+  checkJWT,
+  orderController.order_getAllPendingOrders
+);
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // router.get("/", checkJWT, function (req, res) {
 //   User.findByPk(req.user.id)

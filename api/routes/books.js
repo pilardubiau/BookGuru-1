@@ -26,7 +26,10 @@ router.get("/category/:category", bookController.book_getByCategory);
 //Borramos un libro por PK
 router.delete("/id/:id", checkJWT, bookController.book_delete);
 
-//Borramos un usuario por PK
+//Update de un libro
 router.put("/id/:id", checkJWT, bookController.book_update);
+
+//tramos el promedio de ratings de un libro
+router.get('/ratings/:id', bookController.book_ratings)
 
 module.exports = router;
