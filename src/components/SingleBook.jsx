@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/SingleBook.css";
 import { useSelector, useDispatch} from "react-redux";
-import { isConstructorDeclaration } from "typescript";
 import {Link} from "react-router-dom"
 import { setSingleBook } from '../store/singleBook';
 
