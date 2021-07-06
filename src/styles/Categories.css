@@ -1,6 +1,14 @@
 .categories:Link{
- /*    color: #780000; */
-    color: green;
+    color: #780000;
     text-decoration: none;
+   
 }
 
+.drop-color{
+    width: 160px;
+}
+
+.categories{
+    color: #780000;
+    width: 100%;
+}
