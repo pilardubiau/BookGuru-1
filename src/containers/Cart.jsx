@@ -42,7 +42,11 @@ const Cart = () => {
   return (
     <div className="cart">
       {/* onClick={() => history.push("/previous")} */}
-      <Link className="sub-link" to="/previous">
+      <Link
+        className="sub-link"
+        to="/previous"
+        style={{ textDecoration: "none" }}
+      >
         <button className="checkout" style={{ textDecoration: "none" }}>
           Previous Orders
         </button>
@@ -129,7 +133,11 @@ const Cart = () => {
       </button>
       <br />
       {user.isAdmin === true ? (
-        <Link to="/history">
+        <Link
+          to="/history"
+          className="cartCheckoutButton"
+          style={{ textDecoration: "none" }}
+        >
           <button className="checkout">See all orders</button>{" "}
         </Link>
       ) : null}
