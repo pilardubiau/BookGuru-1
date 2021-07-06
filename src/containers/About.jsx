@@ -1,0 +1,32 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/About.css";
+
+const About = () => {
+  return (
+    <div className="about">
+      <hr />
+      <h3>
+        BookGuru is a book sale site, this project was made by 6 students from
+        Plataforma 5 in 2 weeks. You can search for books, view details of each
+        book, search by categories, add to the shopping cart, remove books from
+        the cart and modify the quantity you're purchasing. From the shopping
+        cart module you can see the previous orders made by the logged user.
+        Also we have some extra options for the admin users such as edit books,
+        promote admin rights to other users and see all the orders made by any
+        user on the site.{" "}
+      </h3>
+      <br />
+      <h3>
+        We are: Matias Carou, Nicolas Mancini, Luis Osorio, Paula Binimelis,
+        Pilar Dubiau & Alejandro Osorio
+      </h3>
+      <br />
+      <br />
+      <h3>Thanks for shopping with us!</h3>
+      <hr />
+    </div>
+  );
+};
+
+export default About;
