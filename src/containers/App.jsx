@@ -23,6 +23,7 @@ import Contact from "./Contact";
 import About from "./About";
 import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
+import AddBookContainer from "./AddBookContainer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const App = () => {
         <Route exact path="/login" component={LogIn} />
 
         <Route exact path="/books" render={() => <BooksContainer />} />
+        <Route exact path="/postnewbook" render={() => <AddBookContainer />} />
         <Route
           exact
           path="/books/:id"
