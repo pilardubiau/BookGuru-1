@@ -1,4 +1,6 @@
 import axios from "axios";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
+import WarningToast from "../hooks/toastNotifications/WarningToast";
 
 export function getAllOrders() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -16,8 +18,10 @@ export function addOrderAxios(bookId, userId) {
     data: { userId, bookId },
     headers: { authorization: `Bearer ${token}` },
   })
-    .then(() => alert("Item has been successfully added to cart!"))
-    .catch(() => alert("Book already added to cart"));
+    .then(() =>
+      SuccessToast("✨ 📚 Book has been successfully added to cart! 📚 ✨")
+    )
+    .catch(() => WarningToast("🦥 Book already added to cart 🦥"));
 }
 
 export function checkoutOrder(cart) {

@@ -84,8 +84,12 @@ module.exports = {
 
   user_toggleAdminStatus: function(req, res) {
     User.findByPk(req.body.userId)
-    .then(user => user.toggleAdminStatus())
-    .then(()=> res.send('TOdo bine'))
+    .then(user => {
+      console.log(user.dataValues)
+      user.toggleAdminStatus()
+      res.send(user.dataValues)
+    })
+    // .then((singleUser)=> res.send(singleUser))
   }
 
 };

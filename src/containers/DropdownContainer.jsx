@@ -23,12 +23,6 @@ const Dropdown = () => {
     });
   };
 
-  // const categorias = [
-  //     "All","Biography","Business","Childish","Classic Literature",
-  //     "Comics","Cooking","Crime","Disease","Fantasy","Fiction","Graphic Novels",
-  //     "Mystery","Reference","Science","Self-Help","Thriller"
-  // ]
-
   const categorias = [
     "Biography",
     "Business & Money ",

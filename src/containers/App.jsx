@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import userPersisterHook from "../hooks/userPersisterHook";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //Componentes
 import NavBar from "./NavBar";
@@ -43,7 +45,6 @@ const App = () => {
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
-
         <Route exact path="/books" render={() => <BooksContainer />} />
         <Route exact path="/postnewbook" render={() => <AddBookContainer />} />
         <Route
@@ -53,24 +54,19 @@ const App = () => {
             <SingleBookContainer bookId={match.params.id} />
           )}
         />
-
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/previous" component={Previous} />
-
         <Route
           path="/category/:category"
           render={({ match }) => (
             <Category typeCategory={match.params.category} />
           )}
         />
-
         <Route exact path="/category" component={Category} />
         <Route exact path="/history" component={History} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/about" component={About} />
-
         <Route exact path="/edit" component={BooksEditContainer} />
-
         <Route exact path="/users" component={UsersContainer} />
         <Route
           exact
@@ -82,6 +78,7 @@ const App = () => {
       </Switch>
       <br />
       <FooterContainer />
+      <ToastContainer />
     </div>
   );
 };

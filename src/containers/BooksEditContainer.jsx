@@ -6,10 +6,11 @@ import { useHistory } from "react-router-dom";
 import { updateSingleBook, deleteBookAxios } from "../axiosRequests/booksRequests";
 import { useDispatch } from "react-redux";
 import { setDeletedBookBoolean } from "../store/deletedBookBoolean";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
 import store from "../store/store"
 
 const BooksEditContainer = () => {
-  const [movieUpdatedProps, setMovieUpdatedProps] = useState({});
+  const [bookUpdatedProps, setBookUpdatedProps] = useState({});
   const dispatch = useDispatch()
   const history = useHistory();
 
@@ -17,20 +18,20 @@ const BooksEditContainer = () => {
     e.preventDefault();
     let key = e.target.name;
     let value = e.target.value;
-    setMovieUpdatedProps({ ...movieUpdatedProps, [key]: value });
+    setBookUpdatedProps({ ...bookUpdatedProps, [key]: value });
   };
 
   function submitHandler(e, bookId) {
     e.preventDefault();
-    updateSingleBook(bookId, movieUpdatedProps)
+    updateSingleBook(bookId, bookUpdatedProps)
       .then((res) => {
-        console.log(res.data[0]);
+        SuccessToast("✨ 📚 Book updated!✨ 📚")
         if (res.data) history.push(`/books/${bookId}`);
       })
       .catch((err) => console.log(err));
   }
 
-  const moviePropsArray = [
+  const bookPropsArray = [
     "author",
     "category",
     "publisher",
@@ -38,17 +39,18 @@ const BooksEditContainer = () => {
     "price",
   ];
 
-  const deleteBook = (bookId) => {
+  const deleteBook = (e, bookId) => {
+    e.preventDefault();
     deleteBookAxios(bookId).then(() => {
       dispatch(setDeletedBookBoolean(!store.getState().deletedBookBoolean))
-      alert("Book has been deleted");
+      SuccessToast("🦥Book deleted!🦥")
       history.push(`/books`);
     });
   };
 
   return (
     <BooksEdit
-      moviePropsArray={moviePropsArray}
+      bookPropsArray={bookPropsArray}
       changeHandler={changeHandler}
       submitHandler={submitHandler}
       deleteBook={deleteBook}
