@@ -56,6 +56,7 @@ const Cart = () => {
             <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
+            <th>Remove</th>
           </tr>
           {cart &&
             cart.map((data, index) => {

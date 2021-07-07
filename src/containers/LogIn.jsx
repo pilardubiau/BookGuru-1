@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
@@ -15,6 +15,7 @@ export default function LogIn() {
   const [validCredentials, setValidCredentials] = React.useState(true);
 
   const handleChange = (e) => {
+    e.preventDefault();
     const key = e.target.name;
     const value = e.target.value;
     setInputSignIn({ ...inputSignIn, [key]: value });
@@ -36,54 +37,64 @@ export default function LogIn() {
 
   return (
     <div className="login">
-      <div className="container-fluid" />
+      {/* className="container-fluid"  */}
+      <div />
       <br />
-      <h3>Log In</h3>
-      <form className="formulario container-fluid" onSubmit={handleSignIn}>
-        <br></br>
-        <label>
-          
-          Username <br />
-          <input
-            className="formulario container-fluid"
-            type="text"
-            name="username"
-            placeholder=""
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Password <br />
-          <input
-            className="formulario container-fluid"
-            type="password"
-            name="password"
-            placeholder=""
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <div>
-          {validCredentials
-            ? null
-            : ["danger"].map((variant, idx) => (
-                <Alert key={idx} variant={variant}>
-                  "You have entered an invalid username or password"
-                </Alert>
-              ))}
-        </div>
-        <br />
-        <button className="botonLogin" disabled={IsButtonDisable(inputSignIn)}>
-          Submit
-        </button>
-        <br />
-        <br /> 
-        <br />
-        <br />
-      </form>
+      <div>
+        <h3>Log In</h3>
+        {/* className="formulario container-fluid"  */}
+        <form onSubmit={handleSignIn}>
+          <br></br>
+          <label>
+            Username <br />
+            <input
+              className="loginInputStyle"
+              // className="formulario container-fluid"
+              type="text"
+              name="username"
+              // placeholder=""
+              required
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Password <br />
+            <input
+              className="loginInputStyle"
+              // className="formulario container-fluid"
+              type="password"
+              name="password"
+              // placeholder=""
+              required
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <div>
+            {validCredentials
+              ? null
+              : ["danger"].map((variant, idx) => (
+                  <Alert key={idx} variant={variant}>
+                    "You have entered an invalid username or password"
+                  </Alert>
+                ))}
+          </div>
+          {/* <br /> */}
+          <div className="loginButtonDiv">
+            <button
+              className="botonLogin"
+              disabled={IsButtonDisable(inputSignIn)}
+            >
+              Submit
+            </button>
+          </div>
+          {/* <br />
+          <br />
+          <br />
+          <br /> */}
+        </form>
+      </div>
     </div>
   );
 }

@@ -58,90 +58,98 @@ const Register = () => {
     <div className="register">
       <div className="container-fluid" />
       <br />
-      <h3>Welcome BookGuru !</h3> <br />
+      <h3>Welcome to BookGuru !</h3> <br />
       <p style={{ textAlign: "center" }}>
         Please fill in this form to create an account
       </p>
       <form className="formulario container-fluid" onSubmit={handleSubmit}>
-        <label>
-          Name <br />
-          <input
-            className="formulario container-fluid"
-            type="text"
-            name="name"
-            placeholder=""
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Last Name <br />
-          <input
-            className="formulario container-fluid"
-            type="text"
-            placeholder=""
-            required
-            name="lastname"
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Address <br />
-          <input
-            className="formulario container-fluid"
-            type="text"
-            placeholder=""
-            required
-            name="address"
-            onChange={handleChange}
-          />
-        </label>
-        <br></br>
-        <label>
-          Username <br />
-          <input
-            className="formulario container-fluid"
-            type="text"
-            placeholder=""
-            required
-            name="username"
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          E-mail <br />
-          <input
-            className="formulario container-fluid"
-            type="text"
-            placeholder=""
-            required
-            name="email"
-            onBlur={handlerBlur}
-          />
-        </label>
         <div>
-          {emailValidator
-            ? null
-            : ["danger"].map((variant, idx) => (
-                <Alert key={idx} variant={variant}>
-                  "Wrong e-mail"
-                </Alert>
-              ))}
+          <label>
+            Name <br />
+            <input
+              // className="formulario container-fluid"
+              className="registerInputStyle"
+              type="text"
+              name="name"
+              placeholder=""
+              required
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Last Name <br />
+            <input
+              // className="formulario container-fluid"
+              className="registerInputStyle"
+              type="text"
+              placeholder=""
+              required
+              name="lastname"
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Address <br />
+            <input
+              // className="formulario container-fluid"
+              className="registerInputStyle"
+              type="text"
+              placeholder=""
+              required
+              name="address"
+              onChange={handleChange}
+            />
+          </label>
+          <br></br>
+          <label>
+            Username <br />
+            <input
+              // className="formulario container-fluid"
+              className="registerInputStyle"
+              type="text"
+              placeholder=""
+              required
+              name="username"
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            E-mail <br />
+            <input
+              // className="formulario container-fluid"
+              className="registerInputStyle"
+              type="text"
+              placeholder=""
+              required
+              name="email"
+              onBlur={handlerBlur}
+            />
+          </label>
+          <div>
+            {emailValidator
+              ? null
+              : ["danger"].map((variant, idx) => (
+                  <Alert key={idx} variant={variant}>
+                    "Wrong e-mail"
+                  </Alert>
+                ))}
+          </div>
+          <label>
+            Password <br />
+            <input
+              // className="formulario container-fluid"
+              className="registerInputStyle"
+              type="password"
+              placeholder=""
+              required
+              name="password"
+              onBlur={handlerBlur}
+            />
+          </label>
         </div>
-        <label>
-          Password <br />
-          <input
-            className="formulario container-fluid"
-            type="password"
-            placeholder=""
-            required
-            name="password"
-            onBlur={handlerBlur}
-          />
-        </label>
         <div>
           {passwordValidator
             ? null
@@ -152,20 +160,25 @@ const Register = () => {
                 </Alert>
               ))}
         </div>
-        <br />
-        <h6>
-          By creating an account you agree to our Terms & Privacy
-          <input required type="checkbox" />
-        </h6>
-        <br />
-        <button
-          className="botonRegister"
-          disabled={IsButtonDisable(inputRegistro)}
-        >
-          Submit
-        </button>
-        <br />
-        <br />
+        <div className="termsAndPrivacyDiv">
+          <h6 style={{ margin: 0 }}>
+            By creating an account you agree to our Terms & Privacy
+          </h6>
+          <div style={{ padding: "0px 0px 0px 10px", height: "20px" }}>
+            <input required type="checkbox" />
+          </div>
+        </div>
+        {/* <br /> */}
+        <div className="registerButtonDiv">
+          <button
+            className="registerButton"
+            disabled={IsButtonDisable(inputRegistro)}
+          >
+            Submit
+          </button>
+        </div>
+        {/* <br />
+        <br /> */}
       </form>
     </div>
   );

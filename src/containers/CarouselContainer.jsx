@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import GetRandomBooks from "../hooks/GetRandomBooks";
+import {getRandomBooks} from "../axiosRequests/booksRequests";
 import CarouselComp from "../components/CarouselComp";
+import "../styles/Carousel.css";
 
 const CarouselContainer = () => {
   const [rndBooks, setRndBooks] = React.useState([]);
 
   useEffect(() => {
-    GetRandomBooks().then(({ data }) => setRndBooks(data));
+    getRandomBooks().then(({ data }) => setRndBooks(data));
   }, []);
 
   return <CarouselComp books={rndBooks.slice(0, rndBooks.length / 2)} />;

@@ -10,7 +10,7 @@ const Categories = ({typeCategory}) => {
   useEffect(()=>{
     dispatch(setTypeCategory(typeCategory))
     console.log(typeCategory)
-  },[typeCategory])
+  },[typeCategory, dispatch])
 
   return (
     <div>

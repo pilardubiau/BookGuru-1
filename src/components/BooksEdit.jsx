@@ -12,7 +12,7 @@ const BooksEdit = ({
   return (
     <div className="divEditBookGral">
       {/* <h3>{singleBook.title}</h3> */}
-      <hr />
+      {/* <hr /> */}
       <div className="dataimg">
         <div>
           <form onSubmit={(e) => submitHandler(e, singleBook.id)}>

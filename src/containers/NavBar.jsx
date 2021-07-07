@@ -5,7 +5,7 @@ import { setBooks } from "../store/books";
 import { setUser } from "../store/user";
 import isUserValidated from "../hooks/isUserValidated";
 import { getBookByTitle } from "../axiosRequests/booksRequests";
-import Dropdown from './DropdownContainer'
+import Dropdown from "./DropdownContainer";
 import "../styles/NavBar.css";
 const imagen = require("../assets/Logo.png");
 
@@ -113,7 +113,7 @@ const NavBar = () => {
       </div>
       <div className="sub-row">
         <div className="col-sm-2">
-          <Dropdown/>
+          <Dropdown />
         </div>
         <div className="col-sm-2">
           <Link to="/books" className="sub-link">

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Books.css";
+import "../styles/Users.css";
 
 const Users = ({ users, deleteUser, setToAdmin }) => {
   return (
-    <div className="books">
+    <div className="usersMainDiv">
       {users &&
         users.map((user) => {
           return (
             <div key={user.id}>
-              <Link to={`/users/${user.id}`}>
+              <Link to={`/users/${user.id}`} className="usersLinkProperties">
                 <div className="tamaño">
                   {user.name} {user.lastname}
                 </div>
@@ -17,10 +18,22 @@ const Users = ({ users, deleteUser, setToAdmin }) => {
               <div> {user.username} </div>
               <div> {user.address} </div>
               <div> {user.isAdmin ? "This user is admin" : null} </div>
-              <button onClick={() => deleteUser(user.id)}>Delete</button>
-              <button onClick={() => setToAdmin(user.id)}>
-                Toggle admin status
-              </button>
+              <div className="usersButtonDiv">
+                <button
+                  onClick={() => deleteUser(user.id)}
+                  className="usersButton"
+                >
+                  Delete
+                </button>
+              </div>
+              <div className="usersButtonDiv">
+                <button
+                  onClick={() => setToAdmin(user.id)}
+                  className="usersButton"
+                >
+                  Toggle admin status
+                </button>
+              </div>
               <br />
             </div>
           );

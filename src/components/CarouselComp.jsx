@@ -4,10 +4,6 @@ import "../styles/Carousel.css";
 
 const CarouselComp = ({ books }) => {
   return (
-    <div className="car">
-      <h6>Latest Releases</h6>
-      Discover the very latest titles from the worlds of fiction, non-fiction
-      and children’s. These great volumes are all out now.
       <Carousel>
         <Carousel.Item>
           <div className="slideImagediv">
@@ -24,7 +20,6 @@ const CarouselComp = ({ books }) => {
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-    </div>
   );
 };
 
