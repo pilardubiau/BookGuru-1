@@ -12,40 +12,49 @@ const Carousel2 = () => {
       .then((res) => res.data)
       .then((randBooks) => setRndBooks(randBooks));
   }, []);
-  
+
   return (
-    <div className="carousel2">
-      <h6>Best Sellers</h6>
-      Discover our bestselling books and see what's trending worldwide.
-      <Carousel>
-        
-        <Carousel.Item>
-          <div className="slideImagediv">
-            {rndBooks && rndBooks.map((book, index) => {
-              return index < 8 ? <img src={book.img} alt="..." /> : null
-            })}
-          </div>
-          <Carousel.Caption></Carousel.Caption>
-        </Carousel.Item>
+    // <div className="carousel2">
+    <div className="car">
+      <div>
+        <h6>Best Sellers</h6>
+        Discover our bestselling books and see what's trending worldwide.
+        <Carousel>
+          <Carousel.Item>
+            <div className="slideImagediv">
+              {rndBooks &&
+                rndBooks.map((book, index) => {
+                  return index < 8 ? <img src={book.img} alt="..." /> : null;
+                })}
+            </div>
+            <Carousel.Caption></Carousel.Caption>
+          </Carousel.Item>
 
-        <Carousel.Item>
-          <div className="slideImagediv">
-            {rndBooks && rndBooks.map((book, index) => {
-              return (index > 7 && index < 16) ? <img src={book.img} alt="..." /> : null
-            })}
-          </div>
-          <Carousel.Caption></Carousel.Caption>
-        </Carousel.Item>
+          <Carousel.Item>
+            <div className="slideImagediv">
+              {rndBooks &&
+                rndBooks.map((book, index) => {
+                  return index > 7 && index < 16 ? (
+                    <img src={book.img} alt="..." />
+                  ) : null;
+                })}
+            </div>
+            <Carousel.Caption></Carousel.Caption>
+          </Carousel.Item>
 
-        <Carousel.Item>
-          <div className="slideImagediv">
-            {rndBooks && rndBooks.map((book, index) => {
-              return (index > 15 && index < 23) ? <img src={book.img} alt="..." /> : null
-            })}
-          </div>
-          <Carousel.Caption></Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+          <Carousel.Item>
+            <div className="slideImagediv">
+              {rndBooks &&
+                rndBooks.map((book, index) => {
+                  return index > 15 && index < 23 ? (
+                    <img src={book.img} alt="..." />
+                  ) : null;
+                })}
+            </div>
+            <Carousel.Caption></Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
     </div>
   );
 };

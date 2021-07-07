@@ -18,10 +18,10 @@ const SingleUser = ({ singleUser }) => {
         </div>
       </div>
       <hr />
-      <div className="boton">
+      <div className="buttonAndLinkDiv">
         {singleUser.isAdmin ? (
           <Link to="/users">
-            <button>See all users</button>{" "}
+            <button className="boton">See all users</button>{" "}
           </Link>
         ) : null}
       </div>
