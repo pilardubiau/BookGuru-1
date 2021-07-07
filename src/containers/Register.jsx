@@ -207,6 +207,15 @@ const Register = () => {
           </div>
         </div>
         {/* <br /> */}
+        <div className="fbButtonRegisterDiv">
+          <button
+            className="btn btn-facebook botonRegisterFacebook"
+            onClick={registerFB}
+          >
+            <i className="fa fa-facebook mr-1"></i>
+            Continue with Facebook
+          </button>
+        </div>
         <div className="registerButtonDiv">
           <button
             className="registerButton"
@@ -218,10 +227,6 @@ const Register = () => {
         {/* <br />
         <br /> */}
       </form>
-      <button className="btn btn-facebook" onClick={registerFB}>
-        <i className="fa fa-facebook mr-1"></i>
-        Continue with Facebook
-      </button>
     </div>
   );
 };

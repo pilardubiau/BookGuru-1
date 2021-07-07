@@ -5,6 +5,8 @@ import PostBook from "../components/PostBook";
 import { useHistory } from "react-router-dom";
 import { postBookAxios } from "../axiosRequests/booksRequests";
 import { useDispatch } from "react-redux";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
+import WarningToast from "../hooks/toastNotifications/WarningToast"
 
 const AddBookContainer = () => {
   const [newBookProps, setNewBookProps] = useState({});
@@ -22,10 +24,10 @@ const AddBookContainer = () => {
     e.preventDefault();
     postBookAxios(newBookProps)
       .then(() => {
-        alert("Book has been added");
+        SuccessToast("✨ Book created📚 ✨");
         history.push(`/books`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => WarningToast("🦥Book already exists🦥"));
   }
 
   const bookPropsArray = [

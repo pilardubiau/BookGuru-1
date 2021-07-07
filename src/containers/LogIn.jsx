@@ -31,37 +31,42 @@ export default function LogIn() {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setValidCredentials(true);
-        SuccessToast(`👋Welcome ${res.data.user.username}👋`)
+        SuccessToast(`👋Welcome ${res.data.user.username}👋`);
         history.push("/");
       })
       .catch(() => setValidCredentials(false));
   };
 
-    const loginFB = async () => {
-        let user;
-        const { authResponse } = await new Promise(() => {
-            window.FB.login(function() {
-                window.FB.api("/me?fields=email,id,name&transport=cors", async function(response) {
-                    user = {
-                    //id: response.id,
-                    username: response.name,
-                    password: "Hola123123"
-                    }
-                    if (!user.username) {
-                        return;
-                    }
-                    return axios.post("/api/users/login", user)
-                            .then(res => {
-                                dispatch(setUser(res.data.user));
-                                localStorage.setItem("token", JSON.stringify(res.data.token));
-                                localStorage.setItem("user", JSON.stringify(res.data.user));
-                                setValidCredentials(true);
-                                history.push("/");
-                            })  
-            }) 
-        }, {scope:'public_profile,email'})})
-        if (!authResponse) return;
-    }
+  const loginFB = async () => {
+    let user;
+    const { authResponse } = await new Promise(() => {
+      window.FB.login(
+        function () {
+          window.FB.api(
+            "/me?fields=email,id,name&transport=cors",
+            async function (response) {
+              user = {
+                username: response.name,
+                password: "Hola123123",
+              };
+              if (!user.username) {
+                return;
+              }
+              return axios.post("/api/users/login", user).then((res) => {
+                dispatch(setUser(res.data.user));
+                localStorage.setItem("token", JSON.stringify(res.data.token));
+                localStorage.setItem("user", JSON.stringify(res.data.user));
+                setValidCredentials(true);
+                history.push("/");
+              });
+            }
+          );
+        },
+        { scope: "public_profile,email" }
+      );
+    });
+    if (!authResponse) return;
+  };
 
   return (
     <div className="login">
@@ -110,22 +115,24 @@ export default function LogIn() {
           </div>
           {/* <br /> */}
           <div className="loginButtonDiv">
-            <button
-              className="botonLogin"
-              disabled={IsButtonDisable(inputSignIn)}
-            >
-              Submit
-            </button>
-    <button className="fb-login-button"
-      onClick={loginFB}>
-            <i className="fa fa-facebook mr-1"></i>
+            <div className="singleButtonLoginDiv">
+              <button
+                className="fb-login-button botonLoginFacebook"
+                onClick={loginFB}
+              >
+                <i className="fa fa-facebook mr-1"></i>
                 Login with Facebook
-        </button>
+              </button>
+            </div>
+            <div className="singleButtonLoginDiv">
+              <button
+                className="botonLogin"
+                disabled={IsButtonDisable(inputSignIn)}
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          {/* <br />
-          <br />
-          <br />
-          <br /> */}
         </form>
       </div>
     </div>
