@@ -32,7 +32,6 @@ const AddBookContainer = () => {
     "title",
     "author",
     "img",
-    "rating",
     "price",
     "publisher",
     "maturityRating",
