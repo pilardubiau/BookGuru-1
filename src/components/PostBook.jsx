@@ -1,8 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
-  //   const { singleBook } = useSelector((store) => store);
 
   const categorias = [
     "Biography",
@@ -41,7 +39,7 @@ const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
                   <div className="labelAndInputDiv">
                     <label htmlFor="Category">Category:</label>
                     <select
-                      name="Category"
+                      name="category"
                       onChange={(e) => changeHandler(e)}
                       style={{ width: "20vw" }}
                     >
