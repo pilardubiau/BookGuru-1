@@ -32,8 +32,8 @@ const BooksEdit = ({
               </div>
               <div className="inputImgDiv">
                 <div className="editBookDiv">
-                  {bookPropsArray.map((item, index) => {
-                    return item === "price" || item === "rating" ? (
+                  {bookPropsArray.map((item) => {
+                    return item === "price" ? (
                       <div className="labelAndInputDiv" key={item}>
                         <label htmlFor={singleBook[item]}>{item}:</label>
                         <input

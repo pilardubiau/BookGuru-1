@@ -1,16 +1,14 @@
 import React from "react";
 import "../styles/SingleBook.css";
 import { useState } from "react";
-import PostBook from "../components/PostBook";
+import AddBook from "../components/AddBook";
 import { useHistory } from "react-router-dom";
 import { postBookAxios } from "../axiosRequests/booksRequests";
-import { useDispatch } from "react-redux";
 import SuccessToast from "../hooks/toastNotifications/SuccessToast";
 import WarningToast from "../hooks/toastNotifications/WarningToast"
 
 const AddBookContainer = () => {
   const [newBookProps, setNewBookProps] = useState({});
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const changeHandler = (e) => {
@@ -40,7 +38,7 @@ const AddBookContainer = () => {
   ];
 
   return (
-    <PostBook
+    <AddBook
       bookPropsArray={bookPropsArray}
       changeHandler={changeHandler}
       submitHandler={submitHandler}

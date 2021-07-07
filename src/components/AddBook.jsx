@@ -1,6 +1,6 @@
 import React from "react";
 
-const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
+const AddBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
 
   const categorias = [
     "Biography",
@@ -30,6 +30,7 @@ const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
                       <div className="labelAndInputDiv" key={item}>
                         <label>{item}:</label>
                         <input
+                          required
                           style={{ width: "20vw" }}
                           name={item}
                           onChange={changeHandler}
@@ -40,10 +41,12 @@ const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
                   <div className="labelAndInputDiv">
                     <label htmlFor="Category">Category:</label>
                     <select
+                      required
                       name="category"
                       onChange={(e) => changeHandler(e)}
                       style={{ width: "20vw" }}
                     >
+                      <option disabled selected></option>
                       {categorias.map((category, index) => {
                         return (
                           <option value={category} key={index}>
@@ -58,6 +61,7 @@ const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
               <div className="descriptionAndSaveButtonDiv">
                 <label htmlFor="Description">Description:</label>
                 <textarea
+                  required
                   className="descriptionDiv"
                   type="text"
                   name="description"
@@ -77,4 +81,4 @@ const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
   );
 };
 
-export default PostBook;
+export default AddBook;

@@ -35,7 +35,6 @@ const BooksEditContainer = () => {
     "author",
     "category",
     "publisher",
-    "rating",
     "price",
   ];
 

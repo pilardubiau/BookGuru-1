@@ -19,10 +19,12 @@ const UsersContainer = () => {
 
   const deleteUser = (userId) => {
     deleteUserAxios(userId)
+      .then(({ data }) => {
+        SuccessToast(`🚫User ${data.username} Deleted!🚫`);
+      })
       .then(() => getAllUsers())
       .then((res) => {
         setUsers(res.data);
-        SuccessToast(`🚫User ${users[0].username} Deleted!🚫`);
       });
   };
 

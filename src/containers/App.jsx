@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import userPersisterHook from "../hooks/userPersisterHook";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //Componentes
@@ -26,8 +26,6 @@ import About from "./About";
 import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
 import AddBookContainer from "./AddBookContainer";
-
-import { statusChange } from "../methods/initFacebokSdk.js"
 
 const App = () => {
   const dispatch = useDispatch();
