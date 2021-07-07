@@ -32,7 +32,7 @@
   "scripts": {
     "start": "concurrently 'npm run server' 'npm run client'",
     "server": "nodemon api/server.js",
-    "client": "react-scripts start",
+    "client": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "seed": "node api/seed"
   },

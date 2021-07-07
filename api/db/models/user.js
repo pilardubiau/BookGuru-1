@@ -16,7 +16,6 @@ User.init(
     },
     address: {
         type: DataTypes.STRING,
-        allowNull: false
     },
     username: {
       type: DataTypes.STRING,
@@ -30,7 +29,6 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     salt: {
       type: DataTypes.STRING,

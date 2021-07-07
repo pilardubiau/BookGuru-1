@@ -31,8 +31,34 @@ export default function LogIn() {
         setValidCredentials(true);
         history.push("/");
       })
-      .catch((err) => setValidCredentials(false));
+      .catch(() => setValidCredentials(false));
   };
+
+    const loginFB = async () => {
+        let user;
+        const { authResponse } = await new Promise(() => {
+            window.FB.login(function() {
+                window.FB.api("/me?fields=email,id,name&transport=cors", async function(response) {
+                    user = {
+                    //id: response.id,
+                    username: response.name,
+                    password: "Hola123123"
+                    }
+                    if (!user.username) {
+                        return;
+                    }
+                    return axios.post("/api/users/login", user)
+                            .then(res => {
+                                dispatch(setUser(res.data.user));
+                                localStorage.setItem("token", JSON.stringify(res.data.token));
+                                localStorage.setItem("user", JSON.stringify(res.data.user));
+                                setValidCredentials(true);
+                                history.push("/");
+                            })  
+            }) 
+        }, {scope:'public_profile,email'})})
+        if (!authResponse) return;
+    }
 
   return (
     <div className="login">
@@ -80,6 +106,11 @@ export default function LogIn() {
           Submit
         </button>
         <br />
+    <button className="fb-login-button"
+      onClick={loginFB}>
+            <i className="fa fa-facebook mr-1"></i>
+                Login with Facebook
+        </button>
         <br /> 
         <br />
         <br />

@@ -13,9 +13,11 @@ const NavBar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store);
-
+    const userfb = JSON.parse(localStorage.getItem("user"))
   const [input, setInput] = React.useState("");
-
+    React.useEffect(() => {
+       console.log(userfb) 
+    }, [userfb])
   const handleChange = (e) => setInput(e.target.value);
 
   const searchBooks = (e) => {
@@ -26,6 +28,7 @@ const NavBar = () => {
   };
 
   const logout = () => {
+    window.FB.api('/me/permissions', 'delete', null, () => window.FB.logout());
     localStorage.clear();
     dispatch(setUser({}));
   };
@@ -99,13 +102,15 @@ const NavBar = () => {
                       </Link>
                     </div>
                   ) : (
-                    <Link to="/" className="sub-link" onClick={() => logout()}>
+                      <>
+                    <Link to="/login" className="sub-link" onClick={() => logout()}>
                       Logout
                     </Link>
+                    </>
                   )}
                 </div>
                 {/* </div> */}
-              </div>
+                                  </div>
             </div>
           </div>
         </div>
