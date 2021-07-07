@@ -33,12 +33,13 @@ const Dropdown = () => {
           Categories
         </DropdownToggle>
         <DropdownMenu className="categories">
-          {categorias.map((categoria) => (
+          {categorias.map((categoria, index) => (
             <DropdownItem
+              key={index}
               onClick={() => selectCategory(categoria)}
               className="drop-color"
             >
-              <Link class="categories" to={`/category/${categoria}`}>
+              <Link className="categories" to={`/category/${categoria}`}>
                 {categoria}
               </Link>
             </DropdownItem>

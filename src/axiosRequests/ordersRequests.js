@@ -15,7 +15,9 @@ export function addOrderAxios(bookId, userId) {
         url: "/api/orders",
         data: { userId, bookId },
         headers: { authorization: `Bearer ${token}` },
-    }).then(() => alert("Item has been successfully added to cart!"));
+    })
+    .then(() => alert("Item has been successfully added to cart!"))
+    .catch(() => alert('Book already added to cart'));
 }
 
 export function checkoutOrder(cart) {

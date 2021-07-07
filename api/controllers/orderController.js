@@ -1,6 +1,8 @@
 const { Order, User, Book } = require("../db/models");
+const { Op } = require('sequelize');
 
 module.exports = {
+
   user_validation: function (req, res) {
     User.findByPk(req.user.id)
       .then((user) => {
@@ -8,10 +10,21 @@ module.exports = {
       })
       .catch((err) => res.status(400).send("Please Login or Register"));
   },
+
   order_creation: function (req, res) {
-    Order.create(req.body)
-      .then((order) => res.send(order))
-      .catch((err) => res.status(400).send("Couldn't create order"));
+
+    const { userId, bookId } = req.body;
+    Order.findOrCreate({
+      where: { [Op.and]: [{ bookId }, { userId }, { bought: false }] },
+      defaults: req.body,
+    })
+
+    .then((order) => {
+      order[1]
+      ? res.status(200).send(order[0])
+      : res.status(400).send("Book already add to cart")
+    })
+
   },
 
   order_checkout: function (req, res) {
@@ -42,21 +55,25 @@ module.exports = {
       .then((updatedOrders) => res.status(200).send(updatedOrders))
       .catch((err) => res.status(400).send("Couldn't update order"));
   },
+
   order_delete: function (req, res) {
     Order.destroy({ where: { id: req.body.orderId } }).then(() =>
       res.status(202).send("Order deleted")
     );
   },
+
   order_getAllOrders: function (req, res) {
     Order.findAll({
       where: { bought: true },
       include: [Book, User],
     }).then((checkedOrders) => res.status(200).send(checkedOrders));
   },
+
   order_getAllPendingOrders: function (req, res) {
     Order.findAll({
       where: { bought: false },
       include: Book,
     }).then((pendingOrders) => res.status(200).send(pendingOrders));
   },
+
 };

@@ -18,129 +18,30 @@ const Carousel2 = () => {
       <h6>Best Sellers</h6>
       Discover our bestselling books and see what's trending worldwide.
       <Carousel>
+        
         <Carousel.Item>
           <div className="slideImagediv">
-            {" "}
-            <img
-              src={rndBooks[0] ? rndBooks[27].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[1] ? rndBooks[28].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[2] ? rndBooks[29].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[3] ? rndBooks[30].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[4] ? rndBooks[31].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[5] ? rndBooks[32].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[6] ? rndBooks[33].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[7] ? rndBooks[34].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[8] ? rndBooks[35].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
+            {rndBooks && rndBooks.map((book, index) => {
+              return index < 8 ? <img src={book.img} alt="..." /> : null
+            })}
           </div>
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
+
         <Carousel.Item>
           <div className="slideImagediv">
-            {" "}
-            <img
-              src={rndBooks[0] ? rndBooks[36].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[1] ? rndBooks[37].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[2] ? rndBooks[38].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[3] ? rndBooks[39].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[4] ? rndBooks[40].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[5] ? rndBooks[41].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[6] ? rndBooks[42].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[7] ? rndBooks[43].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[8] ? rndBooks[44].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
+            {rndBooks && rndBooks.map((book, index) => {
+              return (index > 7 && index < 16) ? <img src={book.img} alt="..." /> : null
+            })}
           </div>
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
+
         <Carousel.Item>
           <div className="slideImagediv">
-            {" "}
-            <img
-              src={rndBooks[0] ? rndBooks[45].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[1] ? rndBooks[46].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[2] ? rndBooks[47].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[3] ? rndBooks[48].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[4] ? rndBooks[49].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[5] ? rndBooks[50].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[6] ? rndBooks[51].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
-            <img
-              src={rndBooks[7] ? rndBooks[52].img : null}
-              /* class="d-block w-50"  */ alt="..."
-            />
-            <img
-              src={rndBooks[8] ? rndBooks[53].img : null}
-              /* class="d-block w-50" */ alt="..."
-            />
+            {rndBooks && rndBooks.map((book, index) => {
+              return (index > 15 && index < 23) ? <img src={book.img} alt="..." /> : null
+            })}
           </div>
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>

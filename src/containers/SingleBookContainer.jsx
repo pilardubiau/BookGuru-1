@@ -14,13 +14,14 @@ const SingleBookContainer = ({ bookId }) => {
     const history = useHistory();
 
     useEffect(() => {
+        console.log('jelou')
         getSingleBook(bookId)
         .then(({ data }) => setSingleBook(data));
 
         getBookRatingAxios(bookId)
         .then(({ data }) => setRating(data));
 
-    }, []);
+    }, [bookId]);
 
     const addOrder = (bookId) =>
     userId ? addOrderAxios(bookId, userId) : history.push("/register");
