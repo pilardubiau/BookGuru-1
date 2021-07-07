@@ -8,6 +8,7 @@ import userReducer from "./user";
 import categoryReducer from "./category"
 import typeCategoryReducer from "./stateCategory"
 import singleBookReducer from "./singleBook";
+import deletedBookBooleanReducer from "./deletedBookBoolean";
 
 
 const store = configureStore({
@@ -19,7 +20,7 @@ const store = configureStore({
     category: categoryReducer,
     typeCategory: typeCategoryReducer,
     singleBook: singleBookReducer,
-
+    deletedBookBoolean: deletedBookBooleanReducer
   },
 });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setBooks } from "../store/books";
@@ -12,7 +12,7 @@ const imagen = require("../assets/Logo.png");
 const NavBar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => store);
+  const { user, deletedBookBoolean } = useSelector((store) => store);
 
   const [input, setInput] = React.useState("");
 
@@ -24,6 +24,11 @@ const NavBar = () => {
       .then((res) => dispatch(setBooks(res.data)))
       .then(() => history.push("/books"));
   };
+
+  useEffect(() => {
+    getBookByTitle(input)
+      .then((res) => dispatch(setBooks(res.data)))
+  }, [deletedBookBoolean]);
 
   const logout = () => {
     localStorage.clear();

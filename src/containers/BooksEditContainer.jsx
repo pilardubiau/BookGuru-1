@@ -4,9 +4,13 @@ import { useState } from "react";
 import BooksEdit from "../components/BooksEdit";
 import { useHistory } from "react-router-dom";
 import { updateSingleBook, deleteBookAxios } from "../axiosRequests/booksRequests";
+import { useDispatch } from "react-redux";
+import { setDeletedBookBoolean } from "../store/deletedBookBoolean";
+import store from "../store/store"
 
 const BooksEditContainer = () => {
   const [movieUpdatedProps, setMovieUpdatedProps] = useState({});
+  const dispatch = useDispatch()
   const history = useHistory();
 
   const changeHandler = (e) => {
@@ -36,6 +40,7 @@ const BooksEditContainer = () => {
 
   const deleteBook = (bookId) => {
     deleteBookAxios(bookId).then(() => {
+      dispatch(setDeletedBookBoolean(!store.getState().deletedBookBoolean))
       alert("Book has been deleted");
       history.push(`/books`);
     });
