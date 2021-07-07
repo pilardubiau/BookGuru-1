@@ -7,7 +7,6 @@ const Previous = () => {
 
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log("esto es user: ", user);
     if (user.isAdmin === true) getAllOrders().then((res) => setCart(res.data));
   }, []);
 
@@ -22,7 +21,6 @@ const Previous = () => {
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-        {console.log("esto es cart: ", cart)}
         {cart.map((data, index) => {
           return (
             <tr key={index}>
@@ -30,7 +28,6 @@ const Previous = () => {
               <td>{data.book.title}</td>
               <td>{data.book.author}</td>
               <td>{data.quantity}</td>
-              {/* chequear como hacer la formula para multiplicar precio * cantidad */}
               <td>{data.book.price}</td>
             </tr>
           );

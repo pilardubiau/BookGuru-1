@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { getUserCart } from "../axiosRequests/usersAxios";
 import { deleteOrderAxios, updateQuantity, checkoutOrder } from '../axiosRequests/ordersRequests';
 import CartTotalPrice from "../hooks/CartTotalPrice";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
+import WarningToast from "../hooks/toastNotifications/WarningToast";
 import "../styles/Cart.css";
 
 const Cart = () => {
@@ -24,13 +26,13 @@ const Cart = () => {
         .then(() => getUserCart())
         .then((res) => setCart(res.data));
     } else {
-      alert("no hay suficiente stock");
+      WarningToast("🚫There's not enough stock!🚫");
     }
   };
 
   const checkout = () => {
     checkoutOrder(cart).then(() => {
-      alert("Thank you for shopping with us");
+      SuccessToast("✨ 📚 Thank you for shopping with us!✨ 📚");
       setCart([]);
     });
   };

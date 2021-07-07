@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const BooksEdit = ({
-  moviePropsArray,
+  bookPropsArray,
   changeHandler,
   submitHandler,
   deleteBook,
@@ -15,7 +15,7 @@ const BooksEdit = ({
       {/* <hr /> */}
       <div className="dataimg">
         <div>
-          <form onSubmit={(e) => submitHandler(e, singleBook.id)}>
+          <form>
             <div className="editMainDiv">
               <div style={{ padding: "1vh 0em" }}>
                 <input
@@ -32,7 +32,7 @@ const BooksEdit = ({
               </div>
               <div className="inputImgDiv">
                 <div className="editBookDiv">
-                  {moviePropsArray.map((item, index) => {
+                  {bookPropsArray.map((item, index) => {
                     return item === "price" || item === "rating" ? (
                       <div className="labelAndInputDiv" key={item}>
                         <label htmlFor={singleBook[item]}>{item}:</label>
@@ -78,18 +78,21 @@ const BooksEdit = ({
                 <div className="addToCartEditButton">
                   <div className="editSingleButtonDiv">
                     {/* <Link to={`/books/${singleBook.id}`}> */}
-                    <button className="onlyButton">Save</button>
+                    <button
+                      className="onlyButton"
+                      onClick={(e) => submitHandler(e, singleBook.id)}
+                    >
+                      Save
+                    </button>
                     {/* </Link> */}
                   </div>
                   <div className="editSingleButtonDiv">
-                    {/* <Link to={`/books> */}
                     <button
                       className="onlyButton"
-                      onClick={() => deleteBook(singleBook.id)}
+                      onClick={(e) => deleteBook(e, singleBook.id)}
                     >
                       Delete
                     </button>
-                    {/* </Link> */}
                   </div>
                 </div>
               </div>

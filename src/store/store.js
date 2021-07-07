@@ -20,7 +20,7 @@ const store = configureStore({
     category: categoryReducer,
     typeCategory: typeCategoryReducer,
     singleBook: singleBookReducer,
-    deletedBookBoolean: deletedBookBooleanReducer
+    deletedBookBoolean: deletedBookBooleanReducer,
   },
 });
 

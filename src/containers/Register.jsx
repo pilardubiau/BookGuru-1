@@ -6,6 +6,8 @@ import { setUser } from "../store/user";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 import IsButtonDisable from "../hooks/IsButtonDisable";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast"
+import WarningToast from "../hooks/toastNotifications/WarningToast"
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -46,12 +48,13 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("/api/users/register", inputRegistro).then((res) => {
+      SuccessToast("👋User created!👋")
       dispatch(setUser(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.token));
       localStorage.setItem("user", JSON.stringify(res.data.user));
       if (res.data.user) history.push("/");
-    });
-    // .catch((err) => console.log(err))
+    })
+    .catch((err) => WarningToast("🚫User already exists!🚫"))
   };
 
   return (

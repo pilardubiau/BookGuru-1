@@ -6,6 +6,7 @@ import "../styles/LogIn.css";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 import IsButtonDisable from "../hooks/IsButtonDisable";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
 
 export default function LogIn() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export default function LogIn() {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setValidCredentials(true);
+        SuccessToast(`👋Welcome ${res.data.user.username}👋`)
         history.push("/");
       })
       .catch((err) => setValidCredentials(false));
