@@ -25,6 +25,8 @@ import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
 import AddBookContainer from "./AddBookContainer";
 
+import { statusChange } from "../methods/initFacebokSdk.js"
+
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
