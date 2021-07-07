@@ -1,12 +1,3 @@
-//CATEGORIAS:
-//Classic Literature & Fiction
-//Comics & Graphic Novels
-//Science
-//Kids
-//Business & Money
-//Biography
-//Cooking
-
 //Dropfown categories
 // const categorias = [
 //   "Biography",
