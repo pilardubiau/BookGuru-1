@@ -10,6 +10,7 @@ const PostBook = ({ bookPropsArray, changeHandler, submitHandler }) => {
     "Comics & Graphic Novels",
     "Cooking",
     "Crime, Thriller, Mystery",
+    "Science Fiction & Fantasy",
     "Science",
     "Self-Help",
   ];
