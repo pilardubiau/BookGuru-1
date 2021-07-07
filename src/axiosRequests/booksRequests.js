@@ -8,6 +8,10 @@ export function getBookByTitle(input) {
   return axios.get(`/api/books/title/${input}`);
 }
 
+export function getBookByAuthorOrTitle(input) {
+  return axios.get(`/api/books/authorTitle/${input}`);
+}
+
 export function getRandomBooks() {
   return axios.get(`/api/books/home`);
 }

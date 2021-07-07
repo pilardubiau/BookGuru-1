@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBooks } from "../store/books";
 import { setUser } from "../store/user";
 import isUserValidated from "../hooks/isUserValidated";
-import { getBookByTitle } from "../axiosRequests/booksRequests";
+import { getBookByAuthorOrTitle } from "../axiosRequests/booksRequests";
 import Dropdown from "./DropdownContainer";
 import "../styles/NavBar.css";
 const imagen = require("../assets/Logo.png");
@@ -20,7 +20,7 @@ const NavBar = () => {
 
   const searchBooks = (e) => {
     e.preventDefault();
-    getBookByTitle(input)
+    getBookByAuthorOrTitle(input)
       .then((res) => dispatch(setBooks(res.data)))
       .then(() => history.push("/books"));
   };

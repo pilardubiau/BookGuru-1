@@ -33,6 +33,15 @@ module.exports = {
       res.send(books)
     );
   },
+  book_getByAuthorCategory: function (req, res) {
+    Book.findAll({
+      where: {[Op.or]: [  
+        { author: { [Op.iLike]: `%${req.params.authorTitle}%` } },
+        { title: { [Op.iLike]: `%${req.params.authorTitle}%` }  },
+      ]}
+    }).then((books) => res.send(books))
+  },
+
   book_delete: function (req, res) {
     Book.destroy({ where: { id: req.params.id } }).then(() =>
       res.status(202).send("Book deleted")
@@ -59,4 +68,9 @@ module.exports = {
       })
     )}
 
+  
+
 };
+
+
+

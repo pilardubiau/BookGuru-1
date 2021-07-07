@@ -1,5 +1,5 @@
 const express = require("express");
-const { Op } = require("sequelize");
+const { Op, EmptyResultError } = require("sequelize");
 const { Book } = require("../db/models");
 const bookController = require("../controllers/bookController");
 const checkJWT = require("../middlewares/jwt");
@@ -22,6 +22,9 @@ router.get("/author/:author", bookController.book_getByAuthor);
 
 //Devolvemos los libros relacionados con una categoría
 router.get("/category/:category", bookController.book_getByCategory);
+
+//Devolvemos los libros relacionados con el autor y categoria
+router.get("/authorTitle/:authorTitle", bookController.book_getByAuthorCategory);
 
 //Borramos un libro por PK
 router.delete("/id/:id", checkJWT, bookController.book_delete);
