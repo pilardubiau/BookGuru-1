@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/user";
 import userPersisterHook from "../hooks/userPersisterHook";
 
@@ -23,12 +23,16 @@ import Contact from "./Contact";
 import About from "./About";
 import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
+import SearchContainer from "./SearchContainer";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setUser(userPersisterHook()));
   }, [dispatch]);
+
+  const input = useSelector((state) => state.input)
+  const { books } = useSelector(state => state);
 
   return (
     <div>
@@ -42,13 +46,17 @@ const App = () => {
         <Route exact path="/login" component={LogIn} />
 
         <Route exact path="/books" render={() => <BooksContainer />} />
+        
         <Route
           exact
-          path="/books/:id"
-          render={({ match }) => (
-            <SingleBookContainer bookId={match.params.id} />
-          )}
-        />
+          path="/search/:search"
+          render={() => <SearchContainer/>}
+        /> 
+
+        <Route path="/books/:bookId" 
+        render={({match})=> 
+        <SingleBookContainer bookId={match.params.bookId} />}/>
+
         <Route exact path="/cart" component={Cart} />
         <Route
           path="/category/:category"

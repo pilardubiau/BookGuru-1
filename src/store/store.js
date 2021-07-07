@@ -5,9 +5,10 @@ import logger from "redux-logger";
 import booksReducer from "./books";
 import bookIdReducer from "./bookId";
 import userReducer from "./user";
-import categoryReducer from "./category"
-import typeCategoryReducer from "./stateCategory"
+import categoryReducer from "./category";
+import typeCategoryReducer from "./stateCategory";
 import singleBookReducer from "./singleBook";
+import inputReducer from "./input";
 
 
 const store = configureStore({
@@ -19,7 +20,7 @@ const store = configureStore({
     category: categoryReducer,
     typeCategory: typeCategoryReducer,
     singleBook: singleBookReducer,
-
+    input: inputReducer,
   },
 });
 

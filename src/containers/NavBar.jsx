@@ -7,22 +7,29 @@ import isUserValidated from "../hooks/isUserValidated";
 import { getBookByAuthorOrTitle } from "../axiosRequests/booksRequests";
 import Dropdown from "./DropdownContainer";
 import "../styles/NavBar.css";
+import { setInput } from "../store/input";
 const imagen = require("../assets/Logo.png");
 
 const NavBar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store);
+  const input = useSelector((state) => state.input)
 
-  const [input, setInput] = React.useState("");
-
-  const handleChange = (e) => setInput(e.target.value);
+  const handleChange = (e) => {
+    dispatch(setInput(e.target.value))
+  };
 
   const searchBooks = (e) => {
-    e.preventDefault();
-    getBookByAuthorOrTitle(input)
+    const input = e.target.value
+    if(input){
+      getBookByAuthorOrTitle(input)
       .then((res) => dispatch(setBooks(res.data)))
-      .then(() => history.push("/books"));
+      .then(() => history.push(`/search/${input}`))
+    }
+    else{
+      history.push(`/books`)
+    }
   };
 
   const logout = () => {
@@ -41,7 +48,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="col-sm-6">
-            <form style={{ width: "auto" }} onSubmit={searchBooks}>
+            <form style={{ width: "auto" }} onChange={searchBooks} onSubmit={(e)=>{e.preventDefault()}}  >
               {/*  <Link to={'/books'}> */}
               <input
                 style={{ width: "40vw" }}
