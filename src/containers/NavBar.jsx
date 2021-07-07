@@ -48,7 +48,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="col-sm-6">
-            <form style={{ width: "auto" }} onChange={searchBooks} onSubmit={(e)=>{e.preventDefault()}}  >
+            <form style={{ width: "auto" }} onChange={searchBooks} onSubmit={(e)=>{e.preventDefault()}}>
               {/*  <Link to={'/books'}> */}
               <input
                 style={{ width: "40vw" }}
