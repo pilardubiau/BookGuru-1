@@ -16,23 +16,6 @@
   color: #780000;
 }
 
-/* .categories:focus {
-    text-decoration: none;
-<<<<<<< HEAD
-   
-}
-
-.drop-color{
-    width: 160px;
-}
-
-.categories{
-    color: #780000;
-    width: 100%;
-}
-=======
-} */
-
 .sub-link:active {
   color: #780000;
   text-decoration: none;
@@ -50,4 +33,4 @@
   color: white;
   background: #780000;
 }
->>>>>>> 8f9b20d12bc39ce6b901822debfac554caf42732
+

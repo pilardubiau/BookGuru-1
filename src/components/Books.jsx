@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/Books.css";
 
 const Books = ({ books, addOrder }) => {
+  console.log(books)
   return (
     <div className="books">
       {books &&

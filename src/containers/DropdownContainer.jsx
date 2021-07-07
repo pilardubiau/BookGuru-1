@@ -25,31 +25,11 @@ const Dropdown = () => {
         "Mystery","Reference","Science","Self-Help","Thriller"
     ]
 
-<<<<<<< HEAD
-    return(
-        <div>
-            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret color="" className="drop-color">
-                Categories
-                </DropdownToggle>
-                <DropdownMenu className="categories">
-                    {categorias.map(categoria => 
-                    <DropdownItem onClick={() => selectCategory(categoria)} className="drop-color">
-                        <Link className="categories" to={`/category/${categoria}`}>{categoria}</Link>
-                    </DropdownItem>)}
-                </DropdownMenu>
-            </ButtonDropdown>
-        </div>
-    )
-}
-=======
->>>>>>> 8f9b20d12bc39ce6b901822debfac554caf42732
-
   return (
     <div>
       <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
         <DropdownToggle caret color="" className="drop-color">
-          Categories
+            Categories
         </DropdownToggle>
         <DropdownMenu className="categories">
           {categorias.map((categoria) => (

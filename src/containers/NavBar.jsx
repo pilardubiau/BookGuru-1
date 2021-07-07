@@ -132,6 +132,7 @@ const NavBar = () => {
         </div>
         <hr />
       </div>
+      <br />
     </div>
   );
 };
