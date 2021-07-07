@@ -1,9 +1,14 @@
-import React from 'react';
-import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom'
-import { getBooksByCategory } from '../axiosRequests/booksRequests';
-import { setCategory } from '../store/category';
+import React from "react";
+import {
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  ButtonDropdown,
+} from "reactstrap";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { getBooksByCategory } from "../axiosRequests/booksRequests";
+import { setCategory } from "../store/category";
 import "../styles/Categories.css";
 
 const Dropdown = () => {
@@ -12,19 +17,29 @@ const Dropdown = () => {
 
   const toggle = () => setOpen(!dropdownOpen);
 
-    const selectCategory = (category)=>{
-        getBooksByCategory(category)
-        .then(({data}) => {
-            dispatch(setCategory(data))
-        }) 
-    }
+  const selectCategory = (category) => {
+    getBooksByCategory(category).then(({ data }) => {
+      dispatch(setCategory(data));
+    });
+  };
 
-    const categorias = [
-        "All","Biography","Business","Childish","Classic Literature",
-        "Comics","Cooking","Crime","Disease","Fantasy","Fiction","Graphic Novels",
-        "Mystery","Reference","Science","Self-Help","Thriller"
-    ]
+  // const categorias = [
+  //     "All","Biography","Business","Childish","Classic Literature",
+  //     "Comics","Cooking","Crime","Disease","Fantasy","Fiction","Graphic Novels",
+  //     "Mystery","Reference","Science","Self-Help","Thriller"
+  // ]
 
+  const categorias = [
+    "Biography",
+    "Business & Money ",
+    "Kids",
+    "Classic Literature & Fiction",
+    "Comics & Graphic Novels",
+    "Cooking",
+    "Crime, Thriller, Mystery",
+    "Science",
+    "Self-Help",
+  ];
 
   return (
     <div>

@@ -7,6 +7,19 @@
 //Biography
 //Cooking
 
+//Dropfown categories
+// const categorias = [
+//   "Biography",
+//   "Business & Money ",
+//   "Kids",
+//   "Classic Literature & Fiction",
+//   "Comics & Graphic Novels",
+//   "Cooking",
+//   "Crime, Thriller, Mystery",
+//   "Science",
+//   "Self-Help",
+// ];
+
 const seedBooks = [
   {
     title: "Martín Fierro",
