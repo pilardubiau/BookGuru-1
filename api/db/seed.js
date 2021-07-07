@@ -9,6 +9,7 @@
 //   "Crime, Thriller, Mystery",
 //   "Science",
 //   "Self-Help",
+//   "Science Fiction & Fantasy"
 // ];
 
 const seedBooks = [
