@@ -18,10 +18,12 @@ const NavBarContainer = () => {
   const { user, deletedBookBoolean } = useSelector((store) => store);
 
   const handleChange = (e) => {
+    e.preventDefault()
     dispatch(setInput(e.target.value));
   };
 
   const searchBooks = (e) => {
+    e.preventDefault()
     const input = e.target.value;
     if (input) {
       getBookByAuthorOrTitle(input)
@@ -59,7 +61,7 @@ const NavBarContainer = () => {
           <div className="col-sm-6">
             <form
               style={{ width: "auto" }}
-              onChange={searchBooks}
+              onChange={(e) => searchBooks(e)}
               onSubmit={(e) => {
                 e.preventDefault();
               }}
@@ -68,7 +70,7 @@ const NavBarContainer = () => {
                 style={{ width: "40vw" }}
                 placeholder="Search books..."
                 className="search-bar"
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
               />
             </form>
           </div>
