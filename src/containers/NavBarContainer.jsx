@@ -33,8 +33,12 @@ const NavBarContainer = () => {
   };
 
   useEffect(() => {
-    getBookByAuthorOrTitle(input).then((res) => dispatch(setBooks(res.data)));
-  }, [deletedBookBoolean, input, dispatch]);
+    getBookByAuthorOrTitle(input).then((res) => {
+      dispatch(setBooks(res.data))
+      history.push(`/search/${input}`)
+    })
+    .catch((err) => console.log(err))
+  }, [deletedBookBoolean, input, dispatch, history]);
 
   const logout = () => {
     window.FB.api("/me/permissions", "delete", null, () => window.FB.logout());

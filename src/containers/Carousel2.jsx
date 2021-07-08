@@ -24,7 +24,7 @@ const Carousel2 = () => {
             <div className="slideImagediv">
               {rndBooks &&
                 rndBooks.map((book, index) => {
-                  return index < 8 ? <img src={book.img} alt="..." /> : null;
+                  return index < 8 ? <img src={book.img} alt="..." key={book.id}/> : null;
                 })}
             </div>
             <Carousel.Caption></Carousel.Caption>
@@ -35,7 +35,7 @@ const Carousel2 = () => {
               {rndBooks &&
                 rndBooks.map((book, index) => {
                   return index > 7 && index < 16 ? (
-                    <img src={book.img} alt="..." />
+                    <img src={book.img} alt="..." key={book.id}/>
                   ) : null;
                 })}
             </div>
@@ -47,7 +47,7 @@ const Carousel2 = () => {
               {rndBooks &&
                 rndBooks.map((book, index) => {
                   return index > 15 && index < 23 ? (
-                    <img src={book.img} alt="..." />
+                    <img src={book.img} alt="..." key={book.id}/>
                   ) : null;
                 })}
             </div>
