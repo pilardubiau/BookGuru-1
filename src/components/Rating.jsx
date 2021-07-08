@@ -12,7 +12,7 @@ const Rating = ({submitHandler, changeHandler, data}) => {
           style={{ height: "3vh", width: "4vw", outline: "none" }}
           onChange={(e) => changeHandler(e)}
         ></input>
-        <button className="ratingButton" e>
+        <button className="ratingButton">
           rate
         </button>
       </form>
