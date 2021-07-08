@@ -30,8 +30,7 @@ module.exports = {
   },
   book_getByCategory: function (req, res) {
     Book.findAll({ where: { category: { [Op.iLike]: `%${req.params.category}%` } } }).then((books) =>
-      res.send(books)
-    );
+      res.send(books));
   },
   book_getByAuthorCategory: function (req, res) {
     Book.findAll({
@@ -40,6 +39,7 @@ module.exports = {
         { title: { [Op.iLike]: `%${req.params.authorTitle}%` }  },
       ]}
     }).then((books) => res.send(books))
+    .catch((err) => res.send("Book not found!"))
   },
 
   book_delete: function (req, res) {

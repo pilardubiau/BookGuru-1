@@ -37,7 +37,7 @@ const NavBarContainer = () => {
       dispatch(setBooks(res.data))
       history.push(`/search/${input}`)
     })
-    .catch((err) => console.log(err))
+    .catch((err => err))
   }, [deletedBookBoolean, input, dispatch, history]);
 
   const logout = () => {
