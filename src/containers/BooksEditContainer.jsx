@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 import { updateSingleBook, deleteBookAxios } from "../axiosRequests/booksRequests";
 import { useDispatch } from "react-redux";
 import { setDeletedBookBoolean } from "../store/deletedBookBoolean";
-import { getBookByAuthorOrTitle } from "../axiosRequests/booksRequests";
 import SuccessToast from "../hooks/toastNotifications/SuccessToast";
 import WarningToast from "../hooks/toastNotifications/WarningToast";
 import store from "../store/store"
@@ -46,7 +45,7 @@ const BooksEditContainer = () => {
   const deleteBook = (e, bookId) => {
     e.preventDefault();
     deleteBookAxios(bookId).then(() => {
-        if (input == "") {
+        if (input === "") {
             dispatch(setDeletedBookBoolean(!store.getState().deletedBookBoolean))
             history.push('/books')
             SuccessToast("🦥Book deleted!🦥")
