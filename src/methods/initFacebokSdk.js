@@ -3,7 +3,7 @@ export function initFacebookSdk() {
         // facebook sdk inicia antes que react app
         window.fbAsyncInit = function () {
             window.FB.init({
-                appId: '854713491803811',
+                appId: process.env.REACT_APP_FB_ID,
                 cookie: true,
                 xfbml: true,
                 version: 'v11.0'
