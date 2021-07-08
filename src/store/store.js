@@ -9,6 +9,8 @@ import categoryReducer from "./category";
 import typeCategoryReducer from "./stateCategory";
 import singleBookReducer from "./singleBook";
 import inputReducer from "./input";
+import deletedBookBooleanReducer from "./deletedBookBoolean";
+
 
 
 const store = configureStore({
@@ -21,6 +23,7 @@ const store = configureStore({
     typeCategory: typeCategoryReducer,
     singleBook: singleBookReducer,
     input: inputReducer,
+    deletedBookBoolean: deletedBookBooleanReducer,
   },
 });
 

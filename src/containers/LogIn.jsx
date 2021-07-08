@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
@@ -6,6 +6,7 @@ import "../styles/LogIn.css";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 import IsButtonDisable from "../hooks/IsButtonDisable";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
 
 export default function LogIn() {
   const dispatch = useDispatch();
@@ -30,9 +31,41 @@ export default function LogIn() {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         localStorage.setItem("user", JSON.stringify(res.data.user));
         setValidCredentials(true);
+        SuccessToast(`👋Welcome ${res.data.user.username}👋`);
         history.push("/");
       })
-      .catch((err) => setValidCredentials(false));
+      .catch(() => setValidCredentials(false));
+  };
+
+  const loginFB = async () => {
+    let user;
+    const { authResponse } = await new Promise(() => {
+      window.FB.login(
+        function () {
+          window.FB.api(
+            "/me?fields=email,id,name&transport=cors",
+            async function (response) {
+              user = {
+                username: response.name,
+                password: "Hola123123",
+              };
+              if (!user.username) {
+                return;
+              }
+              return axios.post("/api/users/login", user).then((res) => {
+                dispatch(setUser(res.data.user));
+                localStorage.setItem("token", JSON.stringify(res.data.token));
+                localStorage.setItem("user", JSON.stringify(res.data.user));
+                setValidCredentials(true);
+                history.push("/");
+              });
+            }
+          );
+        },
+        { scope: "public_profile,email" }
+      );
+    });
+    if (!authResponse) return;
   };
 
   return (
@@ -82,17 +115,24 @@ export default function LogIn() {
           </div>
           {/* <br /> */}
           <div className="loginButtonDiv">
-            <button
-              className="botonLogin"
-              disabled={IsButtonDisable(inputSignIn)}
-            >
-              Submit
-            </button>
+            <div className="singleButtonLoginDiv">
+              <button
+                className="fb-login-button botonLoginFacebook"
+                onClick={loginFB}
+              >
+                <i className="fa fa-facebook mr-1"></i>
+                Login with Facebook
+              </button>
+            </div>
+            <div className="singleButtonLoginDiv">
+              <button
+                className="botonLogin"
+                disabled={IsButtonDisable(inputSignIn)}
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          {/* <br />
-          <br />
-          <br />
-          <br /> */}
         </form>
       </div>
     </div>

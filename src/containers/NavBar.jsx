@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setBooks } from "../store/books";
@@ -20,6 +20,12 @@ const NavBar = () => {
     dispatch(setInput(e.target.value))
   };
 
+  const { user, deletedBookBoolean } = useSelector((store) => store);
+
+
+  const handleChange = (e) => setInput(e.target.value);
+
+
   const searchBooks = (e) => {
     const input = e.target.value
     if(input){
@@ -32,7 +38,13 @@ const NavBar = () => {
     }
   };
 
+  useEffect(() => {
+    getBookByTitle(input)
+      .then((res) => dispatch(setBooks(res.data)))
+  }, [deletedBookBoolean]);
+
   const logout = () => {
+    window.FB.api('/me/permissions', 'delete', null, () => window.FB.logout());
     localStorage.clear();
     dispatch(setUser({}));
   };
@@ -106,13 +118,15 @@ const NavBar = () => {
                       </Link>
                     </div>
                   ) : (
-                    <Link to="/" className="sub-link" onClick={() => logout()}>
+                      <>
+                    <Link to="/login" className="sub-link" onClick={() => logout()}>
                       Logout
                     </Link>
+                    </>
                   )}
                 </div>
                 {/* </div> */}
-              </div>
+                                  </div>
             </div>
           </div>
         </div>

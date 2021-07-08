@@ -21,8 +21,6 @@ h3 {
 .botonLogin {
   background-color: #780000;
   color: white;
-  border: 1em;
-  border: 1px solid #780000;
   padding: 10px;
   text-decoration: none;
   text-transform: uppercase;
@@ -31,11 +29,11 @@ h3 {
   border: none;
 }
 
-.botonLogin:disabled {
+/* .botonLogin:disabled {
   color: white;
   background: grey;
   transition: color 1s, background 1s;
-}
+} */
 
 .loginInputStyle {
   height: 2em;
@@ -50,14 +48,22 @@ h3 {
 }
 
 .loginButtonDiv {
+  display: flex;
+  flex-direction: column;
   padding: 0.5em;
 }
 
-/* .usersButton {
-    width: 200px;
-    border: none;
-    outline: none;
-    border-radius: 1em;
-    transition: color 0.4s, background 0.4s;
-  }
-   */
+.singleButtonLoginDiv {
+  padding: 1em 0em 0em 0em;
+}
+
+.botonLoginFacebook {
+  background-color: #4267b2;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 2em;
+  transition: color 1s, background 1s;
+  border: none;
+}

@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/user";
 import userPersisterHook from "../hooks/userPersisterHook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //Componentes
 import NavBar from "./NavBar";
@@ -24,6 +26,8 @@ import About from "./About";
 import SingleUserContainer from "./SingleUserContainer";
 import BooksEditContainer from "./BooksEditContainer";
 import SearchContainer from "./SearchContainer";
+import AddBookContainer from "./AddBookContainer";
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,8 +48,8 @@ const App = () => {
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
-
         <Route exact path="/books" render={() => <BooksContainer />} />
+
         
         <Route
           exact
@@ -57,13 +61,21 @@ const App = () => {
         render={({match})=> 
         <SingleBookContainer bookId={match.params.bookId} />}/>
 
+
+        <Route exact path="/postnewbook" render={() => <AddBookContainer />} />
+       
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/previous" component={Previous} />
+
         <Route
           path="/category/:category"
           render={({ match }) => (
             <Category typeCategory={match.params.category} />
           )}
         />    
+
+        <Route exact path="/category" component={Category} />
+
         <Route exact path="/history" component={History} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/about" component={About} />
@@ -79,6 +91,7 @@ const App = () => {
       </Switch>
       <br />
       <FooterContainer />
+      <ToastContainer />
     </div>
   );
 };

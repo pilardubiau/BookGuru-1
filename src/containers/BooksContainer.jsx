@@ -6,6 +6,7 @@ import Books from '../components/Books';
 import { getRandomBooks } from "../axiosRequests/booksRequests";
 import { addOrderAxios } from '../axiosRequests/ordersRequests';
 import "../styles/Books.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 const BooksContainer = () => {
 
@@ -18,8 +19,9 @@ const BooksContainer = () => {
         .then(({ data }) => dispatch(setBooks(data)));
     }, []);
 
-    const addOrder = (bookId) =>
-    user.id ? addOrderAxios(bookId, user.id) : history.push("/register");
+    const addOrder = (bookId) => {
+        user.id ? addOrderAxios(bookId, user.id) : history.push("/register")
+    };
     
     return(
         <Books books={books} addOrder={addOrder} />

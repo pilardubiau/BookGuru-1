@@ -43,3 +43,14 @@ export function deleteBookAxios(bookId) {
 export function getBookRatingAxios(bookId) {
   return axios.get(`/api/books/ratings/${bookId}`);
 }
+
+export function postBookAxios(bookProps) {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  return axios({
+    method: "post",
+    url: `/api/books`,
+    data: bookProps,
+    headers: { authorization: `Bearer ${token}` },
+  });
+}

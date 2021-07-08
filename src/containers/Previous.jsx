@@ -3,6 +3,8 @@ import { getUserPrevious } from "../axiosRequests/usersAxios";
 import { addRatingAxios } from "../axiosRequests/ratingsRequests";
 import Rating from "../components/Rating";
 import "../styles/Cart.css";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
+import WarningToast from "../hooks/toastNotifications/WarningToast";
 
 const Previous = () => {
   const [cart, setCart] = useState([]);
@@ -16,8 +18,10 @@ const Previous = () => {
   const submitHandler = (e, userId, bookId) => {
     e.preventDefault();
     addRatingAxios(rating, userId, bookId)
-      .then((rating) => alert("Thank you for rating this book!"))
-      .catch((err) => alert("You already rated this book!"));
+      .then((rating) =>
+        SuccessToast("✨ 📚 Thank you for rating this book!✨ 📚")
+      )
+      .catch((err) => WarningToast("🦥You already rated this book!🦥 "));
   };
 
   useEffect(() => {

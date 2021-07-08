@@ -6,6 +6,8 @@ import { setUser } from "../store/user";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 import IsButtonDisable from "../hooks/IsButtonDisable";
+import SuccessToast from "../hooks/toastNotifications/SuccessToast";
+import WarningToast from "../hooks/toastNotifications/WarningToast";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -45,13 +47,49 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/api/users/register", inputRegistro).then((res) => {
-      dispatch(setUser(res.data.user));
-      localStorage.setItem("token", JSON.stringify(res.data.token));
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      if (res.data.user) history.push("/");
+    axios
+      .post("/api/users/register", inputRegistro)
+      .then((res) => {
+        SuccessToast("👋User created!👋");
+        dispatch(setUser(res.data.user));
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        if (res.data.user) history.push("/");
+      })
+      .catch((err) => WarningToast("🚫User already exists!🚫"));
+  };
+
+  const registerFB = async () => {
+    let user;
+    const { authResponse } = await new Promise(() => {
+      window.FB.login(
+        function () {
+          window.FB.api(
+            "/me?fields=email,id,first_name,last_name,name&transport=cors",
+            async function (response) {
+              user = {
+                username: response.name,
+                email: response.email,
+                name: response.first_name,
+                lastname: response.last_name,
+                password: "Hola123123",
+              };
+              if (!user.username) {
+                return;
+              }
+              return axios.post("/api/users/register", user).then((res) => {
+                dispatch(setUser(res.data.user));
+                localStorage.setItem("token", JSON.stringify(res.data.token));
+                localStorage.setItem("user", JSON.stringify(res.data.user));
+                if (res.data.user) history.push("/");
+              });
+            }
+          );
+        },
+        { scope: "public_profile,email" }
+      );
     });
-    // .catch((err) => console.log(err))
+    if (!authResponse) return;
   };
 
   return (
@@ -169,6 +207,15 @@ const Register = () => {
           </div>
         </div>
         {/* <br /> */}
+        <div className="fbButtonRegisterDiv">
+          <button
+            className="btn btn-facebook botonRegisterFacebook"
+            onClick={registerFB}
+          >
+            <i className="fa fa-facebook mr-1"></i>
+            Continue with Facebook
+          </button>
+        </div>
         <div className="registerButtonDiv">
           <button
             className="registerButton"
