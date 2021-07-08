@@ -38,7 +38,7 @@ const PreviousContainer = () => {
           <th>Price</th>
           <th>Rating</th>
         </tr>
-        {cart.map((data, index) => {
+        {cart && cart.map((data, index) => {
           return (
             <tr key={index}>
               <td>{data.book.title}</td>

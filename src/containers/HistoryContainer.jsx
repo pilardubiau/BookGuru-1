@@ -21,7 +21,7 @@ const HistoryContainer = () => {
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-        {cart.map((data, index) => {
+        {cart && cart.map((data, index) => {
           return (
             <tr key={index}>
               <td>{data.user.username}</td>
