@@ -13,18 +13,12 @@ const imagen = require("../assets/Logo.png");
 const NavBar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => store);
   const input = useSelector((state) => state.input)
+  const { user, deletedBookBoolean } = useSelector((store) => store);
 
   const handleChange = (e) => {
     dispatch(setInput(e.target.value))
   };
-
-  const { user, deletedBookBoolean } = useSelector((store) => store);
-
-
-  const handleChange = (e) => setInput(e.target.value);
-
 
   const searchBooks = (e) => {
     const input = e.target.value
@@ -39,7 +33,7 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    getBookByTitle(input)
+    getBookByAuthorOrTitle(input)
       .then((res) => dispatch(setBooks(res.data)))
   }, [deletedBookBoolean]);
 
