@@ -18,12 +18,12 @@ const NavBarContainer = () => {
   const { user, deletedBookBoolean } = useSelector((store) => store);
 
   const handleChange = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(setInput(e.target.value));
   };
 
   const searchBooks = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const input = e.target.value;
     if (input) {
       getBookByAuthorOrTitle(input)
@@ -35,11 +35,12 @@ const NavBarContainer = () => {
   };
 
   useEffect(() => {
-    getBookByAuthorOrTitle(input).then((res) => {
-      dispatch(setBooks(res.data))
-      history.push(`/search/${input}`)
-    })
-    .catch((err => err))
+    getBookByAuthorOrTitle(input)
+      .then((res) => {
+        dispatch(setBooks(res.data));
+        history.push(`/search/${input}`);
+      })
+      .catch((err) => err);
   }, [deletedBookBoolean, input, dispatch, history]);
 
   const logout = () => {
@@ -78,7 +79,7 @@ const NavBarContainer = () => {
             {isUserValidated(user) ? (
               <h4
                 className="sub-link"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", margin: 0 }}
               >{`${user.username}`}</h4>
             ) : null}
             <div className="col-sm-4">
